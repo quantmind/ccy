@@ -1,4 +1,4 @@
-import datetime
+from datetime import date, datetime
 from unittest import TestCase
 
 from ccy import period, date2juldate, juldate2date
@@ -99,15 +99,15 @@ class DateConverterTest(TestCase):
     
     def setUp(self):
         self.dates = [
-                      (datetime.date(2010,6,11),40340,20100611,1276210800),
-                      (datetime.date(2009,4,2), 39905,20090402,1238626800),
-                      (datetime.date(1996,2,29),35124,19960229, 825552000),
-                      (datetime.date(1970,1,1), 25569,19700101,         0),
-                      (datetime.date(1900,1,1),1,19000101,           None)]
+                      (date(2010,6,11), 40340, 20100611, 1276210800),
+                      (date(2009,4,2),  39905, 20090402, 1238626800),
+                      (date(1996,2,29), 35124, 19960229,  825552000),
+                      (date(1970,1,1),  25569, 19700101,          0),
+                      (date(1900,1,1),      1, 19000101,       None)]
         
     def testdate2JulDate(self):
-        for d,jd,y,ts in self.dates:
-            self.assertEqual(jd,date2juldate(d))
+        for d, jd, y, ts in self.dates:
+            self.assertEqual(jd, date2juldate(d))
     
     def testJulDate2Date(self):
         for d,jd,y,ts in self.dates:
@@ -120,6 +120,15 @@ class DateConverterTest(TestCase):
     def testYyyyMmDd2Date(self):
         for d,jd,y,ts in self.dates:
             self.assertEqual(d,yyyymmdd2date(y))
+            
+    def test_datetime2Juldate(self):
+        jd = date2juldate(datetime(2013, 3, 8, 11, 20, 45))
+        self.assertAlmostEqual(jd, 41341.47274305556)
+        
+    def test_Juldate2datetime(self):
+        dt = juldate2date(41341.47274305556)
+        dt2 = datetime(2013, 3, 8, 11, 20, 45)
+        self.assertEqual(dt, dt2)
         
     #def testDate2Timestamp(self):
     #    for d,jd,y,ts in self.dates:

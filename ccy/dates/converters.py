@@ -80,8 +80,11 @@ def date2yyyymmdd(dte):
     
     
 def juldate2date(val):
+    '''Convert from a Julian date/datetime to python date or datetime'''
+    ival = int(val)
+    dec = val - ival
     try:
-        val4 = 4*val
+        val4 = 4*ival
         yd  = val4 % 1461
         st  = 1899
         if yd >= 4:
@@ -98,13 +101,28 @@ def juldate2date(val):
             qr = q % 153
         m = qq % 12 + 1
         d = qr // 5 + 1
-        return date(y,m,d)
-    except:
+    except Exception:
         raise ValueError('Could not convert %s to date' % val)
+    if dec:
+        dec24 = 24*dec
+        hours = int(dec24)
+        minutes = int(60*(dec24 - hours))
+        tot_seconds = 60*(60*(dec24 - hours) - minutes)
+        seconds = int(tot_seconds)
+        microseconds = int(1000000*(tot_seconds-seconds))
+        return datetime(y, m, d, hours, minutes, seconds, microseconds)
+    else: 
+        return date(y, m, d)
 
 def date2juldate(val):
+    '''Convert from a python date/datetime to a Julian date & time'''
     f = 12*val.year + val.month - 22803
     fq = f//12
     fr = f%12
-    return (fr*153 + 302)//5 + val.day + fq*1461//4
+    dt = (fr*153 + 302)//5 + val.day + fq*1461//4
+    if isinstance(val, datetime):
+        return dt + (val.hour + (val.minute + (val.second +\
+                         0.000001*val.microsecond)/60.)/60.)/24.
+    else:
+        return dt
 

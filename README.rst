@@ -2,11 +2,10 @@
 ccy
 ===========
 
-Python module for currencies. The module compiles a dictionary of
+A python module for currencies. The module compiles a dictionary of
 currency objects containing information useful in financial analysis.
-
-Not all currencies in the world are supported yet.
-You are welcome to join and add more.
+Not all currencies in the world are supported yet. You are welcome to
+join and add more.
 
 
 .. contents::
@@ -58,7 +57,7 @@ This is the market convention which is handled by the **order** property
 of a currency object.
 
 Country information
-=======================
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To use it::
 
@@ -80,7 +79,26 @@ There is a function for adding extra pseudo-countries::
 Set a new country with code 'EU', currency 'EUR' named 'Eurozone'.
 This pseudo country is set in the library already.
 
-    
+
+Date and Periods
+===================
+
+The module is shipped with a ``date`` module for manipulating time periods and
+converting dates between different formats. The *period* function can be used
+to create ``Period`` instances::
+
+    >>> from ccy import period
+    >>> p = period('1m')
+    >>> p
+    1M
+    >>> p += '2w'
+    >>> p
+    1M2W
+    >>> P += '3m'
+    >>> p
+    4M2W
+
+
 Requirements
 ================
 

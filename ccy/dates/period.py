@@ -1,8 +1,7 @@
+__all__ = ['period', 'Period']
 
-__all__ = ['period','Period']
 
-
-def period(pstr = ''):
+def period(pstr=''):
     '''Create a period object from a period string'''
     return Period.make(pstr)
 
@@ -23,7 +22,7 @@ safemod = lambda x,d : x%d if x >= 0 else -(-x%d)
 
 class Period(object):
     
-    def __init__(self, months = 0, days = 0):
+    def __init__(self, months=0, days=0):
         self._months = months
         self._days = days
         
