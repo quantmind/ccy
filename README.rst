@@ -33,7 +33,7 @@ To use it::
 
 a currency object has the following properties:
 
-* *code*: the [http://en.wikipedia.org/wiki/ISO_4217 ISO 4217] code.
+* *code*: the [http://en.wikipedia.org/wiki/ISO_4217 ISO-4217] code.
 * *twolettercode*: two letter code (can't remeber the ISO number). Very useful for financial data providers such as Bloomberg.
 * *default_country*: the default `ISO 3166-1 alpha-2`_ country code for the currency.
 * *isonumber*: the ISO 4217 number.
