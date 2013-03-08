@@ -1,6 +1,7 @@
 from ccy.utils import string_type
 
-__all__ = ['currency','ccypair','ccydb','currencydb','ccypairsdb','currencypair']
+__all__ = ['currency', 'ccypair', 'ccydb', 'currencydb',
+           'ccypairsdb', 'currency_pair']
 
 usd_order = 5
 
@@ -105,7 +106,7 @@ class ccy(object):
         else:
             return overusdfuni
     
-    def as_cross(self, delimiter = ''):
+    def as_cross(self, delimiter=''):
         '''
         Return a cross rate representation with respect USD.
         @param delimiter: could be '' or '/' normally
@@ -138,7 +139,7 @@ class ccy_pair(object):
         self.id   = self.code
     
     def __repr__(self):
-        return '%s: %s' % (self.__class__.__name__,self.code)
+        return '%s: %s' % (self.__class__.__name__, self.code)
     
     def __str__(self):
         return self.code
@@ -148,8 +149,16 @@ class ccy_pair(object):
             return ccy_pair(self.ccy2,self.ccy1)
         else:
             return self
+        
+    def over(self, name='usd'):
+        '''Returns a new currency pair with the *over* currency as
+second part of the pair (Foreign currency).'''
+        name = name.upper()
+        if self.ccy1.code == name.upper():
+            return ccy_pair(self.ccy2, self.ccy1)
+        else:
+            return self
     
-
 
 class ccydb(dict):
     load = None
@@ -182,13 +191,14 @@ def currency(code):
 
 def ccypair(code):
     c = ccypairsdb()
-    return c.get(str(code).upper(),None)
+    return c.get(str(code).upper(), None)
 
-def currencypair(code):
+def currency_pair(code):
+    '''Construct a :class:`ccy_pair` from a six letter string.'''
     c = str(code)
     c1 = currency(c[:3])
     c2 = currency(c[3:])
-    return ccy_pair(c1,c2)
+    return ccy_pair(c1, c2)
 
 
 def make_ccypairs():

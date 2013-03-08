@@ -1,4 +1,5 @@
-from ccy import currencydb, countryccy, set_new_country, CountryError
+import ccy
+from ccy import currencydb, countryccy, set_new_country, CountryError, ccypair
 from unittest import TestCase
 
 
@@ -34,4 +35,11 @@ class CcyTest(TestCase):
         self.assertEqual('AUD',countryccy('au'))
         self.assertEqual('EUR',countryccy('eu'))
             
+    def test_ccy_pair(self):
+        p = ccypair('usdchf')
+        self.assertEqual(str(p), 'USDCHF')
+        p = p.over()
+        self.assertEqual(str(p), 'CHFUSD')
+        p = ccypair('EURUSD')
+        self.assertEqual(p, p.over())
     

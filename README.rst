@@ -41,6 +41,24 @@ a currency object has the following properties:
 * *order*: default ordering in currency pairs (more of this below).
 * *roundoff*: number of decimal places
 
+Currency Crosses
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can create currency pairs by using the ``currency_pair`` function::
+
+    >>> import ccy
+    >>> p = ccy.currency_pair('eurusd')
+    >>> p
+    ccy_pair: EURUSD
+    >>> p.mkt()  # market convention pair
+    ccy_pair: EURUSD
+    >>> p = ccy.currency_pair('chfusd')
+    >>> p
+    ccy_pair: CHFUSD
+    >>> p.mkt()  # market convention pair
+    ccy_pair: USDCHF
+
+
 Some shortcuts::
 
     >>> import ccy

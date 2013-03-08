@@ -1,5 +1,5 @@
 '''Python currencies'''
-VERSION = (0, 5, 2)
+VERSION = (0, 5, 3)
  
 def get_version():
     if len(VERSION) == 3:
@@ -20,14 +20,10 @@ from .core import currency as _currency
 from .data.currency import make_ccys
 _currency.ccydb.load = make_ccys
 
-from .core.currency import currencydb, currency, ccypair, ccypairsdb
-from .core.country import country, countryccy, set_new_country, \
-                          countries, set_country_map, country_map, \
-                          CountryError
-
-# dates utilities
-from .dates import *
+from .core.currency import *
+from .core.country import *
 from .core.daycounter import *
+from .dates import *
 
 # Shortcuts
 cross     = lambda code : currency(code).as_cross()
