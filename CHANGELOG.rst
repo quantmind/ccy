@@ -1,5 +1,6 @@
-ccy 0.5.2
+ccy Development
 ===========================
+* Added travis CI.
 * Removed thew ``web`` module.
 * Better period calculations.
 * 19 tests
