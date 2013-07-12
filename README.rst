@@ -1,18 +1,19 @@
-===========
-ccy
-===========
-
 A python module for currencies. The module compiles a dictionary of
 currency objects containing information useful in financial analysis.
 Not all currencies in the world are supported yet. You are welcome to
 join and add more.
 
 
-:Master CI: [![Build Status](https://travis-ci.org/lsbardel/ccy.png)](https://travis-ci.org/lsbardel/ccy) 
-:Dev CI: [![Build Status](https://travis-ci.org/lsbardel/ccy.png)](https://travis-ci.org/lsbardel/ccy)
+:Master CI: |master-build|_ 
+:Dev CI: |dev-build|_ 
 :Dowloads: http://pypi.python.org/pypi/ccy
 :Source: https://github.com/lsbardel/ccy
 
+
+.. |master-build| image:: https://api.travis-ci.org/lsbardel/ccy.png?branch=master
+.. _master-build: http://travis-ci.org/lsbardel/ccy?branch=master
+.. |dev-build| image:: https://api.travis-ci.org/lsbardel/ccy?branch=dev
+.. _dev-build: http://travis-ci.org/lsbardel/ccy?branch=dev
 
 
 .. contents::

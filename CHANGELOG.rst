@@ -1,9 +1,11 @@
 ccy Development
 ===========================
 * Added travis CI.
+* Development moved to github.
+* Added sphinx docs.
 * Removed thew ``web`` module.
 * Better period calculations.
-* 19 tests
+* 29 tests
 
 ccy 0.5.1 - 2011 Jun 16
 ===========================
