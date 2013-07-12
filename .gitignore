@@ -1,8 +1,10 @@
 *.pyc
 build
 docs/build
+htmlcov
 dist
 MANIFEST
 .project
 .pydevproject
 .settings
+.coverage

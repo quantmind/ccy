@@ -1,1 +1,2 @@
 pytz>=2011b
+python-dateutil

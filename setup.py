@@ -1,8 +1,12 @@
-from distutils.core import setup
-from distutils.command.install_data import install_data
-from distutils.command.install import INSTALL_SCHEMES
 import os
 import sys
+
+from setuptools import setup
+from distutils.command.install_data import install_data
+from distutils.command.install import INSTALL_SCHEMES
+
+if sys.version_info < (2, 6):
+    raise Exception("stdnet requires Python 2.6 or higher.")
 
 package_name = 'ccy'
 root_dir     = os.path.dirname(__file__)

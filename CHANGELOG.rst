@@ -1,11 +1,12 @@
-ccy Development
+ccy development
 ===========================
+* Removed date parser and added dependency to dateutils_.
 * Added travis CI.
 * Development moved to github.
 * Added sphinx docs.
 * Removed thew ``web`` module.
 * Better period calculations.
-* 29 tests
+* **29 regression tests** with **69%** coverage.
 
 ccy 0.5.1 - 2011 Jun 16
 ===========================
@@ -79,3 +80,5 @@ ccy 0.1.2
 ============
 * First official release
  
+
+.. _dateutils: https://pypi.python.org/pypi/python-dateutil

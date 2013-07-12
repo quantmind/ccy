@@ -1,7 +1,13 @@
 import time
 from datetime import datetime, date
 
-from .parser import parse
+try:
+    from dateutil import parser as dateFromString
+except ImportError: #pragma    nocover
+    
+    def dateFromString(stestr):
+        raise NotImplementedError('Requires python-dateutil')
+
 
 __all__ = ['todate',
            'date2timestamp',
@@ -12,9 +18,6 @@ __all__ = ['todate',
            'date2juldate',
            'dateFromString',
            'jstimestamp']
-
-
-dateFromString = parse
 
 
 def todate(val):
