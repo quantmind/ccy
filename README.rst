@@ -8,6 +8,13 @@ Not all currencies in the world are supported yet. You are welcome to
 join and add more.
 
 
+:Master CI: [![Build Status](https://travis-ci.org/lsbardel/ccy.png)](https://travis-ci.org/lsbardel/ccy) 
+:Dev CI: [![Build Status](https://travis-ci.org/lsbardel/ccy.png)](https://travis-ci.org/lsbardel/ccy)
+:Dowloads: http://pypi.python.org/pypi/ccy
+:Source: https://github.com/lsbardel/ccy
+
+
+
 .. contents::
     :local:
     
