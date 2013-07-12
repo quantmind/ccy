@@ -10,9 +10,9 @@ join and add more.
 :Source: https://github.com/lsbardel/ccy
 
 
-.. |master-build| image:: https://api.travis-ci.org/lsbardel/ccy.png?branch=master
+.. |master-build| image:: https://travis-ci.org/lsbardel/ccy.png?branch=master
 .. _master-build: http://travis-ci.org/lsbardel/ccy?branch=master
-.. |dev-build| image:: https://api.travis-ci.org/lsbardel/ccy?branch=dev
+.. |dev-build| image:: https://travis-ci.org/lsbardel/ccy?branch=dev
 .. _dev-build: http://travis-ci.org/lsbardel/ccy?branch=dev
 
 
