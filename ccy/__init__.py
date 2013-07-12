@@ -1,5 +1,5 @@
 '''Python currencies'''
-VERSION = (0, 5, 2, 'alpha', 1)
+VERSION = (0, 5, 2, 'beta', 2)
  
 def get_version(version):
     assert len(version) == 5
