@@ -4,8 +4,8 @@ Not all currencies in the world are supported yet. You are welcome to
 join and add more.
 
 
-:Master CI: |master-build|_ 
-:Dev CI: |dev-build|_ 
+:Master CI: |master-build|_ |coverage-master|
+:Dev CI: |dev-build|_ |coverage-dev|
 :Dowloads: http://pypi.python.org/pypi/ccy
 :Source: https://github.com/lsbardel/ccy
 
@@ -14,12 +14,16 @@ join and add more.
 .. _master-build: http://travis-ci.org/lsbardel/ccy?branch=master
 .. |dev-build| image:: https://travis-ci.org/lsbardel/ccy?branch=dev
 .. _dev-build: http://travis-ci.org/lsbardel/ccy?branch=dev
+.. |coverage-master| image:: https://coveralls.io/repos/lsbardel/ccy/badge.png?branch=master
+  :target: https://coveralls.io/r/lsbardel/ccy?branch=master
+.. |coverage-dev| image:: https://coveralls.io/repos/lsbardel/ccy/badge.png?branch=dev
+  :target: https://coveralls.io/r/lsbardel/ccy?branch=dev
 
 
 .. contents::
     :local:
-    
-  
+
+
 Currency object
 ======================
 To use it::
@@ -100,7 +104,7 @@ There is a function for adding extra pseudo-countries::
 
     import ccy
     ccy.set_new_country('EU','EUR','Eurozone')
-    
+
 Set a new country with code 'EU', currency 'EUR' named 'Eurozone'.
 This pseudo country is set in the library already.
 
@@ -139,25 +143,25 @@ This library works for Python 2.6 and higher, including Python 3.
 Using `easy_install`::
 
 	easy_install ccy
-	
+
 Using `pip`::
 
 	pip install ccy
-	
+
 From source::
 
 	python setup.py install
-	
-It requires the pytz_ package.  
-	
+
+It requires the pytz_ package.
+
 Runnung tests
 ~~~~~~~~~~~~~~~~~~~~~
 
 From within the package directory::
 
 	python runtests.py
-	
-	
+
+
 .. _pytz: http://pytz.sourceforge.net/
 .. _`ISO 3166-1 alpha-2`: http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 .. _`ISO 4217`: http://en.wikipedia.org/wiki/ISO_4217
