@@ -18,18 +18,21 @@ _countries    = None
 _country_ccys = None
 _country_maps = {}
 
+
 class CountryError(Exception):
     pass
+
 
 def country(code):
     cdb = countries()
     code = country_map(code)
-    return cdb.get(code,'')
+    return cdb.get(code, '')
+
 
 def countryccy(code):
     cdb = countryccys()
     code = str(code).upper()
-    return cdb.get(code,None)
+    return cdb.get(code, None)
 
 
 def countries():
@@ -42,11 +45,12 @@ def countries():
         _countries = v
         try:
             from pytz import country_names
-            for k,n in country_names.items():
+            for k, n in country_names.items():
                 v[k.upper()] = n
         except:
             pass
     return _countries
+
 
 def countryccys():
     '''
@@ -65,17 +69,19 @@ def countryccys():
                 v[c.default_country] = c.code
     return _country_ccys
 
-def dumpcountries(filename = 'countries.csv'):
+
+def dumpcountries(filename='countries.csv'):
     cs = make_countries()
-    f = open(filename,'w')
+    f = open(filename, 'w')
     l = []
     for v in cs.items():
         l.append('%s,%s' % v)
     data = '\n'.join(l)
     f.write(data)
     f.close()
-    
-def set_country_map(cfrom, cto, name = None, replace = True):
+
+
+def set_country_map(cfrom, cto, name=None, replace=True):
     '''
     Set a mapping between a country code to another code
     '''
@@ -95,7 +101,7 @@ def set_country_map(cfrom, cto, name = None, replace = True):
         cccys = countryccys()
         ccy   = cccys[cfrom]
         cccys[cto] = ccy
-        
+
         # If set, remove cfrom from database
         if replace:
             ccy = ccys.get(ccy)
@@ -104,7 +110,8 @@ def set_country_map(cfrom, cto, name = None, replace = True):
             cccys.pop(cfrom)
     else:
         raise CountryError('Country %s not in database' % c)
-    
+
+
 def set_new_country(code, ccy, name):
     '''
     Add new country code to database
@@ -120,8 +127,8 @@ def set_new_country(code, ccy, name):
     cdb[code] = str(name)
     cccys     = countryccys()
     cccys[code] = ccy
-     
-    
+
+
 def country_map(code):
     '''
     Country mapping
@@ -132,4 +139,4 @@ def country_map(code):
 
 
 # Add eurozone to list of Countries
-set_new_country('EU','EUR','Eurozone')
+set_new_country('EU', 'EUR', 'Eurozone')

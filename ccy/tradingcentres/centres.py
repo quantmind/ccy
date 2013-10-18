@@ -20,23 +20,24 @@ def centres(codes = None):
         for code in lcs:
             tc = _tcs.get(code,None)
             if tc:
-                tcs.add(tc) 
+                tcs.add(tc)
     return tcs
 
 
 def get_declared_holidays(bases, attrs):
     _attrs = attrs.copy()
-    holidays = [(field_name, attrs.pop(field_name)) for field_name, obj in _attrs.items() if isinstance(obj, BaseHoliday)]
-    
+    holidays = [(field_name, attrs.pop(field_name)) for field_name, obj in
+                _attrs.items() if isinstance(obj, BaseHoliday)]
+
     for base in bases[::-1]:
         if hasattr(base, 'holidays'):
             holidays = base.holidays.items() + holidays
-    
+
     return dict(holidays)
 
 
 class TradingCentreMeta(type):
-    
+
     def __new__(cls, name, bases, attrs):
         global _tcs
         abstract = attrs.pop('abstract',False)
@@ -54,29 +55,29 @@ class TradingCentreMeta(type):
 TradingCentreBase = TradingCentreMeta('TradingCentreBase',
                                       (object, ),
                                       {'abstract':True})
-    
-    
+
+
 class TradingCentre(TradingCentreBase):
     abstract = True
     onedaydelta = datetime.timedelta(days=1)
-    
+
     def __new__(cls):
         obj = super(TradingCentre,cls).__new__(cls)
         obj._start = None
         obj._end = None
         obj._cache = {}
         return obj
-    
+
     def __get_code(self):
         return self.__class__.__name__
     code = property(__get_code)
-        
+
     def isbizday(self, dte):
         if dte.isoweekday() in isoweekend:
             return False
         else:
             return self._isholiday(dte) == False
-    
+
     def _isholiday(self, dte):
         year = dte.year
         if self._start:
@@ -94,23 +95,23 @@ class TradingCentre(TradingCentreBase):
         for year in range(start,end+1):
             self.build_dates(year)
         return self._cache.get(dte,False)
-    
+
     def build_dates(self, year):
         for holiday in self.holidays.values():
             days = holiday.allholidays(year)
             for day in days:
                 self._cache[day] = True
-            
-    
+
+
 class TradingCentres(object):
     onedaydelta = datetime.timedelta(days=1)
-    
+
     def __init__(self):
         self._centres = {}
-    
+
     def __len__(self):
         return len(self._centres)
-    
+
     def add(self, tc):
         self._centres[tc.code] = tc
 
@@ -119,12 +120,12 @@ class TradingCentres(object):
             if c._isholiday(dte):
                 return False
         return True
-        
+
     def isbizday(self, dte):
         if dte.isoweekday() in isoweekend:
             return False
         return self._isbizday(dte)
-      
+
     def nextbizday(self, dte, nd = 1):
         n = 0
         isbz = self.isbizday
@@ -135,7 +136,7 @@ class TradingCentres(object):
             if isbz(dte):
                 n += 1
         return dte
-            
+
     def prevbizday(self, dte, nd = 1):
         n = 0
         if nd < 0:
@@ -149,7 +150,7 @@ class TradingCentres(object):
                 if self.isbizday(dte):
                     n += 1
         return dte
-    
+
 
 #
 #__________________________________ TRADING CENTRES
@@ -159,9 +160,8 @@ class TGT(TradingCentre):
     labor_day     = PartialDate(5,1)
     christmas_day = PartialDate(12,25)
     december_26   = PartialDate(12,26)
-    
-    
+
+
 class LON(TradingCentre):
     '''London'''
     christmas_day = PartialDate(12,25)
-

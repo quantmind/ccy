@@ -3,8 +3,8 @@ from datetime import datetime, date
 
 try:
     from dateutil import parser as dateFromString
-except ImportError: #pragma    nocover
-    
+except ImportError:  # pragma    nocover
+
     def dateFromString(stestr):
         raise NotImplementedError('Requires python-dateutil')
 
@@ -45,7 +45,7 @@ If it fails it raise a ValueError exception.'''
                 return dateFromString(val)
             except:
                 raise ValueError("Could not convert %s to date" % val)
-    
+
 
 def date2timestamp(dte):
     return time.mktime(dte.timetuple())
@@ -76,12 +76,12 @@ def yyyymmdd2date(dte):
         return date(y,m,d)
     except:
         raise ValueError('Could not convert %s to date' % dte)
-    
-    
+
+
 def date2yyyymmdd(dte):
     return dte.day + 100*(dte.month + 100*dte.year)
-    
-    
+
+
 def juldate2date(val):
     '''Convert from a Julian date/datetime to python date or datetime'''
     ival = int(val)
@@ -114,8 +114,9 @@ def juldate2date(val):
         seconds = int(tot_seconds)
         microseconds = int(1000000*(tot_seconds-seconds))
         return datetime(y, m, d, hours, minutes, seconds, microseconds)
-    else: 
+    else:
         return date(y, m, d)
+
 
 def date2juldate(val):
     '''Convert from a python date/datetime to a Julian date & time'''
@@ -128,4 +129,3 @@ def date2juldate(val):
                          0.000001*val.microsecond)/60.)/60.)/24.
     else:
         return dt
-
