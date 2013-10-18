@@ -3,13 +3,19 @@ currency objects containing information useful in financial analysis.
 Not all currencies in the world are supported yet. You are welcome to
 join and add more.
 
-
+:PyPI: |pypi_version| |pypi_downloads|
 :Master CI: |master-build|_ |coverage-master|
 :Dev CI: |dev-build|_ |coverage-dev|
 :Dowloads: http://pypi.python.org/pypi/ccy
 :Source: https://github.com/lsbardel/ccy
 
 
+.. |pypi_version| image:: https://pypip.in/v/ccy/badge.png
+    :target: https://crate.io/packages/ccy/
+    :alt: Latest PyPI version
+.. |pypi_downloads| image:: https://pypip.in/d/ccy/badge.png
+    :target: https://crate.io/packages/ccy/
+    :alt: Number of PyPI downloads
 .. |master-build| image:: https://travis-ci.org/lsbardel/ccy.png?branch=master
 .. _master-build: http://travis-ci.org/lsbardel/ccy?branch=master
 .. |dev-build| image:: https://travis-ci.org/lsbardel/ccy.png?branch=dev

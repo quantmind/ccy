@@ -1,5 +1,5 @@
 '''Python currencies'''
-VERSION = (0, 5, 2, 'beta', 2)
+VERSION = (0, 6, 0, 'alpha', 1)
 
 
 def get_version(version):
@@ -45,5 +45,5 @@ def g10():
 
 
 def g10m():
-    '''modified g10. G10 + AUD,NZD,NOK'''
+    '''modified g10. G10 + AUD, NZD, NOK'''
     return g10() + ['AUD', 'NZD', 'NOK']

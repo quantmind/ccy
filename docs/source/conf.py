@@ -25,7 +25,8 @@ release = version
 extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.todo',
               'sphinx.ext.pngmath',
-              'sphinx.ext.viewcode']
+              'sphinx.ext.viewcode',
+              'table']
 
 # Beta version is published in github pages
 if ccy.VERSION[3] == 'beta':

@@ -4,7 +4,7 @@ from ccy.utils import to_string
 
 
 __all__ = ['currency', 'ccypair', 'ccydb', 'currencydb',
-           'ccypairsdb', 'currency_pair']
+           'ccypairsdb', 'currency_pair', 'dump_currency_table']
 
 
 usd_order = 5
@@ -226,6 +226,31 @@ def make_ccypairs():
             p = ccy_pair(ccy1, ccy2)
             db[p.code] = p
     return db
+
+
+def dump_currency_table():
+    headers = ['code',
+               ('isonumber', 'iso'),
+               ('html', 'symbol'),
+               ('default_country', 'country'),
+               'order',
+               'rounding',
+               ('symbol_raw', 'unicode')]
+    all = []
+    data = []
+    all.append(data)
+    for h in headers:
+        if isinstance(h, tuple):
+            h = h[1]
+        data.append(h)
+    for c in sorted(currencydb().values(), key=lambda x: x.order):
+        data = []
+        all.append(data)
+        for h in headers:
+            if isinstance(h, tuple):
+                h = h[0]
+            data.append(getattr(c, h))
+    return all
 
 
 _ccys = None
