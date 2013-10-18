@@ -17,3 +17,10 @@ else:  # Python 2    # pragma nocover
     iteritems = lambda d: d.iteritems()
     is_string = lambda x: isinstance(x, basestring)
     from cStringIO import StringIO
+
+
+def to_string(v):
+    if isinstance(v, bytes):
+        return v.decode('utf-8')
+    else:
+        return '%s' % v

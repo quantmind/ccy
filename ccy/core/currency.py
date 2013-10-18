@@ -1,4 +1,6 @@
-from ccy.utils import string_type
+import sys
+
+from ccy.utils import to_string
 
 
 __all__ = ['currency', 'ccypair', 'ccydb', 'currencydb',
@@ -14,7 +16,7 @@ class ccy(object):
     '''
     Currency object
     '''
-    def __init__(self, code, isonumber, twolettercode, order, name,
+    def __init__(self, code, isonumber, twoletterscode, order, name,
                  roundoff=4,
                  default_country=None,
                  fixeddc=None,
@@ -22,17 +24,20 @@ class ccy(object):
                  fixedfreq=None,
                  floatfreq=None,
                  future=None,
-                 symbol='\u00a4'):
+                 symbol=r'\00a4',
+                 html=''):
         #from qmpy.finance.dates import get_daycount
-        self.code = string_type(code)
+        self.code = to_string(code)
         self.id = self.code
         self.isonumber = isonumber
-        self.twolettercode = string_type(twolettercode)
+        self.twoletterscode = to_string(twoletterscode)
         self.order = int(order)
-        self.name = string_type(name)
-        self.raundoff = roundoff
+        self.name = to_string(name)
+        self.rounding = roundoff
         self.default_country = default_country
-        self.symbol = symbol
+        self.symbol_raw = symbol
+        self.symbol = symbol.encode('utf-8').decode('unicode_escape')
+        self.html = html or self.symbol
         self.fixeddc = fixeddc
         self.floatdc = floatdc
         #self.fixedfreq     = str(fixedfreq)
@@ -66,16 +71,19 @@ class ccy(object):
     def info(self):
         return {'code': self.code,
                 'isonumber': self.isonumber,
-                'twolettercode': self.twolettercode,
+                'twoletterscode': self.twoletterscode,
+                'symbol': self.symbol,
                 'order': self.order,
                 'name': self.name,
-                'raundoff': self.raundoff,
-                'default_country': self.default_country}
+                'rounding': self.rounding,
+                'default_country': self.default_country,
+                'unicode symbol': self.symbol_raw}
 
-    def printinfo(self):
+    def printinfo(self, stream=None):
         info = self.info()
+        stream = stream or sys.stdout
         for k, v in info.items():
-            print('%s: %s' % (k, v))
+            stream.write('%s: %s\n' % (k, v))
 
     def __repr__(self):
         return '%s: %s' % (self.__class__.__name__, self.code)

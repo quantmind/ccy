@@ -2,8 +2,8 @@ import json
 from unittest import TestCase
 
 import ccy
-from ccy import (currencydb, countryccy, set_new_country, CountryError, ccypair,
-                 currency)
+from ccy import (currencydb, countryccy, set_new_country, CountryError,
+                 ccypair, currency)
 from ccy.utils import ispy3k
 
 if ispy3k:
@@ -17,7 +17,8 @@ class CcyTest(TestCase):
     def testdefaultcountry(self):
         ccys = currencydb()
         for ccy in ccys.values():
-            self.assertEqual(ccy.code[:2],ccy.default_country)
+            if ccy.code != 'XBT':
+                self.assertEqual(ccy.code[:2], ccy.default_country)
 
     def testiso(self):
         ccys = currencydb()
@@ -30,19 +31,19 @@ class CcyTest(TestCase):
         ccys = currencydb()
         twol = {}
         for ccy in ccys.values():
-            self.assertFalse(ccy.twolettercode in twol)
-            twol[ccy.twolettercode] = ccy
+            self.assertFalse(ccy.twoletterscode in twol)
+            twol[ccy.twoletterscode] = ccy
 
     def testNewCountry(self):
         try:
-            set_new_country('EU','EUR','Eurozone')
+            set_new_country('EU', 'EUR', 'Eurozone')
         except CountryError:
             return
         self.assertTrue(False)
 
     def testCountryCcy(self):
-        self.assertEqual('AUD',countryccy('au'))
-        self.assertEqual('EUR',countryccy('eu'))
+        self.assertEqual('AUD', countryccy('au'))
+        self.assertEqual('EUR', countryccy('eu'))
 
     def test_ccy_pair(self):
         p = ccypair('usdchf')

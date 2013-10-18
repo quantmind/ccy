@@ -13,7 +13,7 @@ install:
   - sudo rm -rf /dev/shm && sudo ln -s /run/shm /dev/shm
 
 script:
-  - pep8 ccy
+  - pep8 ccy tests
   - sudo rm -rf ccy
   - coverage run runtests.py
 

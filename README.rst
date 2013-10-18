@@ -32,8 +32,8 @@ To use it::
     >>> c = ccy.currency('aud')
     >>> c.printinfo()
     code: AUD
-    twolettercode: AD
-    roundoff: 4
+    twoletterscode: AD
+    rounding: 4
     default_country: AU
     isonumber: 036
     order: 3
@@ -46,12 +46,12 @@ To use it::
 a currency object has the following properties:
 
 * *code*: the `ISO 4217`_ code.
-* *twolettercode*: two letter code (can't remeber the ISO number). Very useful for financial data providers such as Bloomberg.
+* *twoletterscode*: two letter code (can't remeber the ISO number). Very useful for financial data providers such as Bloomberg.
 * *default_country*: the default `ISO 3166-1 alpha-2`_ country code for the currency.
 * *isonumber*: the ISO 4217 number.
 * *name*: the name of the currency.
 * *order*: default ordering in currency pairs (more of this below).
-* *roundoff*: number of decimal places
+* *rounding*: number of decimal places
 
 Currency Crosses
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
