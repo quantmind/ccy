@@ -1,12 +1,13 @@
 ccy development
 ===========================
-* Removed date parser and added dependency to dateutils_.
-* Added travis CI.
-* Development moved to github.
-* Added sphinx docs.
-* Removed the ``web`` module.
-* Better period calculations.
-* **29 regression tests** with **69%** coverage.
+* pep8
+* Removed date parser and added dependency to dateutils_
+* Added travis CI
+* Development moved to github
+* Added sphinx docs
+* Removed the ``web`` module
+* Better period calculations
+* **29 regression tests** with **69%** coverage
 
 ccy 0.5.1 - 2011 Jun 16
 ===========================
@@ -34,22 +35,22 @@ ccy 0.3.9  - 2010 Sep 24
 * Added javascript timestamp converter.
 * Timestamp tests failing. Closing them untill 0.4 release.
 * 19 tests.
- 
+
 ccy 0.3.8  - 2010 Sep 12
 =============================
 * Added python-dateutil dependency
 * To run tests use ``ccy.runtests``
 * 21 tests.
- 
+
 ccy 0.3.7  - 2010 June 22
 =============================
 * Added new module date converters
- 
+
 ccy 0.3.5  - 2010 June 07
 =============================
 * Added new module dates with period manipulation
 * Moved all tests into the tests module
- 
+
 ccy 0.3.4  - 2010 April 25
 =============================
 * Added trading centres for calculation of trading holidays (requires python-dateutil)
@@ -67,7 +68,7 @@ ccy 0.3
 ==============
 * Added as_cross to ccy class to display the currency as a cross FX string
 * Added 2 shortcuts to display crosses: cross(eur) -> EURUSD, and crossover(eur) -> EUR/USD
- 
+
 ccy 0.2
 ==============
 * **THIS VERSION IS NOT COMPATIBLE WITH PREVIOUS ONE**.
@@ -75,10 +76,10 @@ ccy 0.2
 * Added symbol property to ccy
 * bug fixes and refactoring for python 3.1 compatibility
 * Added another 2 tests
- 
+
 ccy 0.1.2
 ============
 * First official release
- 
+
 
 .. _dateutils: https://pypi.python.org/pypi/python-dateutil
