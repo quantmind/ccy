@@ -120,4 +120,3 @@ class CcyTest(TestCase):
         self.assertEqual(p.mkt(), p)
         p = currency_pair('gbpeur')
         self.assertNotEqual(p.mkt(), p)
-
