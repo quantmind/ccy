@@ -83,7 +83,7 @@ class ccy(object):
         info = self.info()
         stream = stream or sys.stdout
         for k, v in info.items():
-            stream.write('%s: %s\n' % (k, v))
+            stream.write(to_string('%s: %s\n' % (k, v)))
 
     def __repr__(self):
         return '%s: %s' % (self.__class__.__name__, self.code)

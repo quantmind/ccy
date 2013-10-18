@@ -11,7 +11,7 @@ if ispy3k:
     from io import StringIO as StreamIO
 else:
     import cPickle as pickle
-    from cString import BytesIO as StreamIO
+    from cString import StringIO as StreamIO
 
 
 class CcyTest(TestCase):
