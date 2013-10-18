@@ -13,7 +13,7 @@ install:
   - sudo rm -rf /dev/shm && sudo ln -s /run/shm /dev/shm
 
 script:
-  - if [[ $TRAVIS_PYTHON_VERSION == '3.3' ]]; pep8 ccy tests; fi
+  - if [[ $TRAVIS_PYTHON_VERSION == '3.3' ]]; then pep8 ccy tests; fi
   - sudo rm -rf ccy
   - coverage run runtests.py
 
