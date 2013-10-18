@@ -9,9 +9,15 @@ python:
 
 install:
   - python setup.py install
+  - pip install -r requirements_dev.txt --use-mirrors
   - sudo rm -rf ccy
   - sudo rm -rf /dev/shm && sudo ln -s /run/shm /dev/shm
-script: python -m runtests
+
+script:
+  coverage run runtests.py
+
+after_success:
+  - coveralls
 
 # Only test master and dev
 branches:
