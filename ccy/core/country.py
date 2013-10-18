@@ -12,9 +12,9 @@ __all__ = ['country', 'countryccy', 'set_new_country',
 # using ISO 3166-1 alpha-2 country codes
 # see http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 #
-eurozone  = 'AT BE CY DE ES FI FR GR IE IT LU MA NL PT SI SK'.split(' ')
+eurozone = 'AT BE CY DE ES FI FR GR IE IT LU MA NL PT SI SK'.split(' ')
 
-_countries    = None
+_countries = None
 _country_ccys = None
 _country_maps = {}
 
@@ -86,20 +86,20 @@ def set_country_map(cfrom, cto, name=None, replace=True):
     Set a mapping between a country code to another code
     '''
     global _country_maps
-    cdb   = countries()
+    cdb = countries()
     cfrom = str(cfrom).upper()
     c = cdb.get(cfrom)
     if c:
         if name:
             c = name
         cto = str(cto).upper()
-        if cdb.has_key(cto):
+        if cto in cdb:
             raise CountryError('Country %s already in database' % cto)
         cdb[cto] = c
         _country_maps[cfrom] = cto
-        ccys  = currencydb()
+        ccys = currencydb()
         cccys = countryccys()
-        ccy   = cccys[cfrom]
+        ccy = cccys[cfrom]
         cccys[cto] = ccy
 
         # If set, remove cfrom from database
@@ -117,15 +117,15 @@ def set_new_country(code, ccy, name):
     Add new country code to database
     '''
     code = str(code).upper()
-    cdb  = countries()
+    cdb = countries()
     if code in cdb:
         raise CountryError('Country %s already in database' % code)
     ccys = currencydb()
-    ccy  = str(ccy).upper()
+    ccy = str(ccy).upper()
     if ccy not in ccys:
         raise CountryError('Currency %s not in database' % ccy)
     cdb[code] = str(name)
-    cccys     = countryccys()
+    cccys = countryccys()
     cccys[code] = ccy
 
 
@@ -135,7 +135,7 @@ def country_map(code):
     '''
     code = str(code).upper()
     global _country_maps
-    return _country_maps.get(code,code)
+    return _country_maps.get(code, code)
 
 
 # Add eurozone to list of Countries

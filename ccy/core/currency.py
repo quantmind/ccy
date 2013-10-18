@@ -15,14 +15,14 @@ class ccy(object):
     Currency object
     '''
     def __init__(self, code, isonumber, twolettercode, order, name,
-                 roundoff = 4,
-                 default_country = None,
-                 fixeddc = None,
-                 floatdc = None,
-                 fixedfreq = None,
-                 floatfreq = None,
-                 future = None,
-                 symbol = '\u00a4'):
+                 roundoff=4,
+                 default_country=None,
+                 fixeddc=None,
+                 floatdc=None,
+                 fixedfreq=None,
+                 floatfreq=None,
+                 future=None,
+                 symbol='\u00a4'):
         #from qmpy.finance.dates import get_daycount
         self.code = string_type(code)
         self.id = self.code
@@ -62,15 +62,15 @@ class ccy(object):
         return {'code': self.code,
                 'isonumber': self.isonumber,
                 'twolettercode': self.twolettercode,
-                'order':self.order,
-                'name':self.name,
-                'raundoff':self.raundoff,
+                'order': self.order,
+                'name': self.name,
+                'raundoff': self.raundoff,
                 'default_country': self.default_country}
 
     def printinfo(self):
         info = self.info()
         for k, v in info.items():
-            print('%s: %s' % (k,v))
+            print('%s: %s' % (k, v))
 
     def __repr__(self):
         return '%s: %s' % (self.__class__.__name__, self.code)
@@ -133,7 +133,7 @@ class ccy_pair(object):
         self.ccy1 = c1
         self.ccy2 = c2
         self.code = '%s%s' % (c1, c2)
-        self.id   = self.code
+        self.id = self.code
 
     def __repr__(self):
         return '%s: %s' % (self.__class__.__name__, self.code)
@@ -185,12 +185,12 @@ def ccypairsdb():
 
 def currency(code):
     c = currencydb()
-    return c.get(str(code).upper(),None)
+    return c.get(str(code).upper())
 
 
 def ccypair(code):
     c = ccypairsdb()
-    return c.get(str(code).upper(), None)
+    return c.get(str(code).upper())
 
 
 def currency_pair(code):
@@ -203,14 +203,14 @@ def currency_pair(code):
 
 def make_ccypairs():
     ccys = currencydb()
-    db   = {}
+    db = {}
 
     for ccy1 in ccys.values():
         od = ccy1.order
         for ccy2 in ccys.values():
             if ccy2.order <= od:
                 continue
-            p = ccy_pair(ccy1,ccy2)
+            p = ccy_pair(ccy1, ccy2)
             db[p.code] = p
     return db
 

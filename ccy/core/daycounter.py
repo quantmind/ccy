@@ -10,11 +10,11 @@ from copy import copy
 from datetime import date
 
 
-__all__ = ['getdc','ActActYears','alldc']
+__all__ = ['getdc', 'ActActYears', 'alldc']
 
 
 def getdc(name):
-    dc = _day_counters.get(name,None)
+    dc = _day_counters.get(name)
     if dc:
         return dc()
     else:
@@ -32,7 +32,7 @@ def ActActYears(dt):
     a = 0.0
     if r > 0:
         a = 1.0
-    dd = (dt - date(y,1,1)).days
+    dd = (dt - date(y, 1, 1)).days
     return y + dd/(365.0 + a)
 
 
@@ -55,7 +55,7 @@ class DayCounter(object):
         return (end-start).days
 
     def dcf(self, start, end):
-        return self.count(start,end)/360.0
+        return self.count(start, end)/360.0
 
 
 class act360(DayCounter):
@@ -66,16 +66,17 @@ class act365(DayCounter):
     name = 'ACT/365'
 
     def dcf(self, start, end):
-        return self.count(start,end)/365.0
+        return self.count(start, end)/365.0
 
 
 class thirty360(DayCounter):
     name = '30/360'
 
     def count(self, start, end):
-        d1 = min(start.day,30)
-        d2 = min(end.day,30)
-        return 360*(end.year - start.year) + 30*(end.month - start.month) + d2 - d1
+        d1 = min(start.day, 30)
+        d2 = min(end.day, 30)
+        return 360*(end.year - start.year) + 30*(end.month -
+                                                 start.month) + d2 - d1
 
 
 class actact(DayCounter):

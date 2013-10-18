@@ -12,7 +12,7 @@ join and add more.
 
 .. |master-build| image:: https://travis-ci.org/lsbardel/ccy.png?branch=master
 .. _master-build: http://travis-ci.org/lsbardel/ccy?branch=master
-.. |dev-build| image:: https://travis-ci.org/lsbardel/ccy?branch=dev
+.. |dev-build| image:: https://travis-ci.org/lsbardel/ccy.png?branch=dev
 .. _dev-build: http://travis-ci.org/lsbardel/ccy?branch=dev
 .. |coverage-master| image:: https://coveralls.io/repos/lsbardel/ccy/badge.png?branch=master
   :target: https://coveralls.io/r/lsbardel/ccy?branch=master
@@ -142,15 +142,15 @@ This library works for Python 2.6 and higher, including Python 3.
 
 Using `easy_install`::
 
-	easy_install ccy
+    easy_install ccy
 
 Using `pip`::
 
-	pip install ccy
+    pip install ccy
 
 From source::
 
-	python setup.py install
+    python setup.py install
 
 It requires the pytz_ package.
 
@@ -159,7 +159,7 @@ Runnung tests
 
 From within the package directory::
 
-	python runtests.py
+    python runtests.py
 
 
 .. _pytz: http://pytz.sourceforge.net/

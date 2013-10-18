@@ -10,14 +10,15 @@ python:
 install:
   - python setup.py install
   - pip install -r requirements_dev.txt --use-mirrors
-  - sudo rm -rf ccy
   - sudo rm -rf /dev/shm && sudo ln -s /run/shm /dev/shm
 
 script:
-  coverage run runtests.py
+  - pep8 ccy
+  - sudo rm -rf ccy
+  - coverage run runtests.py
 
 after_success:
-  - coveralls
+  - if [[ $TRAVIS_PYTHON_VERSION == '3.3' ]]; then coveralls; fi
 
 # Only test master and dev
 branches:

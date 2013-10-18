@@ -16,8 +16,8 @@ def find_first_of(st, possible):
     return lowi
 
 
-safediv = lambda x,d : x//d if x >= 0 else -(-x//d)
-safemod = lambda x,d : x%d if x >= 0 else -(-x%d)
+safediv = lambda x, d: x // d if x >= 0 else -(-x // d)
+safemod = lambda x, d: x % d if x >= 0 else -(-x % d)
 
 
 class Period(object):
@@ -27,7 +27,7 @@ class Period(object):
         self._days = days
 
     @classmethod
-    def make(cls, pstr = ''):
+    def make(cls, pstr=''):
         if isinstance(pstr, cls):
             return pstr
         else:
@@ -46,23 +46,23 @@ class Period(object):
         self._months += months
 
     def add_years(self, years):
-        self._months  += int(12*years)
+        self._months += int(12*years)
 
     @property
     def years(self):
-        return safediv(self._months,12)
+        return safediv(self._months, 12)
 
     @property
     def months(self):
-        return safemod(self._months,12)
+        return safemod(self._months, 12)
 
     @property
     def weeks(self):
-        return safediv(self._days,7)
+        return safediv(self._days, 7)
 
     @property
     def days(self):
-        return safemod(self._days,7)
+        return safemod(self._days, 7)
 
     @property
     def totaldays(self):
@@ -86,11 +86,11 @@ class Period(object):
         if y:
             p = '%sY' % abs(y)
         if m:
-            p = '%s%sM' % (p,abs(m))
+            p = '%s%sM' % (p, abs(m))
         if w:
-            p = '%s%sW' % (p,abs(w))
+            p = '%s%sW' % (p, abs(w))
         if d:
-            p = '%s%sD' % (p,abs(d))
+            p = '%s%sD' % (p, abs(d))
         return '-'+p if neg else p
 
     def simple(self):
@@ -105,18 +105,18 @@ class Period(object):
             return ''
 
     def add_tenure(self, pstr):
-        if isinstance(pstr,self.__class__):
+        if isinstance(pstr, self.__class__):
             self._months += pstr._months
             self._days += pstr._days
             return self
-        st   = str(pstr).upper()
+        st = str(pstr).upper()
         done = False
         sign = 1
         while not done:
             if not st:
                 done = True
             else:
-                ip = find_first_of(st,'DWMY')
+                ip = find_first_of(st, 'DWMY')
                 if ip == -1:
                     raise ValueError("Unknown period %s" % pstr)
                 p = st[ip]

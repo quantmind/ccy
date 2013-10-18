@@ -25,9 +25,9 @@ def todate(val):
 If it fails it raise a ValueError exception.'''
     if not val:
         raise ValueError("Value not provided")
-    if isinstance(val,datetime):
+    if isinstance(val, datetime):
         return val.date()
-    elif isinstance(val,date):
+    elif isinstance(val, date):
         return val
     else:
         try:
@@ -53,9 +53,10 @@ def date2timestamp(dte):
 
 def jstimestamp(dte):
     '''Convert a date to a javascript timestamp.
-A Javascript timestamp is the number of milliseconds since January 1, 1970 00:00:00 UTC.'''
+
+    A Javascript timestamp is the number of milliseconds since
+    January 1, 1970 00:00:00 UTC.'''
     return 1000*date2timestamp(dte)
-    #return 1000*calendar.timegm(dte.timetuple())
 
 
 def timestamp2date(tstamp):
@@ -73,7 +74,7 @@ def yyyymmdd2date(dte):
         md = dte % 10000
         m = md // 100
         d = md % 100
-        return date(y,m,d)
+        return date(y, m, d)
     except:
         raise ValueError('Could not convert %s to date' % dte)
 
@@ -88,12 +89,12 @@ def juldate2date(val):
     dec = val - ival
     try:
         val4 = 4*ival
-        yd  = val4 % 1461
-        st  = 1899
+        yd = val4 % 1461
+        st = 1899
         if yd >= 4:
             st = 1900
         yd1 = yd - 241
-        y   = val4 // 1461 + st
+        y = val4 // 1461 + st
         if yd1 >= 0:
             q = yd1 // 4 * 5 + 308
             qq = q // 153
@@ -121,11 +122,11 @@ def juldate2date(val):
 def date2juldate(val):
     '''Convert from a python date/datetime to a Julian date & time'''
     f = 12*val.year + val.month - 22803
-    fq = f//12
-    fr = f%12
+    fq = f // 12
+    fr = f % 12
     dt = (fr*153 + 302)//5 + val.day + fq*1461//4
     if isinstance(val, datetime):
-        return dt + (val.hour + (val.minute + (val.second +\
-                         0.000001*val.microsecond)/60.)/60.)/24.
+        return dt + (val.hour + (val.minute + (
+            val.second + 0.000001*val.microsecond)/60.)/60.)/24.
     else:
         return dt
