@@ -48,6 +48,11 @@ class ccy(object):
         c = currency(dict['code'])
         self.__dict__.update(c.__dict__)
 
+    def __eq__(self, other):
+        if isinstance(other, ccy):
+            return other.code == self.code
+        return False
+
     def description(self):
         if self.order > usd_order:
             v = 'USD / %s' % self.code

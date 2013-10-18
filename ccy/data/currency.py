@@ -11,7 +11,7 @@ def make_ccys(db):
 
     db.insert('EUR', '978', 'EU', 1,
               'Euro', dfr, 'EU', '30/360', 'ACT/360',
-              symbol='\u20ac')
+              future='FE', symbol='\u20ac')
     db.insert('GBP', '826', 'BP', 2,
               'British Pound', dfr, 'GB', 'ACT/365', 'ACT/365',
               symbol='\xa3')
@@ -23,7 +23,7 @@ def make_ccys(db):
               symbol=dollar)
     db.insert('USD', '840', 'UD', 5,
               'US Dollar', 0, 'US', '30/360', 'ACT/360',
-              symbol=dollar)
+              future='ED', symbol=dollar)
     db.insert('CAD', '124', 'CD', 6,
               'Canadian Dollar', dfr, 'CA', 'ACT/365', 'ACT/365',
               symbol=dollar)

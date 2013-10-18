@@ -20,6 +20,9 @@ script:
 after_success:
   - if [[ $TRAVIS_PYTHON_VERSION == '3.3' ]]; then coveralls; fi
 
+notifications:
+  email: false
+
 # Only test master and dev
 branches:
   only:

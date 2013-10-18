@@ -7,7 +7,7 @@ ccy development
 * Added sphinx docs
 * Removed the ``web`` module
 * Better period calculations
-* **29 regression tests** with **69%** coverage
+* **33 regression tests** with **69%** coverage
 
 ccy 0.5.1 - 2011 Jun 16
 ===========================
