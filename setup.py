@@ -5,8 +5,10 @@ from setuptools import setup
 from distutils.command.install_data import install_data
 from distutils.command.install import INSTALL_SCHEMES
 
+os.environ['ccy_setup_running'] = 'yes'
+
 if sys.version_info < (2, 6):
-    raise Exception("stdnet requires Python 2.6 or higher.")
+    raise Exception("ccy requires Python 2.6 or higher.")
 
 package_name = 'ccy'
 root_dir     = os.path.dirname(__file__)
@@ -19,17 +21,17 @@ class osx_install_data(install_data):
         self.set_undefined_options('install', ('install_lib', 'install_dir'))
         install_data.finalize_options(self)
 
-if sys.platform == "darwin": 
-    cmdclasses = {'install_data': osx_install_data} 
-else: 
-    cmdclasses = {'install_data': install_data}  
+if sys.platform == "darwin":
+    cmdclasses = {'install_data': osx_install_data}
+else:
+    cmdclasses = {'install_data': install_data}
 
 # Tell distutils to put the data_files in platform-specific installation
 # locations. See here for an explanation:
 # http://groups.google.com/group/comp.lang.python/browse_thread/thread/35ec7b2fed36eaec/2105ee4d9e8042cb
 for scheme in INSTALL_SCHEMES.values():
     scheme['data'] = scheme['purelib']
- 
+
 def get_module():
     if root_dir not in sys.path:
         sys.path.insert(0,root_dir)
@@ -49,10 +51,10 @@ def requirements():
             r = r.replace(' ','')
             if r:
                 result.append(r)
-        return result  
+        return result
     except:
         return []
- 
+
 def fullsplit(path, result=None):
     """
     Split a pathname into components (the opposite of os.path.join) in a
@@ -66,7 +68,7 @@ def fullsplit(path, result=None):
     if head == path:
         return result
     return fullsplit(head, [tail] + result)
- 
+
 # Compile the list of packages available, because distutils doesn't have
 # an easy way to do this.
 def get_rel_dir(d,base,res=''):
@@ -97,7 +99,7 @@ for dirpath, dirnames, filenames in os.walk(package_dir):
 if len(sys.argv) > 1 and sys.argv[1] == 'bdist_wininst':
     for file_info in data_files:
         file_info[0] = '\\PURELIB\\%s' % file_info[0]
-        
+
 
 setup(
         name         = package_name,

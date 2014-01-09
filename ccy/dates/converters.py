@@ -1,12 +1,7 @@
 import time
 from datetime import datetime, date
 
-try:
-    from dateutil import parser as dateFromString
-except ImportError:  # pragma    nocover
-
-    def dateFromString(stestr):
-        raise NotImplementedError('Requires python-dateutil')
+from dateutil import parser as dateFromString
 
 
 __all__ = ['todate',
