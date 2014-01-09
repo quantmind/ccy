@@ -35,18 +35,14 @@ if os.environ.get('ccy_setup_running') != 'yes':
     cross = lambda code: currency(code).as_cross()
     crossover = lambda code: currency(code).as_cross('/')
 
-
     def all():
         return currencydb().keys()
-
 
     def g7():
         return ['EUR', 'GBP', 'USD', 'CAD']
 
-
     def g10():
         return g7() + ['CHF', 'SEK', 'JPY']
-
 
     def g10m():
         '''modified g10. G10 + AUD, NZD, NOK'''
