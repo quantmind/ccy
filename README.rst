@@ -137,8 +137,9 @@ to create ``Period`` instances::
 Requirements
 ================
 
-* Python 2.6 or above, including Python 3
+* Python 2.6 or above
 * pytz_ for Countries information.
+* dateutils_ for date calculations
 
 
 Installation
@@ -171,3 +172,4 @@ From within the package directory::
 .. _pytz: http://pytz.sourceforge.net/
 .. _`ISO 3166-1 alpha-2`: http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 .. _`ISO 4217`: http://en.wikipedia.org/wiki/ISO_4217
+.. _dateutils: https://pypi.python.org/pypi/python-dateutil

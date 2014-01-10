@@ -1,5 +1,5 @@
 '''Python currencies'''
-VERSION = (0, 6, 0, 'beta', 1)
+VERSION = (0, 6, 0, 'alpha', 1)
 
 
 def get_version(version):

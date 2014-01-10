@@ -78,5 +78,4 @@ class TableDirective(Directive):
 
 
 def setup(app):
-    app.add_directive('table', TableDirective)
-    app.add_node(table_node)
+    app.add_directive('table_node', TableDirective)

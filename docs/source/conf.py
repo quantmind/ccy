@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 import sys, os
+from datetime import date
 os.environ['BUILDING-PULSAR-DOCS'] = 'yes'
 p = lambda x : os.path.split(x)[0]
 source_dir = p(os.path.abspath(__file__))
@@ -14,6 +15,7 @@ import ccy
 
 version = ccy.__version__
 release = version
+year = date.today().year
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -43,7 +45,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'ccy'
-copyright = '2011-2013, Luca Sbardella'
+copyright = '2009-%s, %s' % (year, ccy.__author__)
 
 html_theme = 'pulsar'
 pygments_style = 'sphinx'
