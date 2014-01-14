@@ -230,12 +230,13 @@ def make_ccypairs():
 
 def dump_currency_table():
     headers = ['code',
+               'name',
                ('isonumber', 'iso'),
                ('html', 'symbol'),
                ('default_country', 'country'),
                'order',
-               'rounding',
-               ('symbol_raw', 'unicode')]
+               'rounding']
+               #('symbol_raw', 'unicode')]
     all = []
     data = []
     all.append(data)
