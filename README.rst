@@ -6,6 +6,7 @@ join and add more.
 :PyPI: |pypi_version| |pypi_downloads|
 :Master CI: |master-build|_ |coverage-master|
 :Dev CI: |dev-build|_ |coverage-dev|
+:Documentation: http://pythonhosted.org/ccy/
 :Dowloads: http://pypi.python.org/pypi/ccy
 :Source: https://github.com/lsbardel/ccy
 
@@ -134,32 +135,22 @@ to create ``Period`` instances::
     4M2W
 
 
-Requirements
+Installation
 ================
+This library works for Python 2.6 and higher, including Python 3.
+In addition, it requires:
 
-* Python 2.6 or above
 * pytz_ for Countries information.
 * dateutils_ for date calculations
 
-
-Installation
-~~~~~~~~~~~~~~~~
-
-This library works for Python 2.6 and higher, including Python 3.
-
-Using `easy_install`::
-
-    easy_install ccy
-
-Using `pip`::
+Install using `pip`::
 
     pip install ccy
 
-From source::
+or from source::
 
     python setup.py install
 
-It requires the pytz_ package.
 
 Runnung tests
 ~~~~~~~~~~~~~~~~~~~~~

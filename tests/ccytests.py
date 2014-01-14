@@ -5,6 +5,7 @@ import ccy
 from ccy import (currencydb, countryccy, set_new_country, CountryError,
                  ccypair, currency, currency_pair)
 from ccy.utils import ispy3k
+from ccy.core.country import eurozone
 
 if ispy3k:
     import pickle
@@ -37,11 +38,13 @@ class CcyTest(TestCase):
             twol[ccy.twoletterscode] = ccy
 
     def testNewCountry(self):
-        try:
-            set_new_country('EU', 'EUR', 'Eurozone')
-        except CountryError:
-            return
-        self.assertTrue(False)
+        self.assertRaises(CountryError, set_new_country,
+                          'EU', 'EUR', 'Eurozone')
+
+    def test_eurozone(self):
+        self.assertEqual(len(eurozone), 18)
+        for c in eurozone:
+            self.assertEqual(countryccy(c), 'EUR')
 
     def testCountryCcy(self):
         self.assertEqual('AUD', countryccy('au'))

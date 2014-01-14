@@ -1,4 +1,4 @@
-development
+0.6.0 - 2014 Jan 14
 ===========================
 * pep8
 * Removed date parser and added dependency to dateutils_
@@ -7,7 +7,7 @@ development
 * Added sphinx docs
 * Removed the ``web`` module
 * Better period calculations
-* **34 regression tests** with **72%** coverage
+* **39 regression tests** with **72%** coverage
 
 0.5.1 - 2011 Jun 16
 ===========================
