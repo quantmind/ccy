@@ -28,55 +28,60 @@ class TableDirective(Directive):
      :datafunction: path.to.my.data.function
 
     """
-    #required_arguments = 0
-    #optional_arguments = 0
     has_content = False
-    option_spec = {'datafunction': directives.path,
-                   'class': directives.class_option}
+    required_arguments = 1
+    option_spec = {'class': directives.class_option}
 
     def run(self):
         """
         Implements the directive
         """
         # Get content and options
-        data_path = self.options.get('datafunction', '')
+        data_path = self.arguments[0]
         header = self.options.get('header', True)
         bits = data_path.split('.')
         name = bits[-1]
         path = '.'.join(bits[:-1])
+        node = table_node()
+        code = None
         try:
             module = import_module(path)
-        except ImportError:
-            return ['Could not import %s' % path]
+        except Exception:
+            code = '<p>Could not import %s</p>' % path
         try:
             callable = getattr(module, name)
         except Exception:
-            return ['Could not import %s from %s' % (name, path)]
+            code = 'Could not import %s from %s' % (name, path)
+        if not code:
+            data = callable()
+            table = ['<table>']
+            if header:
+                headers, data = data[0], data[1:]
+                table.append('<thead>')
+                tr = ['<tr>']
+                for head in headers:
+                    tr.append('<th>%s</th>' % head)
+                tr.append('</tr>')
+                table.append(''.join(tr))
+                table.append('</thead>')
+            table.append('</tbody>')
+            for row in data:
+                tr = ['<tr>']
+                for c in row:
+                    tr.append('<td>%s</td>' % c)
+                tr.append('</tr>')
+                table.append(''.join(tr))
+            table.append('</tbody>')
+            table.append('</table>')
+            code = '\n'.join(table)
+        node['code'] = code
+        return [node]
 
-        data = callable()
-        table = ['<table>']
-        if header:
-            headers, data = data[0], data[1:]
-            table.append('<thead>')
-            tr = ['<tr>']
-            for head in headers:
-                tr.append('<th>%s</th>' % head)
-            tr.append('</tr>')
-            table.append(''.join(tr))
-            table.append('</thead>')
-        table.append('</tbody>')
-        for row in data:
-            tr = ['<tr>']
-            for c in row:
-                tr.append('<td>%s</td>' % c)
-            tr.append('</tr>')
-            table.append(''.join(tr))
-        table.append('</tbody>')
-        table.append('</table>')
-        table = '\n'.join(table)
-        return [table_node('')]
 
+def render(self, node):
+    self.body.append(node['code'])
+    raise nodes.SkipNode
 
 def setup(app):
+    app.add_node(table_node, html=(render, None))
     app.add_directive('table', TableDirective)
-    app.add_node(table_node)
