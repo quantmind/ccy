@@ -86,7 +86,7 @@ exclude_trees = []
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
 # pixels large.
-#html_favicon = 'Game_of_life_pulsar.gif'
+#html_favicon = 'favicon.ico'
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
@@ -127,7 +127,7 @@ exclude_trees = []
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'pulsardoc'
+#htmlhelp_basename = 'pulsardoc'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -140,10 +140,10 @@ htmlhelp_basename = 'pulsardoc'
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
-latex_documents = [
-  ('index', 'pulsar.tex', 'pulsar Documentation',
-   'Luca Sbardella', 'manual'),
-]
+#latex_documents = [
+#  ('index', 'pulsar.tex', 'pulsar Documentation',
+#   'Luca Sbardella', 'manual'),
+#]
 
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
@@ -173,7 +173,7 @@ latex_documents = [
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [
-    ('index', 'pulsar', 'pulsar Documentation',
-     ['Luca Sbardella'], 1)
-]
+#man_pages = [
+#    ('index', 'pulsar', 'pulsar Documentation',
+#     ['Luca Sbardella'], 1)
+#]
