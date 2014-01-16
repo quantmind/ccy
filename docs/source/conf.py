@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 #
-import sys, os
+import sys
+import os
 from datetime import date
 os.environ['BUILDING-PULSAR-DOCS'] = 'yes'
 p = lambda x : os.path.split(x)[0]
