@@ -1,7 +1,7 @@
 import time
 from datetime import datetime, date
 
-from dateutil import parser as dateFromString
+from dateutil.parser import parse as dateFromString
 
 
 __all__ = ['todate',
@@ -16,8 +16,10 @@ __all__ = ['todate',
 
 
 def todate(val):
-    '''Convert val to a date instance by trying several conversion algorithm.
-If it fails it raise a ValueError exception.'''
+    '''Convert val to a datetime.date instance by trying several
+    conversion algorithm.
+    If it fails it raise a ValueError exception.
+    '''
     if not val:
         raise ValueError("Value not provided")
     if isinstance(val, datetime):
@@ -34,11 +36,11 @@ If it fails it raise a ValueError exception.'''
                 return juldate2date(val)
             else:
                 raise ValueError
-        except:
+        except Exception:
             # Try to convert using the parsing algorithm
             try:
-                return dateFromString(val)
-            except:
+                return dateFromString(val).date()
+            except Exception:
                 raise ValueError("Could not convert %s to date" % val)
 
 

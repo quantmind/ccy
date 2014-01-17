@@ -1,7 +1,7 @@
 from datetime import date, datetime
 from unittest import TestCase
 
-from ccy import period, date2juldate, juldate2date
+from ccy import period, date2juldate, juldate2date, todate
 from ccy import date2yyyymmdd, yyyymmdd2date
 from ccy import date2timestamp, timestamp2date
 
@@ -128,6 +128,11 @@ class DateConverterTest(TestCase):
         dt = juldate2date(41341.47274305556)
         dt2 = datetime(2013, 3, 8, 11, 20, 45)
         self.assertEqual(dt, dt2)
+
+    def test_string(self):
+        target = date(2014,1,5)
+        dt = todate('2014 Jan 05')
+        self.assertEqual(todate('2014 Jan 05'), target)
 
     #def testDate2Timestamp(self):
     #    for d,jd,y,ts in self.dates:
