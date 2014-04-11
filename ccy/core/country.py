@@ -12,7 +12,7 @@ __all__ = ['country', 'countryccy', 'set_new_country',
 # using ISO 3166-1 alpha-2 country codes
 # see http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 #
-eurozone = 'AT BE CY DE EE ES FI FR GR IE IT LU LV MA NL PT SI SK'.split(' ')
+eurozone = 'AT BE CY DE EE ES FI FR GR IE IT LU LV MA MT NL PT SI SK'.split(' ')
 
 _countries = None
 _country_ccys = None
