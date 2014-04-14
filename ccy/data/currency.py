@@ -78,7 +78,7 @@ def make_ccys(db):
            'Vietnamese Dong', 0,  'VN', 'ACT/365', 'ACT/365',
            symbol=r'\u20ab', html='&#x20ab;')
 
-    #LATIN AMERICA
+    # LATIN AMERICA
     insert('BRL', '986', 'BC', 200,
            'Brazilian Real', dfr, 'BR', 'BUS/252', 'BUS/252',
            symbol=r'R$')
@@ -97,20 +97,20 @@ def make_ccys(db):
     insert('COP', '170', 'CL', 190000,
            'Colombian Peso', 2,  'CO', 'ACT/360', 'ACT/360',
            symbol=dollar, html='&#x24;')
-    ### TODO: Check towletters code and position
+    # TODO: Check towletters code and position
     insert('JMD', '388', 'JD', 410,
            'Jamaican Dollar', dfr, 'JM', 'ACT/360', 'ACT/360',
            symbol=dollar, html='&#x24;')
-    ### TODO: Check towletters code and position
+    # TODO: Check towletters code and position
     insert('TTD', '780', 'TT', 410,
            'Trinidad and Tobago Dollar', dfr, 'TT', 'ACT/360', 'ACT/360',
            symbol=dollar, html='&#x24;')
-    ### TODO: Check towletters code and position
+    # TODO: Check towletters code and position
     insert('BMD', '060', 'BD', 410,
            'BermudIan Dollar', dfr, 'BM',
            symbol=dollar, html='&#x24;')
 
-    #EASTERN EUROPE
+    # EASTERN EUROPE
     insert('CZK', '203', 'CK', 28,
            'Czech Koruna', dfr, 'CZ', 'ACT/360', 'ACT/360',
            symbol=r'\u004b\u010d')
@@ -128,27 +128,27 @@ def make_ccys(db):
     insert('RUB', '643', 'RR', 36,
            'Russian Ruble', dfr, 'RU', 'ACT/ACT', 'ACT/ACT',
            symbol=r'\u0440\u0443\u0431')
-    ### TODO: Check towletters code and position
+    # TODO: Check towletters code and position
     insert('HRK', '191', 'HK', 410,
            'Croatian kuna', dfr, 'HR',
            symbol=r'kn')
-    ### TODO: Check towletters code and position
+    # TODO: Check towletters code and position
     insert('KZT', '398', 'KT', 410,
            'Tenge',  dfr, 'KZ',
            symbol=r'\u20b8', html='&#x20b8;')
 
-    #MIDDLE EAST & AFRICA
+    # MIDDLE EAST & AFRICA
     insert('ILS', '376', 'IS', 410,
            'Israeli Shekel', dfr, 'IL', 'ACT/365', 'ACT/365',
            symbol=r'\u20aa', html='&#x20aa;')
-    ### TODO: Check towletters code and position
+    # TODO: Check towletters code and position
     insert('AED', '784', 'AE', 410,
            'United Arab Emirates Dirham', dfr, 'AE')
-    ### TODO: Check towletters code and position
+    # TODO: Check towletters code and position
     insert('QAR', '634', 'QA', 410,
            'Qatari Riyal', dfr, 'QA',
            symbol=r'\ufdfc', html='&#xfdfc;')
-    ### TODO: Check towletters code and position
+    # TODO: Check towletters code and position
     insert('SAR', '682', 'SR', 410,
            'Saudi Riyal', dfr, 'SA',
            symbol=r'\ufdfc', html='&#xfdfc;')

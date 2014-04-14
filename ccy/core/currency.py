@@ -26,7 +26,6 @@ class ccy(object):
                  future=None,
                  symbol=r'\00a4',
                  html=''):
-        #from qmpy.finance.dates import get_daycount
         self.code = to_string(code)
         self.id = self.code
         self.isonumber = isonumber
@@ -40,8 +39,6 @@ class ccy(object):
         self.html = html or self.symbol
         self.fixeddc = fixeddc
         self.floatdc = floatdc
-        #self.fixedfreq     = str(fixedfreq)
-        #self.floatfreq     = str(floatfreq)
         self.future = ''
         if future:
             self.future = str(future)
@@ -236,7 +233,6 @@ def dump_currency_table():
                ('default_country', 'country'),
                'order',
                'rounding']
-               #('symbol_raw', 'unicode')]
     all = []
     data = []
     all.append(data)

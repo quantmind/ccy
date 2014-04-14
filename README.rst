@@ -3,7 +3,6 @@ currency objects containing information useful in financial analysis.
 Not all currencies in the world are supported yet. You are welcome to
 join and add more.
 
-:PyPI: |pypi_version| |pypi_downloads|
 :Master CI: |master-build|_ |coverage-master|
 :Dev CI: |dev-build|_ |coverage-dev|
 :Documentation: http://pythonhosted.org/ccy/
@@ -11,12 +10,6 @@ join and add more.
 :Source: https://github.com/lsbardel/ccy
 
 
-.. |pypi_version| image:: https://pypip.in/v/ccy/badge.png
-    :target: https://crate.io/packages/ccy/
-    :alt: Latest PyPI version
-.. |pypi_downloads| image:: https://pypip.in/d/ccy/badge.png
-    :target: https://crate.io/packages/ccy/
-    :alt: Number of PyPI downloads
 .. |master-build| image:: https://travis-ci.org/lsbardel/ccy.png?branch=master
 .. _master-build: http://travis-ci.org/lsbardel/ccy?branch=master
 .. |dev-build| image:: https://travis-ci.org/lsbardel/ccy.png?branch=dev
@@ -115,6 +108,44 @@ There is a function for adding extra pseudo-countries::
 Set a new country with code 'EU', currency 'EUR' named 'Eurozone'.
 This pseudo country is set in the library already.
 
+Countries
+==============
+
+Country information is obtained via the pytz_ package which is strict
+requirement for ``ccy``.
+
+    >>> from ccy import country
+    >>> country('it')
+    'Italy'
+
+It knows about the 18 eurozone_ countries (European countries which share the
+euro as common currency):
+
+    >>> from ccy import eurozone
+
+eurozone is tuple of country ISO codes
+
+    >>> from ccy import eurozone
+    >>> print_eurozone()
+    Austria
+    Belgium
+    Cyprus
+    Estonia
+    Finland
+    France
+    Germany
+    Greece
+    Ireland
+    Italy
+    Latvia
+    Luxembourg
+    Morocco
+    Netherlands
+    Portugal
+    Slovakia
+    Slovenia
+    Spain
+
 
 Date and Periods
 ===================
@@ -164,3 +195,4 @@ From within the package directory::
 .. _`ISO 3166-1 alpha-2`: http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 .. _`ISO 4217`: http://en.wikipedia.org/wiki/ISO_4217
 .. _dateutils: https://pypi.python.org/pypi/python-dateutil
+.. _eurozone: http://www.eurozone.europa.eu/euro-area/euro-area-member-states/

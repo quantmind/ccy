@@ -130,16 +130,16 @@ class DateConverterTest(TestCase):
         self.assertEqual(dt, dt2)
 
     def test_string(self):
-        target = date(2014,1,5)
+        target = date(2014, 1, 5)
         dt = todate('2014 Jan 05')
         self.assertEqual(todate('2014 Jan 05'), target)
 
-    #def testDate2Timestamp(self):
-    #    for d,jd,y,ts in self.dates:
-    #        if ts is not None:
-    #            self.assertEqual(ts,date2timestamp(d))
+    # def testDate2Timestamp(self):
+    #     for d,jd,y,ts in self.dates:
+    #         if ts is not None:
+    #             self.assertEqual(ts,date2timestamp(d))
 
-    #def testTimestamp2Date(self):
-    #    for d,jd,y,ts in self.dates:
-    #        if ts is not None:
-    #            self.assertEqual(d,timestamp2date(ts))
+    # def testTimestamp2Date(self):
+    #     for d,jd,y,ts in self.dates:
+    #         if ts is not None:
+    #             self.assertEqual(d,timestamp2date(ts))

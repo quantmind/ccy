@@ -5,14 +5,21 @@ from .currency import currencydb
 
 __all__ = ['country', 'countryccy', 'set_new_country',
            'countries', 'set_country_map', 'country_map',
-           'CountryError']
+           'CountryError', 'eurozone', 'print_eurozone']
 
-#Eurozone countries (officially the euro area)
+# Eurozone countries (officially the euro area)
 # see http://en.wikipedia.org/wiki/Eurozone
 # using ISO 3166-1 alpha-2 country codes
 # see http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 #
-eurozone = 'AT BE CY DE EE ES FI FR GR IE IT LU LV MA MT NL PT SI SK'.split(' ')
+eurozone = tuple(('AT BE CY DE EE ES FI FR GR IE IT LU LV MA '
+                  'NL PT SI SK').split(' '))
+
+
+def print_eurozone():
+    for c in sorted(map(country, eurozone)):
+        print(c)
+
 
 _countries = None
 _country_ccys = None

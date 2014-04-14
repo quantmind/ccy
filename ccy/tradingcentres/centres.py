@@ -1,11 +1,11 @@
 import datetime
-#from dateutil import rrule
+# from dateutil import rrule
 
 from .holiday import BaseHoliday, PartialDate
 
 
-#weekdays = (rrule.MO,rrule.TU,rrule.WE,rrule.TH,rrule.FR)
-#weekend  = (rrule.SA,rrule.SU)
+# weekdays = (rrule.MO,rrule.TU,rrule.WE,rrule.TH,rrule.FR)
+# weekend  = (rrule.SA,rrule.SU)
 isoweekend = (6, 7)
 oneday = datetime.timedelta(days=1)
 
@@ -154,7 +154,7 @@ class TradingCentres(object):
 
 
 #
-#__________________________________ TRADING CENTRES
+# TRADING CENTRES
 class TGT(TradingCentre):
     '''Target'''
     new_years_day = PartialDate(1, 1)
