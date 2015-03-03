@@ -8,8 +8,7 @@ python:
 
 install:
   - python setup.py install
-  - pip install -r requirements_dev.txt --use-mirrors
-  - sudo rm -rf /dev/shm && sudo ln -s /run/shm /dev/shm
+  - pip install -r requirements_dev.txt
 
 script:
   - if [[ $TRAVIS_PYTHON_VERSION == '3.4' ]]; then pep8; fi
@@ -26,4 +25,3 @@ notifications:
 branches:
   only:
     - master
-    - dev
