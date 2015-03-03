@@ -11,12 +11,13 @@ install:
   - pip install -r requirements_dev.txt
 
 script:
-  - if [[ $TRAVIS_PYTHON_VERSION == '3.4' ]]; then pep8; fi
+  - if [[ $TRAVIS_PYTHON_VERSION >= '3.4' ]]; then pep8; fi
   - sudo rm -rf ccy
+  - sudo rm -rf ccy.egg-info
   - coverage run runtests.py
 
 after_success:
-  - if [[ $TRAVIS_PYTHON_VERSION == '3.4' ]]; then coveralls; fi
+  - if [[ $TRAVIS_PYTHON_VERSION >= '3.4' ]]; then coveralls; fi
 
 notifications:
   email: false
