@@ -8,7 +8,7 @@ import tests
 
 if __name__ == '__main__':
     loader = unittest.TestLoader()
-    suite  = loader.loadTestsFromModule(tests)
+    suite = loader.loadTestsFromModule(tests)
     runner = unittest.TextTestRunner()
     result = runner.run(suite)
     sys.exit(int(not result.wasSuccessful()))

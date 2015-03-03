@@ -1,2 +1,2 @@
 pytz
-python-dateutil>=2.2
+python-dateutil

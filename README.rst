@@ -139,7 +139,7 @@ eurozone is tuple of country ISO codes
     Italy
     Latvia
     Luxembourg
-    Morocco
+    Malta
     Netherlands
     Portugal
     Slovakia

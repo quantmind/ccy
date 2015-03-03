@@ -16,8 +16,12 @@ def find_first_of(st, possible):
     return lowi
 
 
-safediv = lambda x, d: x // d if x >= 0 else -(-x // d)
-safemod = lambda x, d: x % d if x >= 0 else -(-x % d)
+def safediv(x, d):
+    return x // d if x >= 0 else -(-x // d)
+
+
+def safemod(x, d):
+    return x % d if x >= 0 else -(-x % d)
 
 
 class Period(object):

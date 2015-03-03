@@ -1,18 +1,12 @@
 import json
+import pickle
 from unittest import TestCase
+from io import StringIO as StreamIO
 
 import ccy
 from ccy import (currencydb, countryccy, set_new_country, CountryError,
                  ccypair, currency, currency_pair)
-from ccy.utils import ispy3k
 from ccy.core.country import eurozone
-
-if ispy3k:
-    import pickle
-    from io import StringIO as StreamIO
-else:
-    import cPickle as pickle
-    from cString import StringIO as StreamIO
 
 
 class CcyTest(TestCase):

@@ -1,43 +1,53 @@
 import os
 import shutil
-    
+
+remove_dirs = ('dist', 'build', 'ccy.egg-info')
+
+
 def rmgeneric(path, __func__):
     try:
         __func__(path)
-        #print 'Removed ', path
         return 1
     except OSError as e:
-        print('Could not remove {0}, {1}'.format(path,e))
+        print('Could not remove {0}, {1}'.format(path, e))
         return 0
-        
- 
-def rmfiles(path, ext = None, rmcache = True):    
+
+
+def rmfiles(path=None, *extensions):
+    path = path or os.curdir
     if not os.path.isdir(path):
         return 0
+    assert extensions
+    for ext in extensions:
+        assert ext
     trem = 0
     tall = 0
     files = os.listdir(path)
-    for f in files:
-        fullpath = os.path.join(path, f)
+    for name in files:
+        fullpath = os.path.join(path, name)
         if os.path.isfile(fullpath):
-            sf = f.split('.')
-            if len(sf) == 2:
-                if ext == None or sf[1] == ext:
-                    tall += 1
-                    trem += rmgeneric(fullpath, os.remove)
-        elif f == '__pycache__' and rmcache:
+            sf = name.split('.')
+            if len(sf) == 2 and sf[1] in extensions:
+                tall += 1
+                trem += rmgeneric(fullpath, os.remove)
+        elif name == '__pycache__':
             shutil.rmtree(fullpath)
             tall += 1
-        elif os.path.isdir(fullpath):
-            r,ra = rmfiles(fullpath, ext)
+        elif os.path.isdir(fullpath) and not name.startswith('.'):
+            r, ra = rmfiles(fullpath, *extensions)
             trem += r
             tall += ra
     return trem, tall
 
 
+def run():
+    for path in remove_dirs:
+        if os.path.isdir(path):
+            print('Removing %s' % path)
+            shutil.rmtree(path)
+    removed, allfiles = rmfiles(os.curdir, 'pyc', 'DS_Store')
+    print('removed {0} pyc files out of {1}'.format(removed, allfiles))
+
 
 if __name__ == '__main__':
-    path = os.curdir
-    removed, allfiles = rmfiles(path,'pyc')
-    print('removed {0} pyc files out of {1}'.format(removed, allfiles))
-    
+    run()

@@ -1,5 +1,11 @@
+#eclipse
+.project
+.pydevproject
+
+#python
 *.pyc
 __pycache__
+ccy.egg-info
 build
 docs/build
 htmlcov

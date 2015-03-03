@@ -1,5 +1,7 @@
 '''Python currencies'''
-VERSION = (0, 6, 1, 'beta', 0)
+import os
+
+VERSION = (0, 6, 1, 'final', 0)
 
 
 def get_version(version):
@@ -17,8 +19,6 @@ __contact__ = "luca@quantmind.com"
 __homepage__ = "http://code.google.com/p/ccy/"
 
 
-import os
-
 if os.environ.get('ccy_setup_running') != 'yes':
 
     from .core import currency as _currency
@@ -32,8 +32,11 @@ if os.environ.get('ccy_setup_running') != 'yes':
     from .dates import *
 
     # Shortcuts
-    cross = lambda code: currency(code).as_cross()
-    crossover = lambda code: currency(code).as_cross('/')
+    def cross(code):
+        return currency(code).as_cross()
+
+    def crossover(code):
+        return currency(code).as_cross('/')
 
     def all():
         return currencydb().keys()

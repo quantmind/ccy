@@ -1,15 +1,26 @@
 import sys
 
-from ccy.utils import to_string
-
 
 __all__ = ['currency', 'ccypair', 'ccydb', 'currencydb',
            'ccypairsdb', 'currency_pair', 'dump_currency_table']
 
 
 usd_order = 5
-overusdfun = lambda v1: v1
-overusdfuni = lambda v1: 1./v1
+
+
+def to_string(v):
+    if isinstance(v, bytes):
+        return v.decode('utf-8')
+    else:
+        return '%s' % v
+
+
+def overusdfun(v1):
+    return v1
+
+
+def overusdfuni(v1):
+    return 1./v1
 
 
 class ccy(object):
