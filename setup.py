@@ -2,35 +2,13 @@ import os
 import sys
 
 from setuptools import setup
-from distutils.command.install_data import install_data
-from distutils.command.install import INSTALL_SCHEMES
 
 os.environ['ccy_setup_running'] = 'yes'
 
-if sys.version_info < (2, 7):
-    raise Exception("ccy requires Python 2.7 or higher.")
 
 package_name = 'ccy'
 root_dir = os.path.dirname(__file__)
 package_dir = os.path.join(root_dir, package_name)
-
-
-class osx_install_data(install_data):
-
-    def finalize_options(self):
-        self.set_undefined_options('install', ('install_lib', 'install_dir'))
-        install_data.finalize_options(self)
-
-if sys.platform == "darwin":
-    cmdclasses = {'install_data': osx_install_data}
-else:
-    cmdclasses = {'install_data': install_data}
-
-# Tell distutils to put the data_files in platform-specific installation
-# locations. See here for an explanation:
-# http://groups.google.com/group/comp.lang.python/browse_thread/thread/35ec7b2fed36eaec/2105ee4d9e8042cb
-for scheme in INSTALL_SCHEMES.values():
-    scheme['data'] = scheme['purelib']
 
 
 def get_module():
@@ -85,7 +63,7 @@ def get_rel_dir(d, base, res=''):
     return get_rel_dir(br, base, r)
 
 
-packages, data_files = [], []
+packages = []
 pieces = fullsplit(root_dir)
 if pieces[-1] == '':
     len_root_dir = len(pieces) - 1
@@ -99,14 +77,6 @@ for dirpath, dirnames, filenames in os.walk(package_dir):
             del dirnames[i]
     if '__init__.py' in filenames:
         packages.append('.'.join(fullsplit(dirpath)[len_root_dir:]))
-    elif filenames:
-        rel_dir = get_rel_dir(dirpath, root_dir)
-        data_files.append([rel_dir, [os.path.join(dirpath, f)
-                           for f in filenames]])
-
-if len(sys.argv) > 1 and sys.argv[1] == 'bdist_wininst':
-    for file_info in data_files:
-        file_info[0] = '\\PURELIB\\%s' % file_info[0]
 
 
 setup(
@@ -119,9 +89,9 @@ setup(
     description=mod.__doc__,
     long_description=read('README.rst'),
     packages=packages,
-    cmdclass=cmdclasses,
-    data_files=data_files,
+    package_dir={'ccy': 'ccy'},
     install_requires=requirements(),
+    zip_safe=False,
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Plugins',
