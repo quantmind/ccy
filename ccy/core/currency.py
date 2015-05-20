@@ -170,7 +170,7 @@ class ccy_pair(object):
 
     def over(self, name='usd'):
         '''Returns a new currency pair with the *over* currency as
-second part of the pair (Foreign currency).'''
+        second part of the pair (Foreign currency).'''
         name = name.upper()
         if self.ccy1.code == name.upper():
             return ccy_pair(self.ccy2, self.ccy1)

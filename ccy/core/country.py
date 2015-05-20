@@ -54,7 +54,7 @@ def countries():
             from pytz import country_names
             for k, n in country_names.items():
                 v[k.upper()] = n
-        except:
+        except Exception:
             pass
     return _countries
 
