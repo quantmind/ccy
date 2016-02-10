@@ -3,7 +3,6 @@ from unittest import TestCase
 
 from ccy import period, date2juldate, juldate2date, todate
 from ccy import date2yyyymmdd, yyyymmdd2date
-from ccy import date2timestamp, timestamp2date
 
 
 class PeriodTests(TestCase):
@@ -131,7 +130,6 @@ class DateConverterTest(TestCase):
 
     def test_string(self):
         target = date(2014, 1, 5)
-        dt = todate('2014 Jan 05')
         self.assertEqual(todate('2014 Jan 05'), target)
 
     # def testDate2Timestamp(self):

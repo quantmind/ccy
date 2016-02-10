@@ -3,9 +3,8 @@ import pickle
 from unittest import TestCase
 from io import StringIO as StreamIO
 
-import ccy
 from ccy import (currencydb, countryccy, set_new_country, CountryError,
-                 ccypair, currency, currency_pair)
+                 ccypair, currency, currency_pair, dump_currency_table)
 from ccy.core.country import eurozone
 
 
@@ -62,7 +61,7 @@ class CcyTest(TestCase):
     def test_json(self):
         c = currency('eur')
         info = c.info()
-        s = json.dumps(info)
+        json.dumps(info)
 
     def test_swap(self):
         c1 = currency('eur')
@@ -93,7 +92,7 @@ class CcyTest(TestCase):
 
     def test_dump_currency_table(self):
         db = currencydb()
-        table = list(ccy.dump_currency_table())
+        table = list(dump_currency_table())
         self.assertEqual(len(table), len(db)+1)
 
     def test_description(self):

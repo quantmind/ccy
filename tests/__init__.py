@@ -1,4 +1,4 @@
-from .ccytests import *
-from .datetests import *
-from .tcstests import *
-from .testccy import *
+from .ccytests import *     # noqa
+from .datetests import *    # noqa
+from .tcstests import *     # noqa
+from .testccy import *      # noqa

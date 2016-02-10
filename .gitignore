@@ -1,9 +1,10 @@
 #mac
 .DS_Store
 
-#eclipse
+#IDE
 .project
 .pydevproject
+.idea
 
 #python
 *.pyc

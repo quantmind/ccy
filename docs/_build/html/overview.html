@@ -1,0 +1,310 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Overview &mdash; ccy 0.6.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.6.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="ccy 0.6.1 documentation" href="index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="overview">
+<span id="intro-overview"></span><h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<p>A python module for currencies. The module compiles a dictionary of
+currency objects containing information useful in financial analysis.
+Not all currencies in the world are supported yet. You are welcome to
+join and add more.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Master CI:</th><td class="field-body"><a class="reference external" href="http://travis-ci.org/lsbardel/ccy?branch=master"><img alt="master-build" src="https://img.shields.io/travis/lsbardel/ccy/master.svg" /></a> <a class="reference external" href="https://coveralls.io/r/lsbardel/ccy?branch=master"><img alt="coverage-master" src="https://img.shields.io/coveralls/lsbardel/ccy/master.svg" /></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Documentation:</th><td class="field-body"><a class="reference external" href="http://pythonhosted.org/ccy/">http://pythonhosted.org/ccy/</a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Dowloads:</th><td class="field-body"><a class="reference external" href="http://pypi.python.org/pypi/ccy">http://pypi.python.org/pypi/ccy</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/lsbardel/ccy">https://github.com/lsbardel/ccy</a></td>
+</tr>
+</tbody>
+</table>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#currency-object" id="id1">Currency object</a><ul>
+<li><a class="reference internal" href="#currency-crosses" id="id2">Currency Crosses</a></li>
+<li><a class="reference internal" href="#country-information" id="id3">Country information</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#countries" id="id4">Countries</a></li>
+<li><a class="reference internal" href="#date-and-periods" id="id5">Date and Periods</a></li>
+<li><a class="reference internal" href="#installation" id="id6">Installation</a><ul>
+<li><a class="reference internal" href="#runnung-tests" id="id7">Runnung tests</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="currency-object">
+<h2><a class="toc-backref" href="#id1">Currency object</a><a class="headerlink" href="#currency-object" title="Permalink to this headline">¶</a></h2>
+<p>To use it:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">ccy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">ccy</span><span class="o">.</span><span class="n">currency</span><span class="p">(</span><span class="s1">&#39;aud&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">printinfo</span><span class="p">()</span>
+<span class="go">code: AUD</span>
+<span class="go">twoletterscode: AD</span>
+<span class="go">rounding: 4</span>
+<span class="go">default_country: AU</span>
+<span class="go">isonumber: 036</span>
+<span class="go">order: 3</span>
+<span class="go">name: Australian Dollar</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">as_cross</span><span class="p">()</span>
+<span class="go">&#39;AUDUSD&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">as_cross</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="go">&#39;AUD/USD&#39;</span>
+</pre></div>
+</div>
+<p>a currency object has the following properties:</p>
+<ul class="simple">
+<li><em>code</em>: the <a class="reference external" href="http://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a> code.</li>
+<li><em>twoletterscode</em>: two letter code (can&#8217;t remeber the ISO number). Very useful for financial data providers such as Bloomberg.</li>
+<li><em>default_country</em>: the default <a class="reference external" href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a> country code for the currency.</li>
+<li><em>isonumber</em>: the ISO 4217 number.</li>
+<li><em>name</em>: the name of the currency.</li>
+<li><em>order</em>: default ordering in currency pairs (more of this below).</li>
+<li><em>rounding</em>: number of decimal places</li>
+</ul>
+<div class="section" id="currency-crosses">
+<h3><a class="toc-backref" href="#id2">Currency Crosses</a><a class="headerlink" href="#currency-crosses" title="Permalink to this headline">¶</a></h3>
+<p>You can create currency pairs by using the <code class="docutils literal"><span class="pre">currency_pair</span></code> function:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">ccy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">ccy</span><span class="o">.</span><span class="n">currency_pair</span><span class="p">(</span><span class="s1">&#39;eurusd&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span>
+<span class="go">ccy_pair: EURUSD</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">mkt</span><span class="p">()</span>  <span class="c1"># market convention pair</span>
+<span class="go">ccy_pair: EURUSD</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">ccy</span><span class="o">.</span><span class="n">currency_pair</span><span class="p">(</span><span class="s1">&#39;chfusd&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span>
+<span class="go">ccy_pair: CHFUSD</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">mkt</span><span class="p">()</span>  <span class="c1"># market convention pair</span>
+<span class="go">ccy_pair: USDCHF</span>
+</pre></div>
+</div>
+<p>Some shortcuts:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">ccy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ccy</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="s1">&#39;aud&#39;</span><span class="p">)</span>
+<span class="go">&#39;AUDUSD&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ccy</span><span class="o">.</span><span class="n">crossover</span><span class="p">(</span><span class="s1">&#39;eur&#39;</span><span class="p">)</span>
+<span class="go">&#39;EUR/USD&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ccy</span><span class="o">.</span><span class="n">crossover</span><span class="p">(</span><span class="s1">&#39;chf&#39;</span><span class="p">)</span>
+<span class="go">&#39;USD/CHF&#39;</span>
+</pre></div>
+</div>
+<p>Note, the Swiss franc cross is represented as &#8216;USD/CHF&#8217;, while the Aussie Dollar
+and Euro crosses are represented with the USD as denominator.
+This is the market convention which is handled by the <strong>order</strong> property
+of a currency object.</p>
+</div>
+<div class="section" id="country-information">
+<h3><a class="toc-backref" href="#id3">Country information</a><a class="headerlink" href="#country-information" title="Permalink to this headline">¶</a></h3>
+<p>To use it:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">ccy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">ccy</span><span class="o">.</span><span class="n">country</span><span class="p">(</span><span class="s1">&#39;us&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span>
+<span class="go">&#39;United States&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ccy</span><span class="o">.</span><span class="n">countryccy</span><span class="p">(</span><span class="s1">&#39;us&#39;</span><span class="p">)</span>
+<span class="go">&#39;USD&#39;</span>
+</pre></div>
+</div>
+<p>Not all the country codes are standard <a class="reference external" href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha-2</a>.
+There is a function for adding extra pseudo-countries:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">ccy</span>
+<span class="n">ccy</span><span class="o">.</span><span class="n">set_new_country</span><span class="p">(</span><span class="s1">&#39;EU&#39;</span><span class="p">,</span><span class="s1">&#39;EUR&#39;</span><span class="p">,</span><span class="s1">&#39;Eurozone&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Set a new country with code &#8216;EU&#8217;, currency &#8216;EUR&#8217; named &#8216;Eurozone&#8217;.
+This pseudo country is set in the library already.</p>
+</div>
+</div>
+<div class="section" id="countries">
+<h2><a class="toc-backref" href="#id4">Countries</a><a class="headerlink" href="#countries" title="Permalink to this headline">¶</a></h2>
+<p>Country information is obtained via the <a class="reference external" href="http://pytz.sourceforge.net/">pytz</a> package which is strict
+requirement for <code class="docutils literal"><span class="pre">ccy</span></code>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ccy</span> <span class="kn">import</span> <span class="n">country</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">country</span><span class="p">(</span><span class="s1">&#39;it&#39;</span><span class="p">)</span>
+<span class="go">&#39;Italy&#39;</span>
+</pre></div>
+</div>
+<p>It knows about the 18 <a class="reference external" href="http://www.eurozone.europa.eu/euro-area/euro-area-member-states/">eurozone</a> countries (European countries which share the
+euro as common currency):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ccy</span> <span class="kn">import</span> <span class="n">eurozone</span>
+</pre></div>
+</div>
+<p>eurozone is tuple of country ISO codes</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ccy</span> <span class="kn">import</span> <span class="n">eurozone</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">print_eurozone</span><span class="p">()</span>
+<span class="go">Austria</span>
+<span class="go">Belgium</span>
+<span class="go">Cyprus</span>
+<span class="go">Estonia</span>
+<span class="go">Finland</span>
+<span class="go">France</span>
+<span class="go">Germany</span>
+<span class="go">Greece</span>
+<span class="go">Ireland</span>
+<span class="go">Italy</span>
+<span class="go">Latvia</span>
+<span class="go">Luxembourg</span>
+<span class="go">Malta</span>
+<span class="go">Netherlands</span>
+<span class="go">Portugal</span>
+<span class="go">Slovakia</span>
+<span class="go">Slovenia</span>
+<span class="go">Spain</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="date-and-periods">
+<h2><a class="toc-backref" href="#id5">Date and Periods</a><a class="headerlink" href="#date-and-periods" title="Permalink to this headline">¶</a></h2>
+<p>The module is shipped with a <code class="docutils literal"><span class="pre">date</span></code> module for manipulating time periods and
+converting dates between different formats. The <em>period</em> function can be used
+to create <code class="docutils literal"><span class="pre">Period</span></code> instances:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ccy</span> <span class="kn">import</span> <span class="n">period</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">period</span><span class="p">(</span><span class="s1">&#39;1m&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span>
+<span class="go">1M</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">+=</span> <span class="s1">&#39;2w&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span>
+<span class="go">1M2W</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">P</span> <span class="o">+=</span> <span class="s1">&#39;3m&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span>
+<span class="go">4M2W</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="installation">
+<h2><a class="toc-backref" href="#id6">Installation</a><a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>This library works for Python 2.6 and higher, including Python 3.
+In addition, it requires:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://pytz.sourceforge.net/">pytz</a> for Countries information.</li>
+<li><a class="reference external" href="https://pypi.python.org/pypi/python-dateutil">dateutils</a> for date calculations</li>
+</ul>
+<p>Install using <cite>pip</cite>:</p>
+<div class="highlight-python"><div class="highlight"><pre>pip install ccy
+</pre></div>
+</div>
+<p>or from source:</p>
+<div class="highlight-python"><div class="highlight"><pre>python setup.py install
+</pre></div>
+</div>
+<div class="section" id="runnung-tests">
+<h3><a class="toc-backref" href="#id7">Runnung tests</a><a class="headerlink" href="#runnung-tests" title="Permalink to this headline">¶</a></h3>
+<p>From within the package directory:</p>
+<div class="highlight-python"><div class="highlight"><pre>python runtests.py
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo.jpg" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Overview</a><ul>
+<li><a class="reference internal" href="#currency-object">Currency object</a><ul>
+<li><a class="reference internal" href="#currency-crosses">Currency Crosses</a></li>
+<li><a class="reference internal" href="#country-information">Country information</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#countries">Countries</a></li>
+<li><a class="reference internal" href="#date-and-periods">Date and Periods</a></li>
+<li><a class="reference internal" href="#installation">Installation</a><ul>
+<li><a class="reference internal" href="#runnung-tests">Runnung tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/overview.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Luca Sbardella.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="_sources/overview.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

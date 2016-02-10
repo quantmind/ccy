@@ -24,7 +24,7 @@ def safemod(x, d):
     return x % d if x >= 0 else -(-x % d)
 
 
-class Period(object):
+class Period:
 
     def __init__(self, months=0, days=0):
         self._months = months

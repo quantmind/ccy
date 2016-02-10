@@ -1,4 +1,5 @@
-'''Python currencies'''
+"""Python currencies
+"""
 import os
 
 VERSION = (0, 6, 1, 'final', 0)
@@ -16,7 +17,7 @@ __version__ = get_version(VERSION)
 __license__ = "BSD"
 __author__ = "Luca Sbardella"
 __contact__ = "luca@quantmind.com"
-__homepage__ = "http://code.google.com/p/ccy/"
+__homepage__ = "http://lsbardel.github.io/ccy/"
 
 
 if os.environ.get('ccy_setup_running') != 'yes':
@@ -26,10 +27,10 @@ if os.environ.get('ccy_setup_running') != 'yes':
 
     _currency.ccydb.load = make_ccys
 
-    from .core.currency import *
-    from .core.country import *
-    from .core.daycounter import *
-    from .dates import *
+    from .core.currency import *    # noqa
+    from .core.country import *     # noqa
+    from .core.daycounter import *  # noqa
+    from .dates import *            # noqa
 
     # Shortcuts
     def cross(code):
@@ -48,5 +49,6 @@ if os.environ.get('ccy_setup_running') != 'yes':
         return g7() + ['CHF', 'SEK', 'JPY']
 
     def g10m():
-        '''modified g10. G10 + AUD, NZD, NOK'''
+        """modified g10 = G10 + AUD, NZD, NOK
+        """
         return g10() + ['AUD', 'NZD', 'NOK']

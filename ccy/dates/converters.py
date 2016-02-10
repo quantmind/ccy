@@ -72,7 +72,7 @@ def yyyymmdd2date(dte):
         m = md // 100
         d = md % 100
         return date(y, m, d)
-    except:
+    except Exception:
         raise ValueError('Could not convert %s to date' % dte)
 
 
