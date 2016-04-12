@@ -9,6 +9,7 @@ _build
 
 #python
 *.pyc
+*.log
 __pycache__
 ccy.egg-info
 build
@@ -16,7 +17,6 @@ docs/build
 htmlcov
 dist
 MANIFEST
-.project
-.pydevproject
+release-notes.md
 .settings
 .coverage

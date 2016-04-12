@@ -1,0 +1,15 @@
+{
+    "github": {
+        "ccy": {
+            "python_module": "ccy",
+            "version": "ccy.__version__",
+            "release_notes": "docs/history"
+        }
+    },
+    "tasks": {
+        "release": {
+            "description": "make a new release to github",
+            "command": ["github:ccy"]
+        }
+    }
+}

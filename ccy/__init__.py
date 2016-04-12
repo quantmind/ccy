@@ -2,7 +2,7 @@
 """
 import os
 
-VERSION = (0, 6, 1, 'final', 0)
+VERSION = (0, 7, 0, 'final', 0)
 
 
 def get_version(version):

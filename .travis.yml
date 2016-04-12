@@ -4,18 +4,18 @@ python:
   - "2.7"
   - "3.3"
   - "3.4"
-  - "3.5"
+  - "3.5.1"
   - "pypy"
 
 install:
   - pip install -r requirements-dev.txt
 
 script:
-  - if [[ $TRAVIS_PYTHON_VERSION == '3.5' ]]; then flake8; fi
+  - if [[ $TRAVIS_PYTHON_VERSION == '3.5.1' ]]; then flake8; fi
   - coverage run setup.py test
 
 after_success:
-  - if [[ $TRAVIS_PYTHON_VERSION == '3.5' ]]; then coveralls; fi
+  - if [[ $TRAVIS_PYTHON_VERSION == '3.5.1' ]]; then coveralls; fi
 
 notifications:
   email: false

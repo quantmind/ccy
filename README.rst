@@ -170,7 +170,7 @@ In addition, it requires:
 * pytz_ for Countries information.
 * dateutils_ for date calculations
 
-Install using `pip`::
+Install using ``pip``::
 
     pip install ccy
 
@@ -184,7 +184,7 @@ Runnung tests
 
 From within the package directory::
 
-    python runtests.py
+    python setup.py test
 
 
 .. _pytz: http://pytz.sourceforge.net/
