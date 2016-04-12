@@ -16,7 +16,7 @@ meta = dict(
     packages=find_packages(include=['ccy', 'ccy.*']),
     install_requires=config.requirements(os.path.join(b, 'requirements.txt')),
     zip_safe=False,
-    test_suite = "tests.suite",
+    test_suite="tests.suite",
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Plugins',
