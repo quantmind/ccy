@@ -4,15 +4,15 @@ Not all currencies in the world are supported yet. You are welcome to
 join and add more.
 
 
-:Master CI: |master-build|_ |coverage-master|
+:CI: |master-build| |coverage-master|
 :Documentation: http://pythonhosted.org/ccy/
 :Dowloads: http://pypi.python.org/pypi/ccy
 :Source: https://github.com/lsbardel/ccy
 
 .. |master-build| image:: https://img.shields.io/travis/lsbardel/ccy/master.svg
-.. _master-build: http://travis-ci.org/lsbardel/ccy?branch=master
-.. |coverage-master| image:: https://img.shields.io/coveralls/lsbardel/ccy/master.svg
-  :target: https://coveralls.io/r/lsbardel/ccy?branch=master
+  :target: http://travis-ci.org/lsbardel/ccy?branch=master
+.. |coverage-master| image:: https://coveralls.io/repos/github/lsbardel/ccy/badge.svg?branch=master
+  :target: https://coveralls.io/github/lsbardel/ccy?branch=master
 
 
 
