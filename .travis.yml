@@ -1,5 +1,5 @@
 language: python
-sudo: false
+
 python:
   - "2.7"
   - "3.3"
@@ -8,15 +8,11 @@ python:
   - "pypy"
 
 install:
-  - python setup.py install
   - pip install -r requirements-dev.txt
 
 script:
   - if [[ $TRAVIS_PYTHON_VERSION == '3.5' ]]; then flake8; fi
-  - rm -rf ccy
-  - rm -rf ccy.egg-info
-  - ls -la
-  - coverage run runtests.py
+  - coverage run setup.py test
 
 after_success:
   - if [[ $TRAVIS_PYTHON_VERSION == '3.5' ]]; then coveralls; fi
@@ -24,7 +20,6 @@ after_success:
 notifications:
   email: false
 
-# Only test master and dev
 branches:
   only:
     - master

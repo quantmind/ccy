@@ -14,13 +14,9 @@ def get_version(version):
 
 
 __version__ = get_version(VERSION)
-__license__ = "BSD"
-__author__ = "Luca Sbardella"
-__contact__ = "luca@quantmind.com"
-__homepage__ = "http://lsbardel.github.io/ccy/"
 
 
-if os.environ.get('ccy_setup_running') != 'yes':
+if os.environ.get('package_info') != 'odm':
 
     from .core import currency as _currency
     from .data.currency import make_ccys

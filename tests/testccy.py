@@ -10,7 +10,3 @@ class TestInitFile(unittest.TestCase):
         self.assertTrue(ccy.__version__)
         self.assertEqual(ccy.__version__, ccy.get_version(ccy.VERSION))
         self.assertTrue(len(ccy.VERSION), 5)
-
-    def test_meta(self):
-        for m in ("__author__", "__contact__", "__homepage__", "__doc__"):
-            self.assertTrue(getattr(ccy, m, None))

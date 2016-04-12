@@ -53,14 +53,15 @@ sys.path.insert(0, base_path)
 sys.path.insert(0, ext_path)
 year = date.today().year
 
-import ccy as mod
+from ccy import __version__ as version
 
-version = mod.__version__
 release = version
 # General information about the project.
-project = mod.__name__
-copyright = '%s, %s' % (year, mod.__author__)
-author = mod.__author__
+from setup import meta
+
+project = meta['name']
+copyright = '%s, %s' % (year, meta['author'])
+author = meta['author']
 
 # The encoding of source files.
 #source_encoding = 'utf-8-sig'
