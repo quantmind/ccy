@@ -2,15 +2,14 @@
 .DS_Store
 
 #IDE
-.project
-.pydevproject
 .idea
-_build
 
 #python
 *.pyc
 *.log
 __pycache__
+.eggs
+_build
 ccy.egg-info
 build
 docs/build

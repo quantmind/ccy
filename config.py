@@ -54,6 +54,7 @@ if __name__ == '__main__':
         package = sys.argv[2]
         if len(sys.argv) > 3:
             sys.path.append(sys.argv[3])
+        os.environ['package_info'] = package
         pkg = __import__(package)
         print(json.dumps(dict(version=pkg.__version__,
                               description=pkg.__doc__)))
