@@ -1,5 +1,4 @@
-"""Python currencies
-"""
+"""Python currencies"""
 import os
 
 VERSION = (0, 7, 0, 'final', 0)
@@ -16,7 +15,7 @@ def get_version(version):
 __version__ = get_version(VERSION)
 
 
-if os.environ.get('package_info') != 'odm':
+if os.environ.get('package_info') != 'ccy':
 
     from .core import currency as _currency
     from .data.currency import make_ccys
