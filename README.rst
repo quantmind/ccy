@@ -116,18 +116,18 @@ Countries
 ==============
 
 Country information is obtained via the pytz_ package which is strict
-requirement for ``ccy``.
+requirement for ``ccy``::
 
     >>> from ccy import country
     >>> country('it')
     'Italy'
 
 It knows about the 18 eurozone_ countries (European countries which share the
-euro as common currency):
+euro as common currency)::
 
     >>> from ccy import eurozone
 
-eurozone is tuple of country ISO codes
+eurozone is tuple of country ISO codes::
 
     >>> from ccy import eurozone
     >>> print_eurozone()
