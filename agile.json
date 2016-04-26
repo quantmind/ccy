@@ -8,7 +8,7 @@
     },
     "tasks": {
         "release": {
-            "description": "make a new release to github",
+            "description": "make a new ccy release to github",
             "command": ["github:ccy"]
         }
     }
