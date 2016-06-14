@@ -35,7 +35,7 @@ class CcyTest(TestCase):
                           'EU', 'EUR', 'Eurozone')
 
     def test_eurozone(self):
-        self.assertEqual(len(eurozone), 18)
+        self.assertEqual(len(eurozone), 19)
         for c in eurozone:
             self.assertEqual(countryccy(c), 'EUR')
 
