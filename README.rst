@@ -142,6 +142,7 @@ eurozone is tuple of country ISO codes::
     Ireland
     Italy
     Latvia
+    Lithuania
     Luxembourg
     Malta
     Netherlands
