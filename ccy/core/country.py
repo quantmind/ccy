@@ -77,17 +77,6 @@ def countryccys():
     return _country_ccys
 
 
-def dumpcountries(filename='countries.csv'):
-    cs = make_countries()
-    f = open(filename, 'w')
-    l = []
-    for v in cs.items():
-        l.append('%s,%s' % v)
-    data = '\n'.join(l)
-    f.write(data)
-    f.close()
-
-
 def set_country_map(cfrom, cto, name=None, replace=True):
     '''
     Set a mapping between a country code to another code

@@ -1,7 +1,7 @@
 """Python currencies"""
 import os
 
-VERSION = (0, 7, 0, 'final', 0)
+VERSION = (0, 7, 1, 'beta', 0)
 
 
 def get_version(version):
@@ -22,20 +22,20 @@ if os.environ.get('package_info') != 'ccy':
 
     _currency.ccydb.load = make_ccys
 
-    from .core.currency import *    # noqa
+    from .core.currency import *     # noqa
     from .core.country import *     # noqa
-    from .core.daycounter import *  # noqa
-    from .dates import *            # noqa
+    from .core.daycounter import *     # noqa
+    from .dates import *     # noqa
 
     # Shortcuts
     def cross(code):
-        return currency(code).as_cross()
+        return currency(code).as_cross()         # noqa
 
     def crossover(code):
-        return currency(code).as_cross('/')
+        return currency(code).as_cross('/')      # noqa
 
     def all():
-        return currencydb().keys()
+        return currencydb().keys()               # noqa
 
     def g7():
         return ['EUR', 'GBP', 'USD', 'CAD']

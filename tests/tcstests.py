@@ -1,7 +1,7 @@
 import datetime
 from unittest import TestCase
 
-from ccy.tradingcentres import *    # noqa
+from ccy.tradingcentres import nextbizday, prevbizday, centres
 
 
 class TradingCentresTests(TestCase):
