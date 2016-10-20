@@ -129,8 +129,8 @@ euro as common currency)::
 
 eurozone is tuple of country ISO codes::
 
-    >>> from ccy import eurozone
-    >>> print_eurozone()
+    >>> import ccy
+    >>> ccy.print_eurozone()
     Austria
     Belgium
     Cyprus
