@@ -136,6 +136,10 @@ def make_ccys(db):
     insert('KZT', '398', 'KT', 410,
            'Tenge',  dfr, 'KZ',
            symbol=r'\u20b8', html='&#x20b8;')
+    # TODO: Check towletters code and position
+    insert('BGN', '975', 'BN', 410,
+           'Bulgarian Lev', dfr, 'BG',
+           symbol=r'\u043b\u0432.', html='&#1083;&#1074;')
 
     # MIDDLE EAST & AFRICA
     insert('ILS', '376', 'IS', 410,
