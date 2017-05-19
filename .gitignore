@@ -15,6 +15,7 @@ build
 docs/build
 htmlcov
 dist
+venv
 MANIFEST
 release-notes.md
 .settings

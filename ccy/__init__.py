@@ -1,7 +1,7 @@
 """Python currencies"""
 import os
 
-VERSION = (0, 7, 1, 'beta', 0)
+VERSION = (0, 7, 2, 'beta', 0)
 
 
 def get_version(version):

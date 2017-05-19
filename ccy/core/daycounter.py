@@ -44,6 +44,7 @@ class DayCounterMeta(type):
             _day_counters[new_class.name] = new_class
         return new_class
 
+
 _day_counters = {}
 
 
