@@ -10,18 +10,17 @@ join and add more.
 :Source: https://github.com/lsbardel/ccy
 
 .. |pyversions| image:: https://img.shields.io/pypi/pyversions/ccy.svg
-  :target: https://pypi.python.org/pypi/ccy
+  :target: https://pypi.org/project/ccy/
 .. |license| image:: https://img.shields.io/pypi/l/ccy.svg
-  :target: https://pypi.python.org/pypi/ccy
+  :target: https://pypi.org/project/ccy/
 .. |status| image:: https://img.shields.io/pypi/status/ccy.svg
-  :target: https://pypi.python.org/pypi/ccy
+  :target: https://pypi.org/project/ccy/
 .. |downloads| image:: https://img.shields.io/pypi/dd/ccy.svg
-  :target: https://pypi.python.org/pypi/ccy
-.. |master-build| image:: https://img.shields.io/travis/lsbardel/ccy/master.svg
-  :target: http://travis-ci.org/lsbardel/ccy?branch=master
-.. |coverage-master| image:: https://coveralls.io/repos/github/lsbardel/ccy/badge.svg?branch=master
-  :target: https://coveralls.io/github/lsbardel/ccy?branch=master
-
+  :target: https://pypi.org/project/ccy/
+.. |master-build| image:: https://circleci.com/gh/quantmind/ccy.svg?style=svg
+  :target: https://circleci.com/gh/quantmind/ccy
+.. |coverage-master| image:: https://codecov.io/gh/quantmind/ccy/branch/master/graph/badge.svg
+  :target: https://codecov.io/gh/quantmind/ccy
 
 
 .. contents::
