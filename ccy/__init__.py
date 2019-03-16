@@ -8,7 +8,7 @@ from .core.country import (
     countries, set_country_map, country_map,
     CountryError, eurozone, print_eurozone
 )
-from .core.daycounter import *     # noqa
+from .core.daycounter import getdc, ActActYears, alldc
 from .dates.converters import (
     todate, date2timestamp, timestamp2date, yyyymmdd2date,
     date2yyyymmdd, juldate2date, date2juldate, date_from_string,
@@ -21,6 +21,8 @@ from .dates.period import period, Period
 __all__ = [
     'currency', 'currencydb', 'ccypair', 'currency_pair',
     'dump_currency_table',
+    #
+    'getdc', 'ActActYears', 'alldc',
     #
     'country', 'countryccy', 'set_new_country',
     'countries', 'set_country_map', 'country_map',
