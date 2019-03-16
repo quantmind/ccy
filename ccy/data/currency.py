@@ -107,7 +107,7 @@ def make_ccys(db):
            symbol=dollar, html='&#x24;')
     # TODO: Check towletters code and position
     insert('BMD', '060', 'BD', 410,
-           'BermudIan Dollar', dfr, 'BM',
+           'Bermudian Dollar', dfr, 'BM',
            symbol=dollar, html='&#x24;')
 
     # EASTERN EUROPE
