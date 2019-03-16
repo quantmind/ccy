@@ -1,4 +1,8 @@
 """Python currencies"""
+
+__version__ = '1.0.0'
+
+
 from .core.currency import (
     currency, currencydb, ccypair, currency_pair,
     dump_currency_table

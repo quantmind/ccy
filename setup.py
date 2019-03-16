@@ -1,6 +1,8 @@
 import os
 from setuptools import setup, find_packages
 
+import ccy
+
 
 def read(name):
     filename = os.path.join(os.path.dirname(__file__), name)
@@ -32,8 +34,8 @@ tests_require = requirements('dev/requirements-dev.txt')[0]
 
 meta = dict(
     name='ccy',
-    version='0.8.0',
-    description='Python currencies',
+    version=ccy.__version__,
+    description=ccy.__doc__,
     author='Luca Sbardella',
     author_email="luca@quantmind.com",
     maintainer_email="luca@quantmind.com",
@@ -45,14 +47,12 @@ meta = dict(
     tests_require=tests_require,
     zip_safe=False,
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'Environment :: Plugins',
         'Intended Audience :: Developers',
         'Intended Audience :: Financial and Insurance Industry',
         'License :: OSI Approved :: BSD License',
         'Operating System :: OS Independent',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
