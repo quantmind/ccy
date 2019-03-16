@@ -3,10 +3,6 @@
 #
 from .currency import currencydb
 
-__all__ = ['country', 'countryccy', 'set_new_country',
-           'countries', 'set_country_map', 'country_map',
-           'CountryError', 'eurozone', 'print_eurozone']
-
 # Eurozone countries (officially the euro area)
 # see http://en.wikipedia.org/wiki/Eurozone
 # using ISO 3166-1 alpha-2 country codes

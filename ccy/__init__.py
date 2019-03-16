@@ -1,49 +1,62 @@
 """Python currencies"""
-import os
+from .core.currency import (
+    currency, currencydb, ccypair, currency_pair,
+    dump_currency_table
+)
+from .core.country import (
+    country, countryccy, set_new_country,
+    countries, set_country_map, country_map,
+    CountryError, eurozone, print_eurozone
+)
+from .core.daycounter import getdc, ActActYears, alldc
+from .dates.converters import (
+    todate, date2timestamp, timestamp2date, yyyymmdd2date,
+    date2yyyymmdd, juldate2date, date2juldate, date_from_string,
+    jstimestamp
+)
+from .dates.futures import future_date_to_code, future_month_dict
+from .dates.period import period, Period
 
-VERSION = (0, 7, 2, 'beta', 0)
+
+__all__ = [
+    'currency', 'currencydb', 'ccypair', 'currency_pair',
+    'dump_currency_table',
+    #
+    'getdc', 'ActActYears', 'alldc',
+    #
+    'country', 'countryccy', 'set_new_country',
+    'countries', 'set_country_map', 'country_map',
+    'CountryError', 'eurozone', 'print_eurozone',
+    'future_date_to_code', 'future_month_dict',
+    'period', 'Period',
+    'todate', 'date2timestamp', 'timestamp2date',
+    'yyyymmdd2date', 'date2yyyymmdd', 'juldate2date',
+    'date2juldate', 'date_from_string', 'jstimestamp'
+]
 
 
-def get_version(version):
-    assert len(version) == 5
-    assert version[3] in ('alpha', 'beta', 'rc', 'final')
-    main = '.'.join(map(str, version[:3]))
-    sub = '' if version[3] == 'final' else '-%s.%s' % tuple(version[3:])
-    return main + sub
+# Shortcuts
+def cross(code):
+    return currency(code).as_cross()
 
 
-__version__ = get_version(VERSION)
+def crossover(code):
+    return currency(code).as_cross('/')
 
 
-if os.environ.get('package_info') != 'ccy':
+def all():
+    return currencydb().keys()
 
-    from .core import currency as _currency
-    from .data.currency import make_ccys
 
-    _currency.ccydb.load = make_ccys
+def g7():
+    return ['EUR', 'GBP', 'USD', 'CAD']
 
-    from .core.currency import *     # noqa
-    from .core.country import *     # noqa
-    from .core.daycounter import *     # noqa
-    from .dates import *     # noqa
 
-    # Shortcuts
-    def cross(code):
-        return currency(code).as_cross()         # noqa
+def g10():
+    return g7() + ['CHF', 'SEK', 'JPY']
 
-    def crossover(code):
-        return currency(code).as_cross('/')      # noqa
 
-    def all():
-        return currencydb().keys()               # noqa
-
-    def g7():
-        return ['EUR', 'GBP', 'USD', 'CAD']
-
-    def g10():
-        return g7() + ['CHF', 'SEK', 'JPY']
-
-    def g10m():
-        """modified g10 = G10 + AUD, NZD, NOK
-        """
-        return g10() + ['AUD', 'NZD', 'NOK']
+def g10m():
+    """modified g10 = G10 + AUD, NZD, NOK
+    """
+    return g10() + ['AUD', 'NZD', 'NOK']

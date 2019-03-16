@@ -1,22 +1,49 @@
 import os
 from setuptools import setup, find_packages
 
-import config
 
-b = os.path.dirname(__file__)
+def read(name):
+    filename = os.path.join(os.path.dirname(__file__), name)
+    with open(filename, encoding='utf8') as fp:
+        return fp.read()
+
+
+def requirements(name):
+    install_requires = []
+    dependency_links = []
+
+    for line in read(name).split('\n'):
+        if line.startswith('-e '):
+            link = line[3:].strip()
+            if link == '.':
+                continue
+            dependency_links.append(link)
+            line = link.split('=')[1]
+        line = line.strip()
+        if line:
+            install_requires.append(line)
+
+    return install_requires, dependency_links
+
+
+install_requires = requirements('dev/requirements.txt')[0]
+tests_require = requirements('dev/requirements-dev.txt')[0]
+
 
 meta = dict(
     name='ccy',
+    version='0.8.0',
+    description='Python currencies',
     author='Luca Sbardella',
     author_email="luca@quantmind.com",
     maintainer_email="luca@quantmind.com",
     url="https://github.com/lsbardel/ccy",
     license="BSD",
-    long_description=config.read(os.path.join(b, 'README.rst')),
+    long_description=read('README.rst'),
     packages=find_packages(include=['ccy', 'ccy.*']),
-    install_requires=config.requirements(os.path.join(b, 'requirements.txt')),
+    install_requires=install_requires,
+    tests_require=tests_require,
     zip_safe=False,
-    test_suite="tests.suite",
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Plugins',
@@ -27,10 +54,9 @@ meta = dict(
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
         'Topic :: Office/Business :: Financial',
         'Topic :: Utilities'
     ]
@@ -38,4 +64,4 @@ meta = dict(
 
 
 if __name__ == '__main__':
-    setup(**config.setup(meta, 'ccy'))
+    setup(**meta)

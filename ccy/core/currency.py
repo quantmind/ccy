@@ -1,8 +1,6 @@
 import sys
 
-
-__all__ = ['currency', 'ccypair', 'ccydb', 'currencydb',
-           'ccypairsdb', 'currency_pair', 'dump_currency_table']
+from .data import make_ccys
 
 
 usd_order = 5
@@ -179,11 +177,6 @@ class ccy_pair(object):
 
 
 class ccydb(dict):
-    load = None
-
-    def __init__(self, name):
-        self.name = name
-        self.__class__.load(self)
 
     def insert(self, *args, **kwargs):
         c = ccy(*args, **kwargs)
@@ -193,7 +186,8 @@ class ccydb(dict):
 def currencydb():
     global _ccys
     if not _ccys:
-        _ccys = ccydb('currencydb')
+        _ccys = ccydb()
+        make_ccys(_ccys)
     return _ccys
 
 

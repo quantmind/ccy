@@ -1,18 +1,12 @@
 import time
 from datetime import datetime, date
 
-from dateutil.parser import parse as dateFromString
+try:
+    from dateutil.parser import parse as date_from_string
+except ImportError: # noqa
 
-
-__all__ = ['todate',
-           'date2timestamp',
-           'timestamp2date',
-           'yyyymmdd2date',
-           'date2yyyymmdd',
-           'juldate2date',
-           'date2juldate',
-           'dateFromString',
-           'jstimestamp']
+    def date_from_string(dte):
+        raise NotImplementedError
 
 
 def todate(val):
@@ -39,7 +33,7 @@ def todate(val):
         except Exception:
             # Try to convert using the parsing algorithm
             try:
-                return dateFromString(val).date()
+                return date_from_string(val).date()
             except Exception:
                 raise ValueError("Could not convert %s to date" % val)
 
