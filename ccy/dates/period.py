@@ -1,6 +1,3 @@
-__all__ = ['period', 'Period']
-
-
 def period(pstr=''):
     '''Create a period object from a period string'''
     return Period.make(pstr)
