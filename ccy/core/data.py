@@ -159,6 +159,9 @@ def make_ccys(db):
     insert('EGP', '818', 'EP', 550,
            'Egyptian Pound', dfr, 'EG',
            symbol=r'\u00a3', html='&#xa3;')
+    insert('NGN', '566', 'NG', 650,
+           'Nigerian Naira', dfr, 'NG',
+           symbol=r'\u20a6', html='&#x20A6;')
     insert('ZAR', '710', 'SA', 750,
            'South African Rand', dfr, 'ZA', 'ACT/365', 'ACT/365',
            symbol=r'R', html='R')
