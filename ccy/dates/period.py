@@ -1,5 +1,5 @@
-def period(pstr=''):
-    '''Create a period object from a period string'''
+def period(pstr=""):
+    """Create a period object from a period string"""
     return Period.make(pstr)
 
 
@@ -22,13 +22,12 @@ def safemod(x, d):
 
 
 class Period:
-
     def __init__(self, months=0, days=0):
         self._months = months
         self._days = days
 
     @classmethod
-    def make(cls, pstr=''):
+    def make(cls, pstr=""):
         if isinstance(pstr, cls):
             return pstr
         else:
@@ -41,13 +40,13 @@ class Period:
         self._days += days
 
     def add_weeks(self, weeks):
-        self._days += int(7*weeks)
+        self._days += int(7 * weeks)
 
     def add_months(self, months):
         self._months += months
 
     def add_years(self, years):
-        self._months += int(12*years)
+        self._months += int(12 * years)
 
     @property
     def years(self):
@@ -67,43 +66,43 @@ class Period:
 
     @property
     def totaldays(self):
-        return 30*self._months + self._days
+        return 30 * self._months + self._days
 
     def __repr__(self):
-        '''The period string'''
+        """The period string"""
         return self.components()
 
     def __str__(self):
         return self.__repr__()
 
     def components(self):
-        '''The period string'''
-        p = ''
+        """The period string"""
+        p = ""
         neg = self.totaldays < 0
         y = self.years
         m = self.months
         w = self.weeks
         d = self.days
         if y:
-            p = '%sY' % abs(y)
+            p = "%sY" % abs(y)
         if m:
-            p = '%s%sM' % (p, abs(m))
+            p = "%s%sM" % (p, abs(m))
         if w:
-            p = '%s%sW' % (p, abs(w))
+            p = "%s%sW" % (p, abs(w))
         if d:
-            p = '%s%sD' % (p, abs(d))
-        return '-'+p if neg else p
+            p = "%s%sD" % (p, abs(d))
+        return "-" + p if neg else p
 
     def simple(self):
-        '''A string representation with only one period delimiter.'''
+        """A string representation with only one period delimiter."""
         if self._days:
-            return '%sD' % self.totaldays
+            return "%sD" % self.totaldays
         elif self.months:
-            return '%sM' % self._months
+            return "%sM" % self._months
         elif self.years:
-            return '%sY' % self.years
+            return "%sY" % self.years
         else:
-            return ''
+            return ""
 
     def add_tenure(self, pstr):
         if isinstance(pstr, self.__class__):
@@ -117,36 +116,35 @@ class Period:
             if not st:
                 done = True
             else:
-                ip = find_first_of(st, 'DWMY')
+                ip = find_first_of(st, "DWMY")
                 if ip == -1:
                     raise ValueError("Unknown period %s" % pstr)
                 p = st[ip]
                 v = int(st[:ip])
                 sign = sign if v > 0 else -sign
-                v = sign*abs(v)
-                if p == 'D':
+                v = sign * abs(v)
+                if p == "D":
                     self.add_days(v)
-                elif p == 'W':
+                elif p == "W":
                     self.add_weeks(v)
-                elif p == 'M':
+                elif p == "M":
                     self.add_months(v)
-                elif p == 'Y':
+                elif p == "Y":
                     self.add_years(v)
-                st = st[ip+1:]
+                ip += 1
+                st = st[ip:]
         return self
 
     def __add__(self, other):
         other = self.make(other)
-        return self.__class__(self._months+other._months,
-                              self._days+other._days)
+        return self.__class__(self._months + other._months, self._days + other._days)
 
     def __radd__(self, other):
         return self + other
 
     def __sub__(self, other):
         other = self.make(other)
-        return self.__class__(self._months-other._months,
-                              self._days-other._days)
+        return self.__class__(self._months - other._months, self._days - other._days)
 
     def __rsub__(self, other):
         return self.make(other) - self

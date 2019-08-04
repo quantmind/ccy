@@ -1,16 +1,5 @@
 version: 2
 jobs:
-  test35:
-    docker:
-      - image: circleci/python:3.5
-    steps:
-      - checkout
-      - run:
-          name: install
-          command: sudo ./dev/install.sh
-      - run:
-          name: test
-          command: pytest
   test36:
     docker:
       - image: circleci/python:3.6
@@ -33,6 +22,9 @@ jobs:
       - run:
           name: flake8
           command: flake8
+      - run:
+          name: black
+          command: make black
       - run:
           name: test
           command: pytest --cov
@@ -65,12 +57,10 @@ workflows:
   build-deploy:
     jobs:
       - tests
-      - test35
       - test36
       - deploy-release:
           requires:
             - tests
-            - test35
             - test36
           filters:
             branches:

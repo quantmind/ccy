@@ -13,3 +13,7 @@ clean:		## remove python cache files
 
 version:	## dipsplay software version
 	@python3 -c "import ccy; print(ccy.__version__)"
+
+
+black:		## check black formatting
+	black --check ccy tests
