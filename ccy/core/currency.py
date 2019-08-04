@@ -2,15 +2,14 @@ import sys
 
 from .data import make_ccys
 
-
 usd_order = 5
 
 
 def to_string(v):
     if isinstance(v, bytes):
-        return v.decode('utf-8')
+        return v.decode("utf-8")
     else:
-        return '%s' % v
+        return "%s" % v
 
 
 def overusdfun(v1):
@@ -18,23 +17,31 @@ def overusdfun(v1):
 
 
 def overusdfuni(v1):
-    return 1./v1
+    return 1.0 / v1
 
 
 class ccy(object):
-    '''
+    """
     Currency object
-    '''
-    def __init__(self, code, isonumber, twoletterscode, order, name,
-                 roundoff=4,
-                 default_country=None,
-                 fixeddc=None,
-                 floatdc=None,
-                 fixedfreq=None,
-                 floatfreq=None,
-                 future=None,
-                 symbol=r'\00a4',
-                 html=''):
+    """
+
+    def __init__(
+        self,
+        code,
+        isonumber,
+        twoletterscode,
+        order,
+        name,
+        roundoff=4,
+        default_country=None,
+        fixeddc=None,
+        floatdc=None,
+        fixedfreq=None,
+        floatfreq=None,
+        future=None,
+        symbol=r"\00a4",
+        html="",
+    ):
         self.code = to_string(code)
         self.id = self.code
         self.isonumber = isonumber
@@ -44,19 +51,19 @@ class ccy(object):
         self.rounding = roundoff
         self.default_country = default_country
         self.symbol_raw = symbol
-        self.symbol = symbol.encode('utf-8').decode('unicode_escape')
+        self.symbol = symbol.encode("utf-8").decode("unicode_escape")
         self.html = html or self.symbol
         self.fixeddc = fixeddc
         self.floatdc = floatdc
-        self.future = ''
+        self.future = ""
         if future:
             self.future = str(future)
 
     def __getstate__(self):
-        return {'code': self.code}
+        return {"code": self.code}
 
     def __setstate__(self, dict):
-        c = currency(dict['code'])
+        c = currency(dict["code"])
         self.__dict__.update(c.__dict__)
 
     def __eq__(self, other):
@@ -66,41 +73,43 @@ class ccy(object):
 
     def description(self):
         if self.order > usd_order:
-            v = 'USD / %s' % self.code
+            v = "USD / %s" % self.code
         else:
-            v = '%s / USD' % self.code
+            v = "%s / USD" % self.code
         if self.order != usd_order:
-            return '%s Spot Exchange Rate' % v
+            return "%s Spot Exchange Rate" % v
         else:
-            return 'Dollar'
+            return "Dollar"
 
     def info(self):
-        return {'code': self.code,
-                'isonumber': self.isonumber,
-                'twoletterscode': self.twoletterscode,
-                'symbol': self.symbol,
-                'order': self.order,
-                'name': self.name,
-                'rounding': self.rounding,
-                'default_country': self.default_country,
-                'unicode symbol': self.symbol_raw}
+        return {
+            "code": self.code,
+            "isonumber": self.isonumber,
+            "twoletterscode": self.twoletterscode,
+            "symbol": self.symbol,
+            "order": self.order,
+            "name": self.name,
+            "rounding": self.rounding,
+            "default_country": self.default_country,
+            "unicode symbol": self.symbol_raw,
+        }
 
     def printinfo(self, stream=None):
         info = self.info()
         stream = stream or sys.stdout
         for k, v in info.items():
-            stream.write(to_string('%s: %s\n' % (k, v)))
+            stream.write(to_string("%s: %s\n" % (k, v)))
 
     def __repr__(self):
-        return '%s: %s' % (self.__class__.__name__, self.code)
+        return "%s: %s" % (self.__class__.__name__, self.code)
 
     def __str__(self):
         return self.code
 
     def swap(self, c2):
-        '''
+        """
         put the order of currencies as market standard
-        '''
+        """
         inv = False
         c1 = self
         if c1.order > c2.order:
@@ -122,40 +131,41 @@ class ccy(object):
         else:
             return overusdfuni
 
-    def as_cross(self, delimiter=''):
-        '''
+    def as_cross(self, delimiter=""):
+        """
         Return a cross rate representation with respect USD.
         @param delimiter: could be '' or '/' normally
-        '''
+        """
         if self.order > usd_order:
-            return 'USD%s%s' % (delimiter, self.code)
+            return "USD%s%s" % (delimiter, self.code)
         else:
-            return '%s%sUSD' % (self.code, delimiter)
+            return "%s%sUSD" % (self.code, delimiter)
 
     def spot(self, c2, v1, v2):
         if self.order > c2.order:
             vt = v1
             v1 = v2
             v2 = vt
-        return v1/v2
+        return v1 / v2
 
 
 class ccy_pair(object):
-    '''
+    """
     Currency pair such as EURUSD, USDCHF
 
     XXXYYY - XXX is the foreign currency, while YYY is the base currency
 
     XXXYYY means 1 unit of of XXX cost XXXYYY units of YYY
-    '''
+    """
+
     def __init__(self, c1, c2):
         self.ccy1 = c1
         self.ccy2 = c2
-        self.code = '%s%s' % (c1, c2)
+        self.code = "%s%s" % (c1, c2)
         self.id = self.code
 
     def __repr__(self):
-        return '%s: %s' % (self.__class__.__name__, self.code)
+        return "%s: %s" % (self.__class__.__name__, self.code)
 
     def __str__(self):
         return self.code
@@ -166,9 +176,9 @@ class ccy_pair(object):
         else:
             return self
 
-    def over(self, name='usd'):
-        '''Returns a new currency pair with the *over* currency as
-        second part of the pair (Foreign currency).'''
+    def over(self, name="usd"):
+        """Returns a new currency pair with the *over* currency as
+        second part of the pair (Foreign currency)."""
         name = name.upper()
         if self.ccy1.code == name.upper():
             return ccy_pair(self.ccy2, self.ccy1)
@@ -177,7 +187,6 @@ class ccy_pair(object):
 
 
 class ccydb(dict):
-
     def insert(self, *args, **kwargs):
         c = ccy(*args, **kwargs)
         self[c.code] = c
@@ -209,7 +218,7 @@ def ccypair(code):
 
 
 def currency_pair(code):
-    '''Construct a :class:`ccy_pair` from a six letter string.'''
+    """Construct a :class:`ccy_pair` from a six letter string."""
     c = str(code)
     c1 = currency(c[:3])
     c2 = currency(c[3:])
@@ -231,13 +240,15 @@ def make_ccypairs():
 
 
 def dump_currency_table():
-    headers = ['code',
-               'name',
-               ('isonumber', 'iso'),
-               ('html', 'symbol'),
-               ('default_country', 'country'),
-               'order',
-               'rounding']
+    headers = [
+        "code",
+        "name",
+        ("isonumber", "iso"),
+        ("html", "symbol"),
+        ("default_country", "country"),
+        "order",
+        "rounding",
+    ]
     all = []
     data = []
     all.append(data)

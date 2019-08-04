@@ -1,7 +1,8 @@
 import datetime
-# from dateutil import rrule
 
 from .holiday import BaseHoliday, PartialDate
+
+# from dateutil import rrule
 
 
 # weekdays = (rrule.MO,rrule.TU,rrule.WE,rrule.TH,rrule.FR)
@@ -15,7 +16,7 @@ _tcs = {}
 def centres(codes=None):
     tcs = TradingCentres()
     if codes:
-        lcs = codes.upper().replace(' ', '').split(',')
+        lcs = codes.upper().replace(" ", "").split(",")
         for code in lcs:
             tc = _tcs.get(code)
             if tc:
@@ -25,37 +26,37 @@ def centres(codes=None):
 
 def get_declared_holidays(bases, attrs):
     _attrs = attrs.copy()
-    holidays = [(field_name, attrs.pop(field_name)) for field_name, obj in
-                _attrs.items() if isinstance(obj, BaseHoliday)]
+    holidays = [
+        (field_name, attrs.pop(field_name))
+        for field_name, obj in _attrs.items()
+        if isinstance(obj, BaseHoliday)
+    ]
 
     for base in bases[::-1]:
-        if hasattr(base, 'holidays'):
+        if hasattr(base, "holidays"):
             holidays = base.holidays.items() + holidays
 
     return dict(holidays)
 
 
 class TradingCentreMeta(type):
-
     def __new__(cls, name, bases, attrs):
         global _tcs
-        abstract = attrs.pop('abstract', False)
+        abstract = attrs.pop("abstract", False)
         if abstract:
-            return super(TradingCentreMeta, cls).__new__(cls, name,
-                                                         bases, attrs)
+            return super(TradingCentreMeta, cls).__new__(cls, name, bases, attrs)
         else:
-            attrs['holidays'] = get_declared_holidays(bases, attrs)
-            new_class = super(TradingCentreMeta, cls).__new__(cls, name,
-                                                              bases, attrs)
-            if not getattr(new_class, 'abstract', False):
+            attrs["holidays"] = get_declared_holidays(bases, attrs)
+            new_class = super(TradingCentreMeta, cls).__new__(cls, name, bases, attrs)
+            if not getattr(new_class, "abstract", False):
                 cl = new_class()
                 _tcs[cl.code] = cl
             return new_class
 
 
-TradingCentreBase = TradingCentreMeta('TradingCentreBase',
-                                      (object, ),
-                                      {'abstract': True})
+TradingCentreBase = TradingCentreMeta(
+    "TradingCentreBase", (object,), {"abstract": True}
+)
 
 
 class TradingCentre(TradingCentreBase):
@@ -71,6 +72,7 @@ class TradingCentre(TradingCentreBase):
 
     def __get_code(self):
         return self.__class__.__name__
+
     code = property(__get_code)
 
     def isbizday(self, dte):
@@ -93,7 +95,7 @@ class TradingCentre(TradingCentreBase):
         else:
             start = year
             end = year
-        for year in range(start, end+1):
+        for year in range(start, end + 1):
             self.build_dates(year)
         return self._cache.get(dte, False)
 
@@ -156,7 +158,8 @@ class TradingCentres(object):
 #
 # TRADING CENTRES
 class TGT(TradingCentre):
-    '''Target'''
+    """Target"""
+
     new_years_day = PartialDate(1, 1)
     labor_day = PartialDate(5, 1)
     christmas_day = PartialDate(12, 25)
@@ -164,5 +167,6 @@ class TGT(TradingCentre):
 
 
 class LON(TradingCentre):
-    '''London'''
+    """London"""
+
     christmas_day = PartialDate(12, 25)

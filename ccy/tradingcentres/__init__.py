@@ -1,6 +1,6 @@
-from .centres import centres, TradingCentre
+from .centres import TradingCentre, centres
 
-__all__ = ['centres', 'TradingCentre', 'prevbizday', 'nextbizday']
+__all__ = ["centres", "TradingCentre", "prevbizday", "nextbizday"]
 
 
 def prevbizday(dte=None, nd=1, tcs=None):
