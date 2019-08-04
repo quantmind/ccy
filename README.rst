@@ -5,8 +5,7 @@ join and add more.
 
 :Package: |license|  |pyversions| |status| |downloads|
 :CI: |master-build| |coverage-master|
-:Documentation: http://pythonhosted.org/ccy/
-:Dowloads: http://pypi.python.org/pypi/ccy
+:Dowloads: https://pypi.org/project/ccy/
 :Source: https://github.com/lsbardel/ccy
 
 .. |pyversions| image:: https://img.shields.io/pypi/pyversions/ccy.svg

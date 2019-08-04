@@ -1,16 +1,15 @@
-'''Day Counter for Counting time between 2 dates.
+"""Day Counter for Counting time between 2 dates.
 Implemented::
 
     * Actual 360
     * Actual 365
     * 30 / 360
     * Actual Actual
-'''
+"""
 from copy import copy
 from datetime import date
 
-
-__all__ = ['getdc', 'ActActYears', 'alldc']
+__all__ = ["getdc", "ActActYears", "alldc"]
 
 
 def getdc(name):
@@ -33,11 +32,10 @@ def ActActYears(dt):
     if r > 0:
         a = 1.0
     dd = (dt - date(y, 1, 1)).days
-    return y + dd/(365.0 + a)
+    return y + dd / (365.0 + a)
 
 
 class DayCounterMeta(type):
-
     def __new__(cls, name, bases, attrs):
         new_class = super(DayCounterMeta, cls).__new__(cls, name, bases, attrs)
         if new_class.name:
@@ -53,35 +51,34 @@ class DayCounter(object):
     __metaclass__ = DayCounterMeta
 
     def count(self, start, end):
-        return (end-start).days
+        return (end - start).days
 
     def dcf(self, start, end):
-        return self.count(start, end)/360.0
+        return self.count(start, end) / 360.0
 
 
 class act360(DayCounter):
-    name = 'ACT/360'
+    name = "ACT/360"
 
 
 class act365(DayCounter):
-    name = 'ACT/365'
+    name = "ACT/365"
 
     def dcf(self, start, end):
-        return self.count(start, end)/365.0
+        return self.count(start, end) / 365.0
 
 
 class thirty360(DayCounter):
-    name = '30/360'
+    name = "30/360"
 
     def count(self, start, end):
         d1 = min(start.day, 30)
         d2 = min(end.day, 30)
-        return 360*(end.year - start.year) + 30*(end.month -
-                                                 start.month) + d2 - d1
+        return 360 * (end.year - start.year) + 30 * (end.month - start.month) + d2 - d1
 
 
 class actact(DayCounter):
-    name = 'ACT/ACT'
+    name = "ACT/ACT"
 
     def dcf(self, start, end):
         return ActActYears(end) - ActActYears(start)

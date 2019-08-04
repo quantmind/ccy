@@ -34,6 +34,9 @@ jobs:
           name: flake8
           command: flake8
       - run:
+          name: black
+          command: make black
+      - run:
           name: test
           command: pytest --cov
       - run:
