@@ -131,7 +131,8 @@ class Period:
                     self.add_months(v)
                 elif p == "Y":
                     self.add_years(v)
-                st = st[ip + 1 :]
+                ip += 1
+                st = st[ip:]
         return self
 
     def __add__(self, other):

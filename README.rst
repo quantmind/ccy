@@ -6,7 +6,7 @@ join and add more.
 :Package: |license|  |pyversions| |status| |downloads|
 :CI: |master-build| |coverage-master|
 :Dowloads: https://pypi.org/project/ccy/
-:Source: https://github.com/lsbardel/ccy
+:Source: https://github.com/quantmind/ccy
 
 .. |pyversions| image:: https://img.shields.io/pypi/pyversions/ccy.svg
   :target: https://pypi.org/project/ccy/
