@@ -460,6 +460,19 @@ def make_ccys(db):
     )
     insert("RON", "946", "RN", 34, "Romanian Leu", dfr, "RO", "ACT/360", "ACT/360")
     insert(
+        "UAH",
+        "980",
+        "UH",
+        35,
+        "Ukrainian Hryvnia",
+        dfr,
+        "UA",
+        "ACT/ACT",
+        "ACT/ACT",
+        symbol=r"\u20b4",
+        html="&#x20b4;",
+    )
+    insert(
         "RUB",
         "643",
         "RR",
