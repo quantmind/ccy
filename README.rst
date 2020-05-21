@@ -16,8 +16,8 @@ join and add more.
   :target: https://pypi.org/project/ccy/
 .. |downloads| image:: https://img.shields.io/pypi/dd/ccy.svg
   :target: https://pypi.org/project/ccy/
-.. |master-build| image:: https://circleci.com/gh/quantmind/ccy.svg?style=svg
-  :target: https://circleci.com/gh/quantmind/ccy
+.. |master-build| image:: https://github.com/quantmind/ccy/workflows/build/badge.svg
+  :target: https://github.com/quantmind/ccy/actions?query=workflow%3Abuild
 .. |coverage-master| image:: https://codecov.io/gh/quantmind/ccy/branch/master/graph/badge.svg
   :target: https://codecov.io/gh/quantmind/ccy
 
