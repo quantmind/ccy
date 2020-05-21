@@ -33,6 +33,7 @@ jobs:
     env:
       PYTHON_ENV: ci
       PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+      GITHUB_SECRET: ${{ secrets.QMBOT_GITHUB_TOKEN }}
 
     steps:
       - uses: actions/checkout@v2
