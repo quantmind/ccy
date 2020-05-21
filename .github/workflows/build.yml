@@ -1,0 +1,59 @@
+name: build
+
+on:
+  push:
+    branches-ignore:
+      - deploy
+    tags-ignore:
+      - v*
+
+jobs:
+
+  # python 3.6
+  py36:
+    runs-on: ubuntu-latest
+    env:
+      PYTHON_ENV: ci
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: build image
+      run: make py36
+    - name: run tests
+      run: make test-py36
+
+
+  # python 3.7
+  py37:
+    runs-on: ubuntu-latest
+    env:
+      PYTHON_ENV: ci
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: build image
+      run: make py37
+    - name: run tests
+      run: make test-py37
+
+  # python 3.8
+  py38:
+    runs-on: ubuntu-latest
+    env:
+      PYTHON_ENV: ci
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: build image
+      run: make py38
+    - name: run docs
+      run: make test-docs
+    - name: run flake8
+      run: make test-flake8
+    - name: run black
+      run: make test-black
+    - name: run tests
+      run: make test-py38
+    - name: upload coverage
+      run: make test-codecov

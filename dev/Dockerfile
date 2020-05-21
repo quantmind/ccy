@@ -1,0 +1,10 @@
+ARG PY_VERSION
+
+FROM $PY_VERSION
+
+ENV GITHUB_USERNAME=qmbot
+
+WORKDIR /workspace
+
+COPY . .
+RUN ./dev/install

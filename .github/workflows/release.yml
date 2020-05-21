@@ -1,0 +1,45 @@
+name: release
+
+on:
+  push:
+    branches:
+      - deploy
+    tags-ignore:
+      - v*
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      PYTHON_ENV: ci
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: build image
+        run: make py38
+      - name: validate version
+        run: make test-version
+      - name: run flake8
+        run: make test-flake8
+      - name: run black
+        run: make test-black
+      - name: run tests
+        run: make test-py38
+
+  release:
+    runs-on: ubuntu-latest
+    needs:
+      - test
+    env:
+      PYTHON_ENV: ci
+      PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+      GITHUB_SECRET: ${{ secrets.QMBOT_GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: build python 3.8 image
+        run: make py38
+      - name: build python 3.8 bundle
+        run: make bundle
+      - name: release to pypi
+        run: make release

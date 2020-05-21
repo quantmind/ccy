@@ -1,9 +1,6 @@
-include LICENSE
 include MANIFEST.in
 include README.rst
-include config.py
-include requirements.txt
-include requirements-dev.txt
-include docs/make.bat
-include docs/Makefile
-recursive-include docs/source *
+graft ccy
+graft dev
+graft docs
+global-exclude *.pyc
