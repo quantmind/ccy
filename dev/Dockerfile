@@ -6,6 +6,5 @@ ENV GITHUB_USERNAME=qmbot
 
 WORKDIR /workspace
 
-COPY ./dev ./dev
-RUN ./dev/install
 COPY . .
+RUN ./dev/install
