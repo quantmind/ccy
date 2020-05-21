@@ -3,11 +3,13 @@ currency objects containing information useful in financial analysis.
 Not all currencies in the world are supported yet. You are welcome to
 join and add more.
 
-:Package: |license|  |pyversions| |status| |downloads|
+:Package: |version| |license| |pyversions| |status| |downloads|
 :CI: |master-build| |coverage-master|
 :Dowloads: https://pypi.org/project/ccy/
 :Source: https://github.com/quantmind/ccy
 
+.. |version| image:: https://badge.fury.io/py/ccy.svg
+  :target: https://badge.fury.io/py/ccy
 .. |pyversions| image:: https://img.shields.io/pypi/pyversions/ccy.svg
   :target: https://pypi.org/project/ccy/
 .. |license| image:: https://img.shields.io/pypi/l/ccy.svg

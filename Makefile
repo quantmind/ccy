@@ -11,12 +11,9 @@ clean:		## remove python cache files
 	rm -rf .pytest_cache
 	rm -rf .coverage
 
-version:	## dipsplay software version
-	@python3 -c "import ccy; print(ccy.__version__)"
 
-
-black:		## check black formatting
-	black --check ccy tests
+black:		## black formatting
+	black ccy tests
 
 py36:		## build python 3.6 image for testing
 	docker build -f dev/Dockerfile --build-arg PY_VERSION=python:3.6.10 -t ccy36 .
@@ -62,6 +59,12 @@ test-codecov:	## upload code coverage
 		-v $(PWD):/workspace \
 		ccy38 \
 		codecov --token $(CODECOV_TOKEN) --file ./build/coverage.xml
+
+test-version:	## validate version with pypi
+	@docker run \
+		-v $(PWD):/workspace \
+		ccy38 \
+		agilekit git validate
 
 bundle:		## build python 3.8 bundle
 	@docker run --rm \
