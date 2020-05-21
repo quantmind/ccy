@@ -66,6 +66,12 @@ test-version:	## validate version with pypi
 		ccy38 \
 		agilekit git validate
 
+terminal:	## enter terminal
+	@docker run -it --rm \
+		-v $(PWD):/workspace \
+		ccy38 \
+		/bin/bash
+
 bundle:		## build python 3.8 bundle
 	@docker run --rm \
 		-v $(PWD):/workspace \
@@ -88,3 +94,6 @@ pypi:		## release to pypi and github tag
 release:	## release to pypi and github tag
 	make pypi
 	make github-tag
+
+version:	## display software version
+	@python -c "import ccy; print(ccy.__version__)"
