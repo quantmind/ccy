@@ -188,7 +188,7 @@ or from source::
     python setup.py install
 
 
-Runnung tests
+Running tests
 ~~~~~~~~~~~~~~~~~~~~~
 
 From within the package directory::
