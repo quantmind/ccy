@@ -31,11 +31,17 @@ codecov:	## upload code coverage
 test-version:	## validate version with pypi
 	@agilekit git validate
 
-sdist:		## build source distribution
-	@python setup.py sdist
+bundle3.6:		## build python 3.6 bundle
+	@python setup.py bdist_wheel --python-tag py36
 
-wheel:		## build wheel
-	@python setup.py bdist_wheel
+bundle3.7:		## build python 3.7 bundle
+	@python setup.py bdist_wheel --python-tag py37
+
+bundle3.8:		## build python 3.8 bundle
+	@python setup.py bdist_wheel --python-tag py38
+
+bundle3.9:		## build python 3.9 bundle
+	@python setup.py sdist bdist_wheel --python-tag py39
 
 github-tag:	## new tag in github
 	@agilekit git release --yes

@@ -27,10 +27,7 @@ jobs:
         run: make install
       - name: test version
         run: make test-version
-      - name: build python wheel
-        run: make wheel
-      - name: build python source distribution
-        if: matrix.python-version == '3.8'
-        run: make sdist
+      - name: build python bundle
+        run: "make bundle${{ matrix.python-version }}"
       - name: release to pypi
         run: make release-pypi
