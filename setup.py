@@ -1,8 +1,7 @@
 import os
 
-from setuptools import find_packages, setup
-
 import ccy
+from setuptools import find_packages, setup
 
 
 def read(name):
@@ -57,6 +56,7 @@ meta = dict(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3 :: Only",
         "Topic :: Office/Business :: Financial",
         "Topic :: Utilities",

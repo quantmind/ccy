@@ -3,16 +3,15 @@ import pickle
 from io import StringIO as StreamIO
 
 import pytest
-
 from ccy import (
-    currencydb,
-    countryccy,
-    set_new_country,
     CountryError,
     ccypair,
+    countryccy,
     currency,
     currency_pair,
+    currencydb,
     dump_currency_table,
+    set_new_country,
 )
 from ccy.core.country import eurozone
 

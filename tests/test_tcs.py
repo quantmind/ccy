@@ -1,7 +1,6 @@
 import datetime
 
 import pytest
-
 from ccy.tradingcentres import centres, nextbizday, prevbizday
 
 

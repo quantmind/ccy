@@ -9,51 +9,28 @@ on:
 
 jobs:
 
-  # python 3.6
-  py36:
-    runs-on: ubuntu-latest
-    env:
-      PYTHON_ENV: ci
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: build image
-      run: make py36
-    - name: run tests
-      run: make test-py36
-
-
-  # python 3.7
-  py37:
-    runs-on: ubuntu-latest
-    env:
-      PYTHON_ENV: ci
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: build image
-      run: make py37
-    - name: run tests
-      run: make test-py37
-
-  # python 3.8
-  py38:
+  build:
     runs-on: ubuntu-latest
     env:
       PYTHON_ENV: ci
       CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+    strategy:
+      matrix:
+        python-version: [3.6, 3.7, 3.8, 3.9]
 
     steps:
     - uses: actions/checkout@v2
-    - name: build image
-      run: make py38
-    - name: run docs
-      run: make test-docs
-    - name: run flake8
-      run: make test-flake8
-    - name: run black
-      run: make test-black
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: make install
+    - name: run lint
+      run: make lint
     - name: run tests
-      run: make test-py38
+      run: make test
     - name: upload coverage
-      run: make test-codecov
+      if: matrix.python-version == '3.8'
+      run: make codecov
