@@ -1,7 +1,6 @@
 from datetime import date, datetime
 
 import pytest
-
 from ccy import date2juldate, date2yyyymmdd, juldate2date, period, todate, yyyymmdd2date
 
 

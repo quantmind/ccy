@@ -94,6 +94,5 @@ def g10():
 
 
 def g10m():
-    """modified g10 = G10 + AUD, NZD, NOK
-    """
+    """modified g10 = G10 + AUD, NZD, NOK"""
     return g10() + ["AUD", "NZD", "NOK"]
