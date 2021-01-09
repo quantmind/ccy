@@ -40,11 +40,11 @@ wheel:		## build wheel
 github-tag:	## new tag in github
 	@agilekit git release --yes
 
-pypi:		## release to pypi and github tag
+release-pypi:	## release to pypi and github tag
 	@twine upload dist/* --username lsbardel --password $(PYPI_PASSWORD)
 
 release:	## release to pypi and github tag
-	make pypi
+	make release-pypi
 	make github-tag
 
 version:	## display software version
