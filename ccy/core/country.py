@@ -9,7 +9,7 @@ from .currency import currencydb
 # see http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 #
 eurozone = tuple(
-    ("AT BE CY DE EE ES FI FR GR IE IT LU LV LT MT " "NL PT SI SK").split(" ")
+    ("AT BE CY DE EE ES FI FR GR IE IT LU LV LT MT NL PT SI SK").split(" ")
 )
 
 
