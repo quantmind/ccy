@@ -5,6 +5,9 @@ description = "Python currencies"
 authors = ["Luca Sbardella <luca@quantmind.com>"]
 license = "BSD"
 readme = "README.rst"
+packages = [
+    { include = "ccy" }
+]
 
 [tool.poetry.dependencies]
 python = "^3.8,<3.12"
