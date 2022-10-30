@@ -17,7 +17,7 @@ jobs:
       COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
     strategy:
       matrix:
-        python-version: [3.6, 3.7, 3.8, 3.9]
+        python-version: ["3.8", "3.9", "3.10", "3.11"]
 
     steps:
     - uses: actions/checkout@v2
@@ -32,5 +32,5 @@ jobs:
     - name: run tests
       run: make test
     - name: upload coverage
-      if: matrix.python-version == '3.8'
+      if: matrix.python-version == '3.11'
       run: make codecov

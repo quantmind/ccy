@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -e
+
+isort ccy
+black ccy
+flake8 ccy
