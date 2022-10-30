@@ -16,6 +16,7 @@ docs:		## build docs
 	cd docs && make docs
 
 install:	## install packages for development
+	@pip install -U pip poetry
 	@poetry install
 
 lint:		## run linters
