@@ -80,18 +80,18 @@ def crossover(code):
     return currency(code).as_cross("/")
 
 
-def all():
-    return currencydb().keys()
+def all() -> tuple[str, ...]:
+    return tuple(currencydb())
 
 
-def g7():
-    return ["EUR", "GBP", "USD", "CAD"]
+def g7() -> tuple[str, ...]:
+    return ("EUR", "GBP", "USD", "CAD")
 
 
-def g10():
-    return g7() + ["CHF", "SEK", "JPY"]
+def g10() -> tuple[str, ...]:
+    return g7() + ("CHF", "SEK", "JPY")
 
 
-def g10m():
+def g10m() -> tuple[str, ...]:
     """modified g10 = G10 + AUD, NZD, NOK"""
-    return g10() + ["AUD", "NZD", "NOK"]
+    return g10() + ("AUD", "NZD", "NOK")
