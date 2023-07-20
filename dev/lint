@@ -1,6 +1,17 @@
 #!/usr/bin/env bash
 set -e
 
-isort ccy
-black ccy
-flake8 ccy
+BLACK_ARG="--check"
+RUFF_ARG=""
+
+if [ "$1" = "fix" ] ; then
+    BLACK_ARG=""
+    RUFF_ARG="--fix"
+fi
+
+echo "run black"
+black ccy tests --exclude "fluid_common/protos/v2|fluid_apps/db/migrations" ${BLACK_ARG}
+echo "run ruff"
+ruff ccy tests ${RUFF_ARG}
+echo "run mypy"
+mypy ccy

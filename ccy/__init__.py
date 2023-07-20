@@ -1,6 +1,6 @@
 """Python currencies"""
 
-__version__ = "1.3.0"
+__version__ = "1.4.0"
 
 
 from .core.country import (
@@ -21,7 +21,7 @@ from .core.currency import (
     currencydb,
     dump_currency_table,
 )
-from .core.daycounter import ActActYears, alldc, getdc
+from .core.daycounter import alldc, getdc
 from .dates.converters import (
     date2juldate,
     date2timestamp,
@@ -44,7 +44,6 @@ __all__ = [
     "dump_currency_table",
     #
     "getdc",
-    "ActActYears",
     "alldc",
     #
     "country",

@@ -1,4 +1,5 @@
 import sys
+from typing import NamedTuple
 
 from .data import make_ccys
 
@@ -20,51 +21,25 @@ def overusdfuni(v1):
     return 1.0 / v1
 
 
-class ccy(object):
-    """
-    Currency object
-    """
+class ccy(NamedTuple):
+    code: SyntaxError
+    isonumber: str
+    twoletterscode: str
+    order: int
+    name: str
+    rounding: int
+    default_country: str
+    fixeddc: str = "Act/365"
+    floatdc: str = "Act/365"
+    fixedfreq: str = ""
+    floatfreq: str = ""
+    future: str = ""
+    symbol_raw: str = r"\00a4"
+    html: str = ""
 
-    def __init__(
-        self,
-        code,
-        isonumber,
-        twoletterscode,
-        order,
-        name,
-        roundoff=4,
-        default_country=None,
-        fixeddc=None,
-        floatdc=None,
-        fixedfreq=None,
-        floatfreq=None,
-        future=None,
-        symbol=r"\00a4",
-        html="",
-    ):
-        self.code = to_string(code)
-        self.id = self.code
-        self.isonumber = isonumber
-        self.twoletterscode = to_string(twoletterscode)
-        self.order = int(order)
-        self.name = to_string(name)
-        self.rounding = roundoff
-        self.default_country = default_country
-        self.symbol_raw = symbol
-        self.symbol = symbol.encode("utf-8").decode("unicode_escape")
-        self.html = html or self.symbol
-        self.fixeddc = fixeddc
-        self.floatdc = floatdc
-        self.future = ""
-        if future:
-            self.future = str(future)
-
-    def __getstate__(self):
-        return {"code": self.code}
-
-    def __setstate__(self, dict):
-        c = currency(dict["code"])
-        self.__dict__.update(c.__dict__)
+    @property
+    def symbol(self) -> str:
+        return self.symbol_raw.encode("utf-8").decode("unicode_escape")
 
     def __eq__(self, other):
         if isinstance(other, ccy):
@@ -149,7 +124,7 @@ class ccy(object):
         return v1 / v2
 
 
-class ccy_pair(object):
+class ccy_pair(NamedTuple):
     """
     Currency pair such as EURUSD, USDCHF
 
@@ -158,11 +133,12 @@ class ccy_pair(object):
     XXXYYY means 1 unit of of XXX cost XXXYYY units of YYY
     """
 
-    def __init__(self, c1, c2):
-        self.ccy1 = c1
-        self.ccy2 = c2
-        self.code = "%s%s" % (c1, c2)
-        self.id = self.code
+    ccy1: ccy
+    ccy2: ccy
+
+    @property
+    def code(self):
+        return "%s%s" % (self.ccy1, self.ccy2)
 
     def __repr__(self):
         return "%s: %s" % (self.__class__.__name__, self.code)
@@ -186,13 +162,13 @@ class ccy_pair(object):
             return self
 
 
-class ccydb(dict):
+class ccydb(dict[str, ccy]):
     def insert(self, *args, **kwargs):
         c = ccy(*args, **kwargs)
         self[c.code] = c
 
 
-def currencydb():
+def currencydb() -> ccydb:
     global _ccys
     if not _ccys:
         _ccys = ccydb()
@@ -266,5 +242,5 @@ def dump_currency_table():
     return all
 
 
-_ccys = None
+_ccys: ccydb = ccydb()
 _ccypairs = None
