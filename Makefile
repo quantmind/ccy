@@ -28,5 +28,8 @@ test:		## test with python 3.8 with coverage
 codecov:	## upload code coverage
 	@poetry run codecov --token $(CODECOV_TOKEN) --file ./build/coverage.xml
 
-publish:		## release to pypi and github tag
+publish:	## release to pypi and github tag
 	@poetry publish --build -u lsbardel -p $(PYPI_PASSWORD)
+
+outdated:	## Show outdated packages
+	poetry show -o -a

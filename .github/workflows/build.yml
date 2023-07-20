@@ -32,9 +32,6 @@ jobs:
       run: make lint
     - name: run tests
       run: make test
-    - name: upload coverage
-      if: matrix.python-version == '3.11'
-      run: make codecov
     - name: publish
-      if: ${{ github.ref == 'refs/heads/main' && matrix.python-version == '3.10' && github.event.head_commit.message == 'release' }}
+      if: ${{ matrix.python-version == '3.11' && github.event.head_commit.message == 'release' }}
       run: make publish
