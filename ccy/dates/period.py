@@ -1,9 +1,12 @@
-def period(pstr=""):
+from __future__ import annotations
+
+
+def period(pstr: str = "") -> Period:
     """Create a period object from a period string"""
     return Period.make(pstr)
 
 
-def find_first_of(st, possible):
+def find_first_of(st: str, possible: str) -> int:
     possible = tuple(possible)
     lowi = -1
     for p in possible:
@@ -13,69 +16,69 @@ def find_first_of(st, possible):
     return lowi
 
 
-def safediv(x, d):
+def safediv(x: int, d: int) -> int:
     return x // d if x >= 0 else -(-x // d)
 
 
-def safemod(x, d):
+def safemod(x: int, d: int) -> int:
     return x % d if x >= 0 else -(-x % d)
 
 
 class Period:
-    def __init__(self, months=0, days=0):
+    def __init__(self, months: int = 0, days: int = 0) -> None:
         self._months = months
         self._days = days
 
     @classmethod
-    def make(cls, pstr=""):
+    def make(cls, pstr: str = "") -> Period:
         if isinstance(pstr, cls):
             return pstr
         else:
             return cls().add_tenure(pstr)
 
-    def isempty(self):
+    def isempty(self) -> bool:
         return self._months == 0 and self._days == 0
 
-    def add_days(self, days):
+    def add_days(self, days: int) -> None:
         self._days += days
 
-    def add_weeks(self, weeks):
+    def add_weeks(self, weeks: int) -> None:
         self._days += int(7 * weeks)
 
-    def add_months(self, months):
+    def add_months(self, months: int) -> None:
         self._months += months
 
-    def add_years(self, years):
+    def add_years(self, years: int) -> None:
         self._months += int(12 * years)
 
     @property
-    def years(self):
+    def years(self) -> int:
         return safediv(self._months, 12)
 
     @property
-    def months(self):
+    def months(self) -> int:
         return safemod(self._months, 12)
 
     @property
-    def weeks(self):
+    def weeks(self) -> int:
         return safediv(self._days, 7)
 
     @property
-    def days(self):
+    def days(self) -> int:
         return safemod(self._days, 7)
 
     @property
     def totaldays(self):
         return 30 * self._months + self._days
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         """The period string"""
         return self.components()
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.__repr__()
 
-    def components(self):
+    def components(self) -> str:
         """The period string"""
         p = ""
         neg = self.totaldays < 0
@@ -104,7 +107,7 @@ class Period:
         else:
             return ""
 
-    def add_tenure(self, pstr):
+    def add_tenure(self, pstr: str) -> Period:
         if isinstance(pstr, self.__class__):
             self._months += pstr._months
             self._days += pstr._days

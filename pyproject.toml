@@ -29,9 +29,9 @@ build-backend = "poetry.core.masonry.api"
 
 
 [tool.mypy]
-disallow_untyped_calls = false
-disallow_untyped_defs = false
-warn_no_return = false
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+warn_no_return = true
 
 [[tool.mypy.overrides]]
 module = "pycountry.*"
