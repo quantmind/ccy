@@ -1,6 +1,6 @@
 """Python currencies"""
 
-__version__ = "1.3.0"
+__version__ = "1.4.0"
 
 
 from .core.country import (
@@ -21,7 +21,7 @@ from .core.currency import (
     currencydb,
     dump_currency_table,
 )
-from .core.daycounter import ActActYears, alldc, getdc
+from .core.daycounter import alldc, getdc
 from .dates.converters import (
     date2juldate,
     date2timestamp,
@@ -44,7 +44,6 @@ __all__ = [
     "dump_currency_table",
     #
     "getdc",
-    "ActActYears",
     "alldc",
     #
     "country",
@@ -81,18 +80,18 @@ def crossover(code):
     return currency(code).as_cross("/")
 
 
-def all():
-    return currencydb().keys()
+def all() -> tuple[str, ...]:
+    return tuple(currencydb())
 
 
-def g7():
-    return ["EUR", "GBP", "USD", "CAD"]
+def g7() -> tuple[str, ...]:
+    return ("EUR", "GBP", "USD", "CAD")
 
 
-def g10():
-    return g7() + ["CHF", "SEK", "JPY"]
+def g10() -> tuple[str, ...]:
+    return g7() + ("CHF", "SEK", "JPY")
 
 
-def g10m():
+def g10m() -> tuple[str, ...]:
     """modified g10 = G10 + AUD, NZD, NOK"""
-    return g10() + ["AUD", "NZD", "NOK"]
+    return g10() + ("AUD", "NZD", "NOK")

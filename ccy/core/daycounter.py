@@ -6,13 +6,15 @@ Implemented::
     * 30 / 360
     * Actual Actual
 """
+from __future__ import annotations
+
 from copy import copy
 from datetime import date
 
-__all__ = ["getdc", "ActActYears", "alldc"]
+__all__ = ["getdc", "DayCounter", "alldc"]
 
 
-def getdc(name):
+def getdc(name: str) -> DayCounter | None:
     dc = _day_counters.get(name)
     if dc:
         return dc()
@@ -25,7 +27,7 @@ def alldc():
     return copy(_day_counters)
 
 
-def ActActYears(dt):
+def act_act_years(dt: date) -> float:
     y = dt.year
     r = y % 4
     a = 0.0
@@ -43,42 +45,41 @@ class DayCounterMeta(type):
         return new_class
 
 
-_day_counters = {}
+_day_counters: dict[str, DayCounterMeta] = {}
 
 
-class DayCounter(object):
-    name = None
-    __metaclass__ = DayCounterMeta
+class DayCounter(DayCounterMeta):
+    name: str = ""
 
-    def count(self, start, end):
+    def count(self, start: date, end: date) -> int:
         return (end - start).days
 
-    def dcf(self, start, end):
+    def dcf(self, start: date, end: date) -> float:
         return self.count(start, end) / 360.0
 
 
-class act360(DayCounter):
+class Act360(DayCounter):
     name = "ACT/360"
 
 
-class act365(DayCounter):
+class Act365(DayCounter):
     name = "ACT/365"
 
-    def dcf(self, start, end):
+    def dcf(self, start: date, end: date):
         return self.count(start, end) / 365.0
 
 
-class thirty360(DayCounter):
+class Thirty360(DayCounter):
     name = "30/360"
 
-    def count(self, start, end):
+    def dcf(self, start: date, end: date) -> float:
         d1 = min(start.day, 30)
         d2 = min(end.day, 30)
         return 360 * (end.year - start.year) + 30 * (end.month - start.month) + d2 - d1
 
 
-class actact(DayCounter):
+class ActAct(DayCounter):
     name = "ACT/ACT"
 
-    def dcf(self, start, end):
-        return ActActYears(end) - ActActYears(start)
+    def dcf(self, start: date, end: date) -> float:
+        return act_act_years(end) - act_act_years(start)

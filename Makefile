@@ -19,14 +19,16 @@ install:	## install packages for development
 	@pip install -U pip poetry
 	@poetry install
 
-lint:		## run linters
-	@poetry run dev/lint
+lint:		## Run linters
+	@poetry run ./dev/lint fix
+
+
+lint-check:	## Run linters in check mode
+	@poetry run ./dev/lint
+
 
 test:		## test with python 3.8 with coverage
 	@poetry run pytest -x -v --cov --cov-report xml
 
-codecov:	## upload code coverage
-	@poetry run codecov --token $(CODECOV_TOKEN) --file ./build/coverage.xml
-
-publish:		## release to pypi and github tag
+publish:	## release to pypi and github tag
 	@poetry publish --build -u lsbardel -p $(PYPI_PASSWORD)

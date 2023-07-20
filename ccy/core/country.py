@@ -1,6 +1,7 @@
-#
-# Requires pytz 2008i or higher
-#
+from __future__ import annotations
+
+from typing import Protocol
+
 from .currency import currencydb
 
 # Eurozone countries (officially the euro area)
@@ -18,9 +19,15 @@ def print_eurozone():
         print(c)
 
 
-_countries = None
+_countries: dict[str, Country] = {}
 _country_ccys = None
 _country_maps = {}
+
+
+class Country(Protocol):
+    alpha_2: str
+    name: str
+    alpha_3: str = ""
 
 
 class CountryError(Exception):
@@ -39,19 +46,16 @@ def countryccy(code):
     return cdb.get(code, None)
 
 
-def countries():
+def countries() -> dict[str, Country]:
     """
-    get country dictionar from pytz and add some extra.
+    get country dictionary from pytz and add some extra.
     """
     global _countries
     if not _countries:
-        v = {}
-        _countries = v
         try:
-            from pytz import country_names
+            import pycountry
 
-            for k, n in country_names.items():
-                v[k.upper()] = n
+            _countries = {country.alpha_2: country for country in pycountry.countries}
         except Exception:
             pass
     return _countries
@@ -106,7 +110,7 @@ def set_country_map(cfrom, cto, name=None, replace=True):
         raise CountryError("Country %s not in database" % c)
 
 
-def set_new_country(code, ccy, name):
+def set_new_country(code: str, ccy: str, name: str) -> None:
     """
     Add new country code to database
     """
@@ -118,7 +122,12 @@ def set_new_country(code, ccy, name):
     ccy = str(ccy).upper()
     if ccy not in ccys:
         raise CountryError("Currency %s not in database" % ccy)
-    cdb[code] = str(name)
+    # hacky - but best way I could find
+    cdb[code] = type(cdb["IT"])(
+        alpha_2=code,
+        name=name,
+        official_name=name,
+    )  # type: ignore
     cccys = countryccys()
     cccys[code] = ccy
 
@@ -133,4 +142,6 @@ def country_map(code):
 
 
 # Add eurozone to list of Countries
+set_new_country("EZ", "EUR", "Eurozone")
+# lagacy - to remove
 set_new_country("EU", "EUR", "Eurozone")

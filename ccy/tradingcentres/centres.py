@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import datetime
 
 from .holiday import BaseHoliday, PartialDate
@@ -10,7 +12,7 @@ from .holiday import BaseHoliday, PartialDate
 isoweekend = (6, 7)
 oneday = datetime.timedelta(days=1)
 
-_tcs = {}
+_tcs: dict[str, TradingCentreMeta] = {}
 
 
 def centres(codes=None):
@@ -54,12 +56,7 @@ class TradingCentreMeta(type):
             return new_class
 
 
-TradingCentreBase = TradingCentreMeta(
-    "TradingCentreBase", (object,), {"abstract": True}
-)
-
-
-class TradingCentre(TradingCentreBase):
+class TradingCentre(metaclass=TradingCentreMeta):
     abstract = True
     onedaydelta = datetime.timedelta(days=1)
 
@@ -106,7 +103,7 @@ class TradingCentre(TradingCentreBase):
                 self._cache[day] = True
 
 
-class TradingCentres(object):
+class TradingCentres:
     onedaydelta = datetime.timedelta(days=1)
 
     def __init__(self):

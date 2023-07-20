@@ -5,7 +5,7 @@ try:
     from dateutil.parser import parse as date_from_string
 except ImportError:  # noqa
 
-    def date_from_string(dte):
+    def date_from_string(dte):  # type: ignore
         raise NotImplementedError
 
 

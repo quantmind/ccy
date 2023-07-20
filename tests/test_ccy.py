@@ -3,6 +3,8 @@ import pickle
 from io import StringIO as StreamIO
 
 import pytest
+
+import ccy as ccym
 from ccy import (
     CountryError,
     ccypair,
@@ -14,6 +16,15 @@ from ccy import (
     set_new_country,
 )
 from ccy.core.country import eurozone
+
+
+def test_codes():
+    ccys = ccym.all()
+    assert "USD" in ccys
+    assert len(ccym.g7()) == 4
+    assert len(ccym.g10()) == 7
+    assert len(set(ccym.g7())) == 4
+    assert len(set(ccym.g10())) == 7
 
 
 def test_defaultcountry():

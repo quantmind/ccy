@@ -1,4 +1,12 @@
-def make_ccys(db):
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from .currency import ccydb
+
+
+def make_ccys(db: ccydb):
     """
     Create the currency dictionary
     """
@@ -20,7 +28,7 @@ def make_ccys(db):
         "30/360",
         "ACT/360",
         future="FE",
-        symbol=r"\u20ac",
+        symbol_raw=r"\u20ac",
         html="&#x20ac;",
     )
     insert(
@@ -33,7 +41,7 @@ def make_ccys(db):
         "GB",
         "ACT/365",
         "ACT/365",
-        symbol=r"\u00a3",
+        symbol_raw=r"\u00a3",
         html="&#xa3;",
     )
     insert(
@@ -46,7 +54,7 @@ def make_ccys(db):
         "AU",
         "ACT/365",
         "ACT/365",
-        symbol=dollar,
+        symbol_raw=dollar,
         html="&#x24;",
     )
     insert(
@@ -59,7 +67,7 @@ def make_ccys(db):
         "NZ",
         "ACT/365",
         "ACT/365",
-        symbol=dollar,
+        symbol_raw=dollar,
         html="&#x24;",
     )
     insert(
@@ -73,7 +81,7 @@ def make_ccys(db):
         "30/360",
         "ACT/360",
         future="ED",
-        symbol=dollar,
+        symbol_raw=dollar,
         html="&#x24;",
     )
     insert(
@@ -86,7 +94,7 @@ def make_ccys(db):
         "CA",
         "ACT/365",
         "ACT/365",
-        symbol=dollar,
+        symbol_raw=dollar,
         html="&#x24;",
     )
     insert(
@@ -99,7 +107,7 @@ def make_ccys(db):
         "CH",
         "30/360",
         "ACT/360",
-        symbol=r"Fr",
+        symbol_raw=r"Fr",
         html="&#x20a3;",
     )
     insert(
@@ -112,7 +120,7 @@ def make_ccys(db):
         "NO",
         "30/360",
         "ACT/360",
-        symbol=kr,
+        symbol_raw=kr,
         html=kr,
     )
     insert(
@@ -125,7 +133,7 @@ def make_ccys(db):
         "SE",
         "30/360",
         "ACT/360",
-        symbol=kr,
+        symbol_raw=kr,
         html=kr,
     )
     insert(
@@ -138,7 +146,7 @@ def make_ccys(db):
         "DK",
         "30/360",
         "ACT/360",
-        symbol=kr,
+        symbol_raw=kr,
         html=kr,
     )
     insert(
@@ -151,7 +159,7 @@ def make_ccys(db):
         "JP",
         "ACT/365",
         "ACT/360",
-        symbol=r"\u00a5",
+        symbol_raw=r"\u00a5",
         html="&#xa5;",
     )
 
@@ -166,7 +174,7 @@ def make_ccys(db):
         "CN",
         "ACT/365",
         "ACT/365",
-        symbol=r"\u00a5",
+        symbol_raw=r"\u00a5",
         html="&#xa5;",
     )
     insert(
@@ -179,7 +187,7 @@ def make_ccys(db):
         "KR",
         "ACT/365",
         "ACT/365",
-        symbol=r"\u20a9",
+        symbol_raw=r"\u20a9",
         html="&#x20a9;",
     )
     insert(
@@ -192,7 +200,7 @@ def make_ccys(db):
         "SG",
         "ACT/365",
         "ACT/365",
-        symbol=dollar,
+        symbol_raw=dollar,
         html="&#x24;",
     )
     insert(
@@ -205,7 +213,7 @@ def make_ccys(db):
         "ID",
         "ACT/360",
         "ACT/360",
-        symbol=r"Rp",
+        symbol_raw=r"Rp",
         html="Rp",
     )
     insert(
@@ -218,7 +226,7 @@ def make_ccys(db):
         "TH",
         "ACT/365",
         "ACT/365",
-        symbol=r"\u0e3f",
+        symbol_raw=r"\u0e3f",
         html="&#xe3f;",
     )
     insert(
@@ -231,7 +239,7 @@ def make_ccys(db):
         "TW",
         "ACT/365",
         "ACT/365",
-        symbol=dollar,
+        symbol_raw=dollar,
         html="&#x24;",
     )
     insert(
@@ -244,7 +252,7 @@ def make_ccys(db):
         "HK",
         "ACT/365",
         "ACT/365",
-        symbol=r"\u5713",
+        symbol_raw=r"\u5713",
         html="HK&#x24;",
     )
     insert(
@@ -257,7 +265,7 @@ def make_ccys(db):
         "PH",
         "ACT/360",
         "ACT/360",
-        symbol=peso,
+        symbol_raw=peso,
         html="&#x20b1;",
     )
     insert(
@@ -270,7 +278,7 @@ def make_ccys(db):
         "IN",
         "ACT/365",
         "ACT/365",
-        symbol=r"\u20a8",
+        symbol_raw=r"\u20a8",
         html="&#x20a8;",
     )
     insert(
@@ -286,7 +294,7 @@ def make_ccys(db):
         "VN",
         "ACT/365",
         "ACT/365",
-        symbol=r"\u20ab",
+        symbol_raw=r"\u20ab",
         html="&#x20ab;",
     )
 
@@ -301,7 +309,7 @@ def make_ccys(db):
         "BR",
         "BUS/252",
         "BUS/252",
-        symbol=r"R$",
+        symbol_raw=r"R$",
     )
     insert(
         "PEN",
@@ -313,7 +321,7 @@ def make_ccys(db):
         "PE",
         "ACT/360",
         "ACT/360",
-        symbol=r"S/.",
+        symbol_raw=r"S/.",
     )
     insert(
         "ARS",
@@ -325,7 +333,7 @@ def make_ccys(db):
         "AR",
         "30/360",
         "ACT/360",
-        symbol=dollar,
+        symbol_raw=dollar,
         html="&#x24;",
     )
     insert(
@@ -338,7 +346,7 @@ def make_ccys(db):
         "MX",
         "ACT/360",
         "ACT/360",
-        symbol=dollar,
+        symbol_raw=dollar,
         html="&#x24;",
     )
     insert(
@@ -351,7 +359,7 @@ def make_ccys(db):
         "CL",
         "ACT/360",
         "ACT/360",
-        symbol=dollar,
+        symbol_raw=dollar,
         html="&#x24;",
     )
     insert(
@@ -364,7 +372,7 @@ def make_ccys(db):
         "CO",
         "ACT/360",
         "ACT/360",
-        symbol=dollar,
+        symbol_raw=dollar,
         html="&#x24;",
     )
     # TODO: Check towletters code and position
@@ -378,7 +386,7 @@ def make_ccys(db):
         "JM",
         "ACT/360",
         "ACT/360",
-        symbol=dollar,
+        symbol_raw=dollar,
         html="&#x24;",
     )
     # TODO: Check towletters code and position
@@ -392,7 +400,7 @@ def make_ccys(db):
         "TT",
         "ACT/360",
         "ACT/360",
-        symbol=dollar,
+        symbol_raw=dollar,
         html="&#x24;",
     )
     # TODO: Check towletters code and position
@@ -404,7 +412,7 @@ def make_ccys(db):
         "Bermudian Dollar",
         dfr,
         "BM",
-        symbol=dollar,
+        symbol_raw=dollar,
         html="&#x24;",
     )
 
@@ -419,7 +427,7 @@ def make_ccys(db):
         "CZ",
         "ACT/360",
         "ACT/360",
-        symbol=r"\u004b\u010d",
+        symbol_raw=r"\u004b\u010d",
     )
     insert(
         "PLN",
@@ -431,7 +439,7 @@ def make_ccys(db):
         "PL",
         "ACT/ACT",
         "ACT/365",
-        symbol=r"\u0050\u0142",
+        symbol_raw=r"\u0050\u0142",
     )
     insert(
         "TRY",
@@ -443,7 +451,7 @@ def make_ccys(db):
         "TR",
         "ACT/360",
         "ACT/360",
-        symbol=r"\u0054\u004c",
+        symbol_raw=r"\u0054\u004c",
     )
     insert(
         "HUF",
@@ -455,7 +463,7 @@ def make_ccys(db):
         "HU",
         "ACT/365",
         "ACT/360",
-        symbol=r"Ft",
+        symbol_raw=r"Ft",
         html="Ft",
     )
     insert("RON", "946", "RN", 34, "Romanian Leu", dfr, "RO", "ACT/360", "ACT/360")
@@ -469,7 +477,7 @@ def make_ccys(db):
         "UA",
         "ACT/ACT",
         "ACT/ACT",
-        symbol=r"\u20b4",
+        symbol_raw=r"\u20b4",
         html="&#x20b4;",
     )
     insert(
@@ -482,13 +490,21 @@ def make_ccys(db):
         "RU",
         "ACT/ACT",
         "ACT/ACT",
-        symbol=r"\u0440\u0443\u0431",
+        symbol_raw=r"\u0440\u0443\u0431",
     )
     # TODO: Check towletters code and position
-    insert("HRK", "191", "HK", 410, "Croatian kuna", dfr, "HR", symbol=r"kn")
+    insert("HRK", "191", "HK", 410, "Croatian kuna", dfr, "HR", symbol_raw=r"kn")
     # TODO: Check towletters code and position
     insert(
-        "KZT", "398", "KT", 410, "Tenge", dfr, "KZ", symbol=r"\u20b8", html="&#x20b8;"
+        "KZT",
+        "398",
+        "KT",
+        410,
+        "Tenge",
+        dfr,
+        "KZ",
+        symbol_raw=r"\u20b8",
+        html="&#x20b8;",
     )
     # TODO: Check towletters code and position
     insert(
@@ -499,7 +515,7 @@ def make_ccys(db):
         "Bulgarian Lev",
         dfr,
         "BG",
-        symbol=r"\u043b\u0432.",
+        symbol_raw=r"\u043b\u0432.",
         html="&#1083;&#1074;",
     )
 
@@ -514,7 +530,7 @@ def make_ccys(db):
         "IL",
         "ACT/365",
         "ACT/365",
-        symbol=r"\u20aa",
+        symbol_raw=r"\u20aa",
         html="&#x20aa;",
     )
     # TODO: Check towletters code and position
@@ -528,7 +544,7 @@ def make_ccys(db):
         "Qatari Riyal",
         dfr,
         "QA",
-        symbol=r"\ufdfc",
+        symbol_raw=r"\ufdfc",
         html="&#xfdfc;",
     )
     # TODO: Check towletters code and position
@@ -540,7 +556,7 @@ def make_ccys(db):
         "Saudi Riyal",
         dfr,
         "SA",
-        symbol=r"\ufdfc",
+        symbol_raw=r"\ufdfc",
         html="&#xfdfc;",
     )
     insert(
@@ -551,7 +567,7 @@ def make_ccys(db):
         "Egyptian Pound",
         dfr,
         "EG",
-        symbol=r"\u00a3",
+        symbol_raw=r"\u00a3",
         html="&#xa3;",
     )
     insert(
@@ -562,7 +578,7 @@ def make_ccys(db):
         "Nigerian Naira",
         dfr,
         "NG",
-        symbol=r"\u20a6",
+        symbol_raw=r"\u20a6",
         html="&#x20A6;",
     )
     insert(
@@ -575,9 +591,11 @@ def make_ccys(db):
         "ZA",
         "ACT/365",
         "ACT/365",
-        symbol=r"R",
+        symbol_raw=r"R",
         html="R",
     )
 
     # BITCOIN
-    insert("XBT", "000", "BT", -1, "Bitcoin", 8, "WW", symbol=r"\u0e3f", html="&#xe3f;")
+    insert(
+        "XBT", "000", "BT", -1, "Bitcoin", 8, "WW", symbol_raw=r"\u0e3f", html="&#xe3f;"
+    )
