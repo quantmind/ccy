@@ -39,4 +39,4 @@ book:		## Build static jupyter {book}
 	poetry run jupyter-book build docs --all
 
 publish-book:	## publish the book to github pages
-	poetry run ghp-import -n -p -f notebooks/_build/html
+	poetry run ghp-import -n -p -f docs/_build/html
