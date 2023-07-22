@@ -10,6 +10,7 @@ from __future__ import annotations
 
 from copy import copy
 from datetime import date
+from typing import Any
 
 __all__ = ["getdc", "DayCounter", "alldc"]
 
@@ -22,7 +23,7 @@ def getdc(name: str) -> DayCounter | None:
         return None
 
 
-def alldc():
+def alldc() -> dict[str, DayCounterMeta]:
     global _day_counters
     return copy(_day_counters)
 
@@ -38,10 +39,10 @@ def act_act_years(dt: date) -> float:
 
 
 class DayCounterMeta(type):
-    def __new__(cls, name, bases, attrs):
+    def __new__(cls, name: str, bases: Any, attrs: Any) -> DayCounterMeta:
         new_class = super(DayCounterMeta, cls).__new__(cls, name, bases, attrs)
-        if new_class.name:
-            _day_counters[new_class.name] = new_class
+        if name := getattr(new_class, "name", ""):
+            _day_counters[name] = new_class
         return new_class
 
 
@@ -65,7 +66,7 @@ class Act360(DayCounter):
 class Act365(DayCounter):
     name = "ACT/365"
 
-    def dcf(self, start: date, end: date):
+    def dcf(self, start: date, end: date) -> float:
         return self.count(start, end) / 365.0
 
 

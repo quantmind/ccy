@@ -1,3 +1,5 @@
+from datetime import date
+
 future_month_list = ["F", "G", "H", "J", "K", "M", "N", "Q", "U", "V", "X", "Z"]
 
 short_month: tuple[str, ...] = (
@@ -16,7 +18,7 @@ short_month: tuple[str, ...] = (
 )
 
 
-def future_date_to_code(dte):
+def future_date_to_code(dte: date) -> str:
     """Obtain a future code from a date.
 
     For example december 2010 will result in Z10.

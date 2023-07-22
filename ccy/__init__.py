@@ -11,7 +11,6 @@ from .core.country import (
     countryccy,
     eurozone,
     print_eurozone,
-    set_country_map,
     set_new_country,
 )
 from .core.currency import (
@@ -50,7 +49,6 @@ __all__ = [
     "countryccy",
     "set_new_country",
     "countries",
-    "set_country_map",
     "country_map",
     "CountryError",
     "eurozone",
@@ -72,11 +70,11 @@ __all__ = [
 
 
 # Shortcuts
-def cross(code):
+def cross(code: str) -> str:
     return currency(code).as_cross()
 
 
-def crossover(code):
+def crossover(code: str) -> str:
     return currency(code).as_cross("/")
 
 

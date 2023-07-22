@@ -67,9 +67,6 @@ class ccy(NamedTuple):
         for k, v in info.items():
             stream.write(to_string("%s: %s\n" % (k, v)))
 
-    def __repr__(self) -> str:
-        return "%s: %s" % (self.__class__.__name__, self.code)
-
     def __str__(self) -> str:
         return self.code
 
@@ -207,31 +204,8 @@ def make_ccypairs() -> dict[str, ccy_pair]:
     return db
 
 
-def dump_currency_table():
-    headers = [
-        "code",
-        "name",
-        ("isonumber", "iso"),
-        ("html", "symbol"),
-        ("default_country", "country"),
-        "order",
-        "rounding",
-    ]
-    all = []
-    data = []
-    all.append(data)
-    for h in headers:
-        if isinstance(h, tuple):
-            h = h[1]
-        data.append(h)
-    for c in sorted(currencydb().values(), key=lambda x: x.order):
-        data = []
-        all.append(data)
-        for h in headers:
-            if isinstance(h, tuple):
-                h = h[0]
-            data.append(getattr(c, h))
-    return all
+def dump_currency_table() -> list:
+    return [c._asdict() for c in sorted(currencydb().values(), key=lambda x: x.order)]
 
 
 _ccys: ccydb = ccydb()

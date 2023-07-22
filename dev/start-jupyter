@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -e
+
+PORT=$1
+
+export PYTHONPATH=${PWD}:${PYTHONPATH}
+ENV_FILE="${PWD}/.env"
+touch ${ENV_FILE}
+export $(grep -v '^#' ${ENV_FILE} | xargs)
+
+jupyter-lab --port=${PORT}

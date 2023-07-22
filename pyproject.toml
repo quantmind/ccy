@@ -23,10 +23,22 @@ mypy = "^1.4.0"
 ruff = "^0.0.277"
 types-python-dateutil = "^2.8.19.13"
 
+[tool.poetry.group.book]
+optional = true
+
+[tool.poetry.group.book.dependencies]
+jupyter-book = "^0.15.1"
+jupyterlab = "^4.0.3"
+jupytext = "^1.14.7"
+ghp-import = "^2.1.0"
+pandas = "^2.0.3"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
+[tool.jupytext]
+formats = "ipynb,myst"
 
 [tool.mypy]
 disallow_untyped_calls = true
@@ -36,3 +48,12 @@ warn_no_return = true
 [[tool.mypy.overrides]]
 module = "pycountry.*"
 ignore_missing_imports = true
+
+
+[[tool.mypy.overrides]]
+module = "ccy.tradingcentres.*"
+ignore_errors = true
+
+[[tool.mypy.overrides]]
+module = "ccy.dates.period.*"
+ignore_errors = true

@@ -1,5 +1,6 @@
 import time
 from datetime import date, datetime
+from typing import Any
 
 try:
     from dateutil.parser import parse as date_from_string
@@ -9,7 +10,7 @@ except ImportError:  # noqa
         raise NotImplementedError
 
 
-def todate(val):
+def todate(val: Any) -> date:
     """Convert val to a datetime.date instance by trying several
     conversion algorithm.
     If it fails it raise a ValueError exception.
@@ -38,11 +39,11 @@ def todate(val):
                 raise ValueError("Could not convert %s to date" % val)
 
 
-def date2timestamp(dte):
+def date2timestamp(dte: date) -> float:
     return time.mktime(dte.timetuple())
 
 
-def jstimestamp(dte):
+def jstimestamp(dte: date) -> float:
     """Convert a date to a javascript timestamp.
 
     A Javascript timestamp is the number of milliseconds since
@@ -50,7 +51,7 @@ def jstimestamp(dte):
     return 1000 * date2timestamp(dte)
 
 
-def timestamp2date(tstamp):
+def timestamp2date(tstamp: float) -> date:
     "Converts a unix timestamp to a Python datetime object"
     dt = datetime.fromtimestamp(tstamp)
     if not dt.hour + dt.minute + dt.second + dt.microsecond:
@@ -59,22 +60,22 @@ def timestamp2date(tstamp):
         return dt
 
 
-def yyyymmdd2date(dte):
+def yyyymmdd2date(dte: float | int) -> date:
     try:
-        y = dte // 10000
+        y = int(dte // 10000)
         md = dte % 10000
-        m = md // 100
-        d = md % 100
+        m = int(md // 100)
+        d = int(md % 100)
         return date(y, m, d)
     except Exception:
         raise ValueError("Could not convert %s to date" % dte)
 
 
-def date2yyyymmdd(dte):
+def date2yyyymmdd(dte: date) -> int:
     return dte.day + 100 * (dte.month + 100 * dte.year)
 
 
-def juldate2date(val):
+def juldate2date(val: float | int) -> date:
     """Convert from a Julian date/datetime to python date or datetime"""
     ival = int(val)
     dec = val - ival
@@ -110,7 +111,7 @@ def juldate2date(val):
         return date(y, m, d)
 
 
-def date2juldate(val):
+def date2juldate(val: date) -> float:
     """Convert from a python date/datetime to a Julian date & time"""
     f = 12 * val.year + val.month - 22803
     fq = f // 12
