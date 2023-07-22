@@ -6,7 +6,7 @@ if TYPE_CHECKING:
     from .currency import ccydb
 
 
-def make_ccys(db: ccydb):
+def make_ccys(db: ccydb) -> None:
     """
     Create the currency dictionary
     """
@@ -466,7 +466,17 @@ def make_ccys(db: ccydb):
         symbol_raw=r"Ft",
         html="Ft",
     )
-    insert("RON", "946", "RN", 34, "Romanian Leu", dfr, "RO", "ACT/360", "ACT/360")
+    insert(
+        "RON",
+        "946",
+        "RN",
+        34,
+        "Romanian Leu",
+        dfr,
+        "RO",
+        "ACT/360",
+        "ACT/360",
+    )
     insert(
         "UAH",
         "980",
@@ -492,8 +502,6 @@ def make_ccys(db: ccydb):
         "ACT/ACT",
         symbol_raw=r"\u0440\u0443\u0431",
     )
-    # TODO: Check towletters code and position
-    insert("HRK", "191", "HK", 410, "Croatian kuna", dfr, "HR", symbol_raw=r"kn")
     # TODO: Check towletters code and position
     insert(
         "KZT",
@@ -534,7 +542,15 @@ def make_ccys(db: ccydb):
         html="&#x20aa;",
     )
     # TODO: Check towletters code and position
-    insert("AED", "784", "AE", 410, "United Arab Emirates Dirham", dfr, "AE")
+    insert(
+        "AED",
+        "784",
+        "AE",
+        410,
+        "United Arab Emirates Dirham",
+        dfr,
+        "AE",
+    )
     # TODO: Check towletters code and position
     insert(
         "QAR",
@@ -597,5 +613,13 @@ def make_ccys(db: ccydb):
 
     # BITCOIN
     insert(
-        "XBT", "000", "BT", -1, "Bitcoin", 8, "WW", symbol_raw=r"\u0e3f", html="&#xe3f;"
+        "XBT",
+        "000",
+        "BT",
+        -1,
+        "Bitcoin",
+        8,
+        "WW",
+        symbol_raw=r"\u0e3f",
+        html="&#xe3f;",
     )

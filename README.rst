@@ -152,50 +152,6 @@ eurozone is tuple of country ISO codes::
     Spain
 
 
-Date and Periods
-===================
-
-The module is shipped with a ``date`` module for manipulating time periods and
-converting dates between different formats. The *period* function can be used
-to create ``Period`` instances::
-
-    >>> from ccy import period
-    >>> p = period('1m')
-    >>> p
-    1M
-    >>> p += '2w'
-    >>> p
-    1M2W
-    >>> P += '3m'
-    >>> p
-    4M2W
-
-
-Installation
-================
-This library works for Python 2.6 and higher, including Python 3.
-In addition, it requires:
-
-* pytz_ for Countries information.
-* dateutils_ for date calculations
-
-Install using ``pip``::
-
-    pip install ccy
-
-or from source::
-
-    python setup.py install
-
-
-Running tests
-~~~~~~~~~~~~~~~~~~~~~
-
-From within the package directory::
-
-    python setup.py test
-
-
 .. _pytz: http://pytz.sourceforge.net/
 .. _`ISO 3166-1 alpha-2`: http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 .. _`ISO 4217`: http://en.wikipedia.org/wiki/ISO_4217

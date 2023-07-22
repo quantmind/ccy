@@ -56,7 +56,7 @@ def test_new_country():
 
 
 def test_eurozone():
-    assert len(eurozone) == 19
+    assert len(eurozone) == 20
     for c in eurozone:
         assert countryccy(c) == "EUR"
 
@@ -121,8 +121,8 @@ def test_print():
 
 def test_dump_currency_table():
     db = currencydb()
-    table = list(dump_currency_table())
-    assert len(table) == len(db) + 1
+    table = dump_currency_table()
+    assert len(table) == len(db)
 
 
 def test_description():

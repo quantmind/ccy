@@ -1,8 +1,11 @@
 from __future__ import annotations
 
-from typing import Protocol
+from typing import TYPE_CHECKING, Protocol
 
 from .currency import currencydb
+
+if TYPE_CHECKING:
+    pass
 
 # Eurozone countries (officially the euro area)
 # see http://en.wikipedia.org/wiki/Eurozone
@@ -10,18 +13,18 @@ from .currency import currencydb
 # see http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 #
 eurozone = tuple(
-    ("AT BE CY DE EE ES FI FR GR IE IT LU LV LT MT NL PT SI SK").split(" ")
+    ("AT BE CY DE EE ES FI FR GR HR IE IT LU LV LT MT NL PT SI SK").split(" ")
 )
 
 
-def print_eurozone():
-    for c in sorted(map(country, eurozone)):
+def print_eurozone() -> None:
+    for c in sorted(country(c).name for c in eurozone):
         print(c)
 
 
 _countries: dict[str, Country] = {}
-_country_ccys = None
-_country_maps = {}
+_country_ccys: dict[str, str] = {}
+_country_maps: dict[str, str] = {}
 
 
 class Country(Protocol):
@@ -34,16 +37,16 @@ class CountryError(Exception):
     pass
 
 
-def country(code):
+def country(code: str) -> Country:
     cdb = countries()
     code = country_map(code)
-    return cdb.get(code, "")
+    return cdb[code]
 
 
-def countryccy(code):
+def countryccy(code: str) -> str:
     cdb = countryccys()
     code = str(code).upper()
-    return cdb.get(code, None)
+    return cdb.get(code, "")
 
 
 def countries() -> dict[str, Country]:
@@ -61,53 +64,22 @@ def countries() -> dict[str, Country]:
     return _countries
 
 
-def countryccys():
+def countryccys() -> dict[str, str]:
     """
     Create a dictionary with keys given by countries ISO codes and values
     given by their currencies
     """
     global _country_ccys
     if not _country_ccys:
-        v = {}
+        v: dict[str, str] = {}
         _country_ccys = v
         ccys = currencydb()
-        for c in eurozone:
-            v[c] = "EUR"
+        for euc in eurozone:
+            v[euc] = "EUR"
         for c in ccys.values():
             if c.default_country:
                 v[c.default_country] = c.code
     return _country_ccys
-
-
-def set_country_map(cfrom, cto, name=None, replace=True):
-    """
-    Set a mapping between a country code to another code
-    """
-    global _country_maps
-    cdb = countries()
-    cfrom = str(cfrom).upper()
-    c = cdb.get(cfrom)
-    if c:
-        if name:
-            c = name
-        cto = str(cto).upper()
-        if cto in cdb:
-            raise CountryError("Country %s already in database" % cto)
-        cdb[cto] = c
-        _country_maps[cfrom] = cto
-        ccys = currencydb()
-        cccys = countryccys()
-        ccy = cccys[cfrom]
-        cccys[cto] = ccy
-
-        # If set, remove cfrom from database
-        if replace:
-            ccy = ccys.get(ccy)
-            ccy.default_country = cto
-            cdb.pop(cfrom)
-            cccys.pop(cfrom)
-    else:
-        raise CountryError("Country %s not in database" % c)
 
 
 def set_new_country(code: str, ccy: str, name: str) -> None:
@@ -132,7 +104,7 @@ def set_new_country(code: str, ccy: str, name: str) -> None:
     cccys[code] = ccy
 
 
-def country_map(code):
+def country_map(code: str) -> str:
     """
     Country mapping
     """

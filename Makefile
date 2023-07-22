@@ -15,9 +15,8 @@ clean:		## remove python cache files
 docs:		## build docs
 	cd docs && make docs
 
-install:	## install packages for development
-	@pip install -U pip poetry
-	@poetry install
+install-dev:	## install packages for development
+	@./dev/install
 
 lint:		## Run linters
 	@poetry run ./dev/lint fix
@@ -32,3 +31,12 @@ test:		## test with python 3.8 with coverage
 
 publish:	## release to pypi and github tag
 	@poetry publish --build -u lsbardel -p $(PYPI_PASSWORD)
+
+notebook:	## Run Jupyter notebook server
+	@poetry run ./dev/start-jupyter 9095
+
+book:		## Build static jupyter {book}
+	poetry run jupyter-book build docs --all
+
+publish-book:	## publish the book to github pages
+	poetry run ghp-import -n -p -f docs/_build/html
