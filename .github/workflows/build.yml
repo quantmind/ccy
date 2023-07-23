@@ -32,9 +32,12 @@ jobs:
       run: make lint
     - name: run tests
       run: make test
-    - name: upload coverage
+    - name: upload coverage reports to codecov
       if: matrix.python-version == '3.11'
-      run: make codecov
+      uses: codecov/codecov-action@v3
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        files: ./build/coverage.xml
     - name: build book
       if: ${{ matrix.python-version == '3.11' }}
       run: make book

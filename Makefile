@@ -1,4 +1,4 @@
-.PHONY: help clean docs install lint test codecov
+.PHONY: help clean docs install-dev lint lint-check test publish notebook book publish-book
 
 help:
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
