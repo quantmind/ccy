@@ -2,9 +2,8 @@ import json
 import pickle
 from io import StringIO as StreamIO
 
-import pytest
-
 import ccy as ccym
+import pytest
 from ccy import (
     CountryError,
     ccypair,
@@ -40,6 +39,14 @@ def test_iso():
     for ccy in ccys.values():
         assert ccy.isonumber not in iso
         iso[ccy.isonumber] = ccy
+
+
+def test_repr_and_eq():
+    ccy = currency("eur")
+    assert str(ccy) == "EUR"
+    assert ccy.symbol == "€"
+    assert ccy == currency("eur")
+    assert ccy != "whatever"
 
 
 def test_2letters():
