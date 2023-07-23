@@ -149,6 +149,18 @@ def test_string():
     assert todate("2014 Jan 05") == target
 
 
+def test_todate_nothing():
+    with pytest.raises(ValueError):
+        todate("")
+    with pytest.raises(ValueError):
+        todate(None)
+
+
+def test_todate_datetime():
+    assert todate(datetime.now()) == date.today()
+    assert todate(date.today()) == date.today()
+
+
 # def testDate2Timestamp():
 #     for d,jd,y,ts in .dates:
 #         if ts is not None:
