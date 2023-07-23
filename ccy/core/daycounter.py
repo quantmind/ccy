@@ -15,12 +15,8 @@ from typing import Any
 __all__ = ["getdc", "DayCounter", "alldc"]
 
 
-def getdc(name: str) -> DayCounter | None:
-    dc = _day_counters.get(name)
-    if dc:
-        return dc()
-    else:
-        return None
+def getdc(name: str) -> DayCounter:
+    return _day_counters[name]()
 
 
 def alldc() -> dict[str, DayCounterMeta]:
@@ -49,7 +45,7 @@ class DayCounterMeta(type):
 _day_counters: dict[str, DayCounterMeta] = {}
 
 
-class DayCounter(DayCounterMeta):
+class DayCounter(metaclass=DayCounterMeta):
     name: str = ""
 
     def count(self, start: date, end: date) -> int:
