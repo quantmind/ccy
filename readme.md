@@ -2,6 +2,7 @@
 
 [![PyPI version](https://badge.fury.io/py/ccy.svg)](https://badge.fury.io/py/ccy)
 [![Python versions](https://img.shields.io/pypi/pyversions/ccy.svg)](https://pypi.org/project/ccy)
+[![Python downloads](https://img.shields.io/pypi/dd/ccy.svg)](https://pypi.org/project/ccy)
 [![build](https://github.com/quantmind/ccy/actions/workflows/build.yml/badge.svg)](https://github.com/quantmind/ccy/actions/workflows/build.yml)
 [![codecov](https://codecov.io/gh/quantmind/ccy/branch/main/graph/badge.svg?token=2L5SY0WkXv)](https://codecov.io/gh/quantmind/ccy)
 
