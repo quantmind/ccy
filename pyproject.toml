@@ -4,7 +4,7 @@ version = "1.4.0"
 description = "Python currencies"
 authors = ["Luca Sbardella <luca@quantmind.com>"]
 license = "BSD"
-readme = "README.rst"
+readme = "readme.md"
 packages = [
     { include = "ccy" }
 ]
