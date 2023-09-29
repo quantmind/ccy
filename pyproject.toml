@@ -52,7 +52,3 @@ ignore_missing_imports = true
 [[tool.mypy.overrides]]
 module = "ccy.tradingcentres.*"
 ignore_errors = true
-
-[[tool.mypy.overrides]]
-module = "ccy.dates.period.*"
-ignore_errors = true
