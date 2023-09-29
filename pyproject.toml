@@ -15,12 +15,11 @@ python-dateutil = "^2.8.2"
 pycountry = "^22.3.5"
 
 [tool.poetry.group.dev.dependencies]
-black = "^22.10.0"
+black = "^23.9.0"
 isort = "^5.10.1"
-pytest = "^7.2.0"
 pytest-cov = "^4.0.0"
-mypy = "^1.4.0"
-ruff = "^0.0.277"
+mypy = "^1.5.1"
+ruff = "^0.0.291"
 types-python-dateutil = "^2.8.19.13"
 
 [tool.poetry.group.book]

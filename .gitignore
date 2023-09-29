@@ -17,7 +17,7 @@ htmlcov
 dist
 venv
 MANIFEST
-release-notes.md
+.python-version
 .settings
 .coverage
 .env

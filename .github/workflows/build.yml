@@ -15,19 +15,20 @@ jobs:
       PYTHON_ENV: ci
       CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
-      PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
     strategy:
       matrix:
-        python-version: ["3.10", "3.11"]
+        python-version: ["3.10", "3.11", "3.12-dev"]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
+    - name: Install poetry
+      run: pip install -U pip poetry
     - name: Install dependencies
-      run: make install-dev
+      run: poetry install
     - name: run lint
       run: make lint
     - name: run tests
@@ -38,12 +39,25 @@ jobs:
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: ./build/coverage.xml
+
+  book:
+    runs-on: ubuntu-latest
+    env:
+      PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+    needs:
+      - build
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.11"
+    - name: Install dependencies
+      run: make install-dev
     - name: build book
-      if: ${{ matrix.python-version == '3.11' }}
       run: make book
     - name: publish book
-      if: ${{ matrix.python-version == '3.11' }}
       run: make publish-book
     - name: publish
-      if: ${{ github.ref == 'refs/heads/main' && matrix.python-version == '3.10' && github.event.head_commit.message == 'release' }}
+      if: ${{ github.ref == 'refs/heads/main' && github.event.head_commit.message == 'release' }}
       run: make publish
