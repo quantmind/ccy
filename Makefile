@@ -40,3 +40,6 @@ book:		## Build static jupyter {book}
 
 publish-book:	## publish the book to github pages
 	poetry run ghp-import -n -p -f docs/_build/html
+
+outdated:	## Show outdated packages
+	poetry show -o -a
