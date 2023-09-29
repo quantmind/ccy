@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from typing import Any
+
 
 def period(pstr: str = "") -> Period:
     """Create a period object from a period string"""
@@ -7,9 +9,8 @@ def period(pstr: str = "") -> Period:
 
 
 def find_first_of(st: str, possible: str) -> int:
-    possible = tuple(possible)
     lowi = -1
-    for p in possible:
+    for p in tuple(possible):
         i = st.find(p)
         if i != -1 and (i < lowi or lowi == -1):
             lowi = i
@@ -30,11 +31,13 @@ class Period:
         self._days = days
 
     @classmethod
-    def make(cls, pstr: str = "") -> Period:
-        if isinstance(pstr, cls):
-            return pstr
+    def make(cls, data: Any) -> Period:
+        if isinstance(data, cls):
+            return data
+        elif isinstance(data, str):
+            return cls().add_tenure(data)
         else:
-            return cls().add_tenure(pstr)
+            raise TypeError("Cannot convert %s to Period" % data)
 
     def isempty(self) -> bool:
         return self._months == 0 and self._days == 0
@@ -68,7 +71,7 @@ class Period:
         return safemod(self._days, 7)
 
     @property
-    def totaldays(self):
+    def totaldays(self) -> int:
         return 30 * self._months + self._days
 
     def __repr__(self) -> str:
@@ -96,7 +99,7 @@ class Period:
             p = "%s%sD" % (p, abs(d))
         return "-" + p if neg else p
 
-    def simple(self):
+    def simple(self) -> str:
         """A string representation with only one period delimiter."""
         if self._days:
             return "%sD" % self.totaldays
@@ -138,31 +141,31 @@ class Period:
                 st = st[ip:]
         return self
 
-    def __add__(self, other):
-        other = self.make(other)
-        return self.__class__(self._months + other._months, self._days + other._days)
+    def __add__(self, other: Any) -> Period:
+        p = self.make(other)
+        return self.__class__(self._months + p._months, self._days + p._days)
 
-    def __radd__(self, other):
+    def __radd__(self, other: Any) -> Period:
         return self + other
 
-    def __sub__(self, other):
-        other = self.make(other)
-        return self.__class__(self._months - other._months, self._days - other._days)
+    def __sub__(self, other: Any) -> Period:
+        p = self.make(other)
+        return self.__class__(self._months - p._months, self._days - p._days)
 
-    def __rsub__(self, other):
+    def __rsub__(self, other: Any) -> Period:
         return self.make(other) - self
 
-    def __gt__(self, other):
+    def __gt__(self, other: Any) -> bool:
         return self.totaldays > self.make(other).totaldays
 
-    def __lt__(self, other):
+    def __lt__(self, other: Any) -> bool:
         return self.totaldays < self.make(other).totaldays
 
-    def __ge__(self, other):
+    def __ge__(self, other: Any) -> bool:
         return self.totaldays >= self.make(other).totaldays
 
-    def __le__(self, other):
+    def __le__(self, other: Any) -> bool:
         return self.totaldays <= self.make(other).totaldays
 
-    def __eq__(self, other):
+    def __eq__(self, other: Any) -> bool:
         return self.totaldays == self.make(other).totaldays
