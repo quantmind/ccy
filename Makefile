@@ -33,8 +33,8 @@ test:		## Test with python 3.8 with coverage
 	@poetry run pytest -x -v --cov --cov-report xml
 
 .PHONY: publish
-publish:	## Release to pypi and github tag
-	@poetry publish --build -u lsbardel -p $(PYPI_PASSWORD)
+publish:	## Release to pypi
+	@poetry publish --build -u __token__ -p $(PYPI_TOKEN)
 
 .PHONY: notebook
 notebook:	## Run Jupyter notebook server
