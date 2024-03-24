@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ccy"
-version = "1.4.0"
+version = "1.4.1"
 description = "Python currencies"
 authors = ["Luca Sbardella <luca@quantmind.com>"]
 license = "BSD"

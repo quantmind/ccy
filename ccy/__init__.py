@@ -1,6 +1,6 @@
 """Python currencies"""
 
-__version__ = "1.4.0"
+__version__ = "1.4.1"
 
 
 from .core.country import (
