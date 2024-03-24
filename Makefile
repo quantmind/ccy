@@ -1,9 +1,10 @@
-.PHONY: help clean docs install-dev lint lint-check test publish notebook book publish-book
 
+.PHONY: help
 help:
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
-clean:		## remove python cache files
+.PHONY: clean
+clean:		## Remove python cache files
 	find . -name '__pycache__' | xargs rm -rf
 	find . -name '*.pyc' -delete
 	rm -rf build
@@ -11,35 +12,42 @@ clean:		## remove python cache files
 	rm -rf .pytest_cache
 	rm -rf .coverage
 
-
-docs:		## build docs
+.PHONY: docs
+docs:		## Build docs
 	cd docs && make docs
 
-install-dev:	## install packages for development
+.PHONY: install-dev
+install-dev:	## Install packages for development
 	@./dev/install
 
+.PHONY: lint
 lint:		## Run linters
 	@poetry run ./dev/lint fix
 
-
+.PHONY: lint-check
 lint-check:	## Run linters in check mode
 	@poetry run ./dev/lint
 
-
-test:		## test with python 3.8 with coverage
+.PHONY: test
+test:		## Test with python 3.8 with coverage
 	@poetry run pytest -x -v --cov --cov-report xml
 
-publish:	## release to pypi and github tag
+.PHONY: publish
+publish:	## Release to pypi and github tag
 	@poetry publish --build -u lsbardel -p $(PYPI_PASSWORD)
 
+.PHONY: notebook
 notebook:	## Run Jupyter notebook server
 	@poetry run ./dev/start-jupyter 9095
 
+.PHONY: book
 book:		## Build static jupyter {book}
 	poetry run jupyter-book build docs --all
 
-publish-book:	## publish the book to github pages
+.PHONY: publish-book
+publish-book:	## Publish the book to github pages
 	poetry run ghp-import -n -p -f docs/_build/html
 
+.PHONY: outdated
 outdated:	## Show outdated packages
 	poetry show -o -a

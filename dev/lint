@@ -12,6 +12,6 @@ fi
 echo "run black"
 black ccy tests --exclude "fluid_common/protos/v2|fluid_apps/db/migrations" ${BLACK_ARG}
 echo "run ruff"
-ruff ccy tests ${RUFF_ARG}
+ruff check ccy tests ${RUFF_ARG}
 echo "run mypy"
 mypy ccy

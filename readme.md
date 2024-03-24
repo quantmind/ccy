@@ -11,4 +11,6 @@ currency objects containing information useful in financial analysis.
 Not all currencies in the world are supported yet. You are welcome to
 join and add more.
 
-Documentation is available as [ccy jupyter book](https://quantmind.github.io/ccy/).
+* Documentation is available as [ccy jupyter book](https://quantmind.github.io/ccy/).
+* Install the command line tool with `pip install ccy[cli]`.
+* Show all currencies in the command line via `ccys show`

@@ -59,7 +59,9 @@ class ccy(NamedTuple):
             return "Dollar"
 
     def info(self) -> dict[str, Any]:
-        return self._asdict()
+        data = self._asdict()
+        data["symbol"] = self.symbol
+        return data
 
     def printinfo(self, stream: Any | None = None) -> None:
         info = self.info()
@@ -205,7 +207,7 @@ def make_ccypairs() -> dict[str, ccy_pair]:
 
 
 def dump_currency_table() -> list:
-    return [c._asdict() for c in sorted(currencydb().values(), key=lambda x: x.order)]
+    return [c.info() for c in sorted(currencydb().values(), key=lambda x: x.order)]
 
 
 _ccys: ccydb = ccydb()

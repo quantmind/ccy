@@ -17,7 +17,7 @@ jobs:
       COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
     strategy:
       matrix:
-        python-version: ["3.10", "3.11", "3.12-dev"]
+        python-version: ["3.10", "3.11", "3.12"]
 
     steps:
     - uses: actions/checkout@v3
@@ -34,7 +34,7 @@ jobs:
     - name: run tests
       run: make test
     - name: upload coverage reports to codecov
-      if: matrix.python-version == '3.11'
+      if: matrix.python-version == '3.12'
       uses: codecov/codecov-action@v3
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
@@ -48,10 +48,10 @@ jobs:
       - build
     steps:
     - uses: actions/checkout@v3
-    - name: Set up Python 3.11
+    - name: Set up Python 3.12
       uses: actions/setup-python@v3
       with:
-        python-version: "3.11"
+        python-version: "3.12"
     - name: Install dependencies
       run: make install-dev
     - name: build book

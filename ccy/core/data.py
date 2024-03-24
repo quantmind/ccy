@@ -434,12 +434,12 @@ def make_ccys(db: ccydb) -> None:
         "985",
         "PZ",
         29,
-        "Polish Zloty",
+        "Polish Złoty",
         dfr,
         "PL",
         "ACT/ACT",
         "ACT/365",
-        symbol_raw=r"\u0050\u0142",
+        symbol_raw=r"\u007a\u0142",
     )
     insert(
         "TRY",

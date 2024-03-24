@@ -6,6 +6,7 @@ Implemented::
     * 30 / 360
     * Actual Actual
 """
+
 from __future__ import annotations
 
 from copy import copy

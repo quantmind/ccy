@@ -12,15 +12,22 @@ packages = [
 [tool.poetry.dependencies]
 python = "^3.10,<3.13"
 python-dateutil = "^2.8.2"
-pycountry = "^22.3.5"
+pycountry = "^23.12.11"
+rich = {version = "^13.7.1", optional = true}
+click = {version = "^8.1.7", optional = true}
+pandas = {version = "^2.0.3", optional = true}
+
 
 [tool.poetry.group.dev.dependencies]
-black = "^23.9.0"
+black = "^24.3.0"
 isort = "^5.10.1"
 pytest-cov = "^4.0.0"
 mypy = "^1.5.1"
-ruff = "^0.0.291"
+ruff = "^0.3.4"
 types-python-dateutil = "^2.8.19.13"
+
+[tool.poetry.extras]
+cli = ["rich", "click", "pandas"]
 
 [tool.poetry.group.book]
 optional = true
@@ -30,7 +37,11 @@ jupyter-book = "^0.15.1"
 jupyterlab = "^4.0.3"
 jupytext = "^1.14.7"
 ghp-import = "^2.1.0"
-pandas = "^2.0.3"
+
+
+[tool.poetry.scripts]
+ccys = "ccy.cli:ccys"
+
 
 [build-system]
 requires = ["poetry-core"]
@@ -39,13 +50,23 @@ build-backend = "poetry.core.masonry.api"
 [tool.jupytext]
 formats = "ipynb,myst"
 
+[tool.isort]
+profile = "black"
+
+[tool.ruff]
+lint.select = ["E", "F"]
+line-length = 88
+
 [tool.mypy]
 disallow_untyped_calls = true
 disallow_untyped_defs = true
 warn_no_return = true
 
 [[tool.mypy.overrides]]
-module = "pycountry.*"
+module = [
+    "pycountry.*",
+    "pandas.*",
+]
 ignore_missing_imports = true
 
 
