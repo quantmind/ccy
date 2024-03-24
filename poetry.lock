@@ -3430,9 +3430,9 @@ docs = ["furo", "jaraco.packaging (>=9.3)", "jaraco.tidelift (>=1.4)", "rst.link
 testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-cov", "pytest-enabler (>=2.2)", "pytest-ignore-flaky", "pytest-mypy", "pytest-ruff (>=0.2.1)"]
 
 [extras]
-cmdline = ["click", "pandas", "rich"]
+cli = ["click", "pandas", "rich"]
 
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10,<3.13"
-content-hash = "b7f2285c92c6ada155be22b1489c955530f20d6627ce3ceda8294031d0ea1c0a"
+content-hash = "eea49299ed192147097ea6ac8795f00822f29a146b70682b7750311a36a87a32"
