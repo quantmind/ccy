@@ -28,7 +28,7 @@ jobs:
     - name: Install poetry
       run: pip install -U pip poetry
     - name: Install dependencies
-      run: poetry install
+      run: poetry install --all-extras
     - name: run lint
       run: make lint
     - name: run tests
@@ -52,7 +52,7 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: "3.12"
-    - name: Install dependencies
+    - name: Install all dev dependencies
       run: make install-dev
     - name: build book
       run: make book
