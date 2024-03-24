@@ -43,7 +43,7 @@ jobs:
   book:
     runs-on: ubuntu-latest
     env:
-      PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+      PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
     needs:
       - build
     steps:
