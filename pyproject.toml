@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ccy"
-version = "1.5.0"
+version = "1.6.0"
 description = "Python currencies"
 authors = ["Luca Sbardella <luca@quantmind.com>"]
 license = "BSD"
@@ -10,7 +10,7 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.10,<3.14"
+python = ">=3.10"
 python-dateutil = "^2.9.0"
 pycountry = "^24.6.1"
 rich = {version = "^13.7.1", optional = true}
@@ -22,8 +22,8 @@ pandas = {version = "^2.0.3", optional = true}
 black = "^24.3.0"
 isort = "^5.10.1"
 pytest-cov = "^5.0.0"
-mypy = "^1.5.1"
-ruff = "^0.6.9"
+mypy = "^1.13.0"
+ruff = "^0.7.1"
 types-python-dateutil = "^2.9.0.20241003"
 
 [tool.poetry.extras]
@@ -33,7 +33,7 @@ cli = ["rich", "click", "pandas"]
 optional = true
 
 [tool.poetry.group.book.dependencies]
-jupyter-book = "^0.15.1"
+jupyter-book = "^1.0.3"
 jupyterlab = "^4.0.3"
 jupytext = "^1.14.7"
 ghp-import = "^2.1.0"
