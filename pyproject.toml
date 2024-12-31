@@ -16,26 +16,28 @@ pycountry = "^24.6.1"
 rich = {version = "^13.7.1", optional = true}
 click = {version = "^8.1.7", optional = true}
 pandas = {version = "^2.0.3", optional = true}
+holidays = {version = "^0.63", optional = true}
 
 
 [tool.poetry.group.dev.dependencies]
 black = "^24.3.0"
 isort = "^5.10.1"
-pytest-cov = "^5.0.0"
-mypy = "^1.13.0"
-ruff = "^0.7.1"
+pytest-cov = "^6.0.0"
+mypy = "^1.14.1"
+ruff = "^0.8.4"
 types-python-dateutil = "^2.9.0.20241003"
 
 [tool.poetry.extras]
 cli = ["rich", "click", "pandas"]
+holidays = ["holidays"]
 
 [tool.poetry.group.book]
 optional = true
 
 [tool.poetry.group.book.dependencies]
 jupyter-book = "^1.0.3"
-jupyterlab = "^4.0.3"
-jupytext = "^1.14.7"
+jupyterlab = "^4.3.4"
+jupytext = "^1.16.6"
 ghp-import = "^2.1.0"
 
 
@@ -68,8 +70,3 @@ module = [
     "pandas.*",
 ]
 ignore_missing_imports = true
-
-
-[[tool.mypy.overrides]]
-module = "ccy.tradingcentres.*"
-ignore_errors = true

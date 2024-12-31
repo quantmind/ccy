@@ -31,7 +31,7 @@ def act_act_years(dt: date) -> float:
     a = 0.0
     if r > 0:
         a = 1.0
-    dd = (dt - date(y, 1, 1)).days
+    dd = (dt - date(y, 1, 1)).total_seconds() / 86400
     return y + dd / (365.0 + a)
 
 
@@ -49,8 +49,9 @@ _day_counters: dict[str, DayCounterMeta] = {}
 class DayCounter(metaclass=DayCounterMeta):
     name: str = ""
 
-    def count(self, start: date, end: date) -> int:
-        return (end - start).days
+    def count(self, start: date, end: date) -> float:
+        """Count the number of days between 2 dates"""
+        return (end - start).total_seconds() / 86400
 
     def dcf(self, start: date, end: date) -> float:
         return self.count(start, end) / 360.0

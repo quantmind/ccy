@@ -1,7 +1,8 @@
 import datetime
 
 import pytest
-from ccy.tradingcentres import centres, nextbizday, prevbizday
+from ccy.tradingcentres import nextbizday, prevbizday
+from ccy import tradingcentres
 
 
 @pytest.fixture()
@@ -33,6 +34,6 @@ def test_prevBizDay(dates):
 
 
 def test_TGT():
-    tcs = centres("TGT")
+    tcs = tradingcentres("TGT")
     assert not tcs.isbizday(datetime.date(2009, 12, 25))
     assert not tcs.isbizday(datetime.date(2010, 1, 1))
