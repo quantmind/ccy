@@ -12,6 +12,7 @@ from __future__ import annotations
 from copy import copy
 from datetime import date
 from typing import Any
+from ..dates.utils import date_diff
 
 __all__ = ["getdc", "DayCounter", "alldc"]
 
@@ -41,7 +42,7 @@ class DayCounter(metaclass=DayCounterMeta):
 
     def count(self, start: date, end: date) -> float:
         """Count the number of days between 2 dates"""
-        return (end - start).total_seconds() / 86400
+        return date_diff(end, start).total_seconds() / 86400
 
     def dcf(self, start: date, end: date) -> float:
         return self.count(start, end) / 360.0
@@ -76,5 +77,5 @@ class ActAct(DayCounter):
     def act_act_years(self, dt: date) -> float:
         y = dt.year
         days_in_year = 365 if y % 4 else 366
-        dd = (dt - date(y, 1, 1)).total_seconds() / 86400
+        dd = date_diff(dt, date(y, 1, 1)).total_seconds() / 86400
         return y + dd / days_in_year
