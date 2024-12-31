@@ -1,0 +1,1637 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Python CCY &#8212; Python Currencies</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Dates &amp; Periods" href="dates.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Python Currencies</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1 current active">
+                <a class="reference internal" href="#">
+                    Python CCY
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="dates.html">Dates &amp; Periods</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/quantmind/ccy" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/quantmind/ccy/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/intro.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Python CCY</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting Started</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-usage">Main Usage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#currency-crosses">Currency Crosses</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-crossover">cross &amp; crossover</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eurozone">Eurozone</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="python-ccy">
+<h1>Python CCY<a class="headerlink" href="#python-ccy" title="Link to this heading">#</a></h1>
+<section id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>installation</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>ccy
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>display currencies</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ccy</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ccy</span><span class="o">.</span><span class="n">dump_currency_table</span><span class="p">())</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>code</th>
+      <th>isonumber</th>
+      <th>twoletterscode</th>
+      <th>order</th>
+      <th>name</th>
+      <th>rounding</th>
+      <th>default_country</th>
+      <th>fixeddc</th>
+      <th>floatdc</th>
+      <th>fixedfreq</th>
+      <th>floatfreq</th>
+      <th>future</th>
+      <th>symbol_raw</th>
+      <th>html</th>
+      <th>symbol</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>XBT</td>
+      <td>000</td>
+      <td>BT</td>
+      <td>-1</td>
+      <td>Bitcoin</td>
+      <td>8</td>
+      <td>WW</td>
+      <td>Act/365</td>
+      <td>Act/365</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\u0e3f</td>
+      <td>&amp;#xe3f;</td>
+      <td>฿</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>EUR</td>
+      <td>978</td>
+      <td>EU</td>
+      <td>1</td>
+      <td>Euro</td>
+      <td>4</td>
+      <td>EU</td>
+      <td>30/360</td>
+      <td>ACT/360</td>
+      <td></td>
+      <td></td>
+      <td>FE</td>
+      <td>\u20ac</td>
+      <td>&amp;#x20ac;</td>
+      <td>€</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>GBP</td>
+      <td>826</td>
+      <td>BP</td>
+      <td>2</td>
+      <td>British Pound</td>
+      <td>4</td>
+      <td>GB</td>
+      <td>ACT/365</td>
+      <td>ACT/365</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\u00a3</td>
+      <td>&amp;#xa3;</td>
+      <td>£</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>AUD</td>
+      <td>036</td>
+      <td>AD</td>
+      <td>3</td>
+      <td>Australian Dollar</td>
+      <td>4</td>
+      <td>AU</td>
+      <td>ACT/365</td>
+      <td>ACT/365</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\u0024</td>
+      <td>&amp;#x24;</td>
+      <td>$</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NZD</td>
+      <td>554</td>
+      <td>ND</td>
+      <td>4</td>
+      <td>New-Zealand Dollar</td>
+      <td>4</td>
+      <td>NZ</td>
+      <td>ACT/365</td>
+      <td>ACT/365</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\u0024</td>
+      <td>&amp;#x24;</td>
+      <td>$</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>USD</td>
+      <td>840</td>
+      <td>UD</td>
+      <td>5</td>
+      <td>US Dollar</td>
+      <td>0</td>
+      <td>US</td>
+      <td>30/360</td>
+      <td>ACT/360</td>
+      <td></td>
+      <td></td>
+      <td>ED</td>
+      <td>\u0024</td>
+      <td>&amp;#x24;</td>
+      <td>$</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>CAD</td>
+      <td>124</td>
+      <td>CD</td>
+      <td>6</td>
+      <td>Canadian Dollar</td>
+      <td>4</td>
+      <td>CA</td>
+      <td>ACT/365</td>
+      <td>ACT/365</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\u0024</td>
+      <td>&amp;#x24;</td>
+      <td>$</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>CHF</td>
+      <td>756</td>
+      <td>SF</td>
+      <td>7</td>
+      <td>Swiss Franc</td>
+      <td>4</td>
+      <td>CH</td>
+      <td>30/360</td>
+      <td>ACT/360</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Fr</td>
+      <td>&amp;#x20a3;</td>
+      <td>Fr</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>NOK</td>
+      <td>578</td>
+      <td>NK</td>
+      <td>8</td>
+      <td>Norwegian Krona</td>
+      <td>4</td>
+      <td>NO</td>
+      <td>30/360</td>
+      <td>ACT/360</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>kr</td>
+      <td>kr</td>
+      <td>kr</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>SEK</td>
+      <td>752</td>
+      <td>SK</td>
+      <td>9</td>
+      <td>Swedish Krona</td>
+      <td>4</td>
+      <td>SE</td>
+      <td>30/360</td>
+      <td>ACT/360</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>kr</td>
+      <td>kr</td>
+      <td>kr</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>DKK</td>
+      <td>208</td>
+      <td>DK</td>
+      <td>10</td>
+      <td>Danish Krona</td>
+      <td>4</td>
+      <td>DK</td>
+      <td>30/360</td>
+      <td>ACT/360</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>kr</td>
+      <td>kr</td>
+      <td>kr</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>SGD</td>
+      <td>702</td>
+      <td>SD</td>
+      <td>15</td>
+      <td>Singapore Dollar</td>
+      <td>4</td>
+      <td>SG</td>
+      <td>ACT/365</td>
+      <td>ACT/365</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\u0024</td>
+      <td>&amp;#x24;</td>
+      <td>$</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>TWD</td>
+      <td>901</td>
+      <td>TD</td>
+      <td>18</td>
+      <td>Taiwan Dollar</td>
+      <td>4</td>
+      <td>TW</td>
+      <td>ACT/365</td>
+      <td>ACT/365</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\u0024</td>
+      <td>&amp;#x24;</td>
+      <td>$</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>HKD</td>
+      <td>344</td>
+      <td>HD</td>
+      <td>19</td>
+      <td>Hong Kong Dollar</td>
+      <td>4</td>
+      <td>HK</td>
+      <td>ACT/365</td>
+      <td>ACT/365</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\u5713</td>
+      <td>HK&amp;#x24;</td>
+      <td>圓</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>CZK</td>
+      <td>203</td>
+      <td>CK</td>
+      <td>28</td>
+      <td>Czech Koruna</td>
+      <td>4</td>
+      <td>CZ</td>
+      <td>ACT/360</td>
+      <td>ACT/360</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\u004b\u010d</td>
+      <td></td>
+      <td>Kč</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>PLN</td>
+      <td>985</td>
+      <td>PZ</td>
+      <td>29</td>
+      <td>Polish Złoty</td>
+      <td>4</td>
+      <td>PL</td>
+      <td>ACT/ACT</td>
+      <td>ACT/365</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\u007a\u0142</td>
+      <td></td>
+      <td>zł</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>TRY</td>
+      <td>949</td>
+      <td>TY</td>
+      <td>30</td>
+      <td>Turkish Lira</td>
+      <td>4</td>
+      <td>TR</td>
+      <td>ACT/360</td>
+      <td>ACT/360</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\u0054\u004c</td>
+      <td></td>
+      <td>TL</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>HUF</td>
+      <td>348</td>
+      <td>HF</td>
+      <td>32</td>
+      <td>Hungarian Forint</td>
+      <td>4</td>
+      <td>HU</td>
+      <td>ACT/365</td>
+      <td>ACT/360</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Ft</td>
+      <td>Ft</td>
+      <td>Ft</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>RON</td>
+      <td>946</td>
+      <td>RN</td>
+      <td>34</td>
+      <td>Romanian Leu</td>
+      <td>4</td>
+      <td>RO</td>
+      <td>ACT/360</td>
+      <td>ACT/360</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\00a4</td>
+      <td></td>
+      <td>a4</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>UAH</td>
+      <td>980</td>
+      <td>UH</td>
+      <td>35</td>
+      <td>Ukrainian Hryvnia</td>
+      <td>4</td>
+      <td>UA</td>
+      <td>ACT/ACT</td>
+      <td>ACT/ACT</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\u20b4</td>
+      <td>&amp;#x20b4;</td>
+      <td>₴</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>RUB</td>
+      <td>643</td>
+      <td>RR</td>
+      <td>36</td>
+      <td>Russian Ruble</td>
+      <td>4</td>
+      <td>RU</td>
+      <td>ACT/ACT</td>
+      <td>ACT/ACT</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\u0440\u0443\u0431</td>
+      <td></td>
+      <td>руб</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>BRL</td>
+      <td>986</td>
+      <td>BC</td>
+      <td>200</td>
+      <td>Brazilian Real</td>
+      <td>4</td>
+      <td>BR</td>
+      <td>BUS/252</td>
+      <td>BUS/252</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>R$</td>
+      <td></td>
+      <td>R$</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>PEN</td>
+      <td>604</td>
+      <td>PS</td>
+      <td>220</td>
+      <td>Peruvian New Sol</td>
+      <td>4</td>
+      <td>PE</td>
+      <td>ACT/360</td>
+      <td>ACT/360</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>S/.</td>
+      <td></td>
+      <td>S/.</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>ARS</td>
+      <td>032</td>
+      <td>AP</td>
+      <td>301</td>
+      <td>Argentine Peso</td>
+      <td>4</td>
+      <td>AR</td>
+      <td>30/360</td>
+      <td>ACT/360</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\u0024</td>
+      <td>&amp;#x24;</td>
+      <td>$</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>MYR</td>
+      <td>458</td>
+      <td>MR</td>
+      <td>345</td>
+      <td>Malaysian Ringgit</td>
+      <td>4</td>
+      <td>MY</td>
+      <td>ACT/365</td>
+      <td>ACT/365</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\00a4</td>
+      <td></td>
+      <td>a4</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>JMD</td>
+      <td>388</td>
+      <td>JD</td>
+      <td>410</td>
+      <td>Jamaican Dollar</td>
+      <td>4</td>
+      <td>JM</td>
+      <td>ACT/360</td>
+      <td>ACT/360</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\u0024</td>
+      <td>&amp;#x24;</td>
+      <td>$</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>TTD</td>
+      <td>780</td>
+      <td>TT</td>
+      <td>410</td>
+      <td>Trinidad and Tobago Dollar</td>
+      <td>4</td>
+      <td>TT</td>
+      <td>ACT/360</td>
+      <td>ACT/360</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\u0024</td>
+      <td>&amp;#x24;</td>
+      <td>$</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>BMD</td>
+      <td>060</td>
+      <td>BD</td>
+      <td>410</td>
+      <td>Bermudian Dollar</td>
+      <td>4</td>
+      <td>BM</td>
+      <td>Act/365</td>
+      <td>Act/365</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\u0024</td>
+      <td>&amp;#x24;</td>
+      <td>$</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>KZT</td>
+      <td>398</td>
+      <td>KT</td>
+      <td>410</td>
+      <td>Tenge</td>
+      <td>4</td>
+      <td>KZ</td>
+      <td>Act/365</td>
+      <td>Act/365</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\u20b8</td>
+      <td>&amp;#x20b8;</td>
+      <td>₸</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>BGN</td>
+      <td>975</td>
+      <td>BN</td>
+      <td>410</td>
+      <td>Bulgarian Lev</td>
+      <td>4</td>
+      <td>BG</td>
+      <td>Act/365</td>
+      <td>Act/365</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\u043b\u0432.</td>
+      <td>&amp;#1083;&amp;#1074;</td>
+      <td>лв.</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>ILS</td>
+      <td>376</td>
+      <td>IS</td>
+      <td>410</td>
+      <td>Israeli Shekel</td>
+      <td>4</td>
+      <td>IL</td>
+      <td>ACT/365</td>
+      <td>ACT/365</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\u20aa</td>
+      <td>&amp;#x20aa;</td>
+      <td>₪</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>AED</td>
+      <td>784</td>
+      <td>AE</td>
+      <td>410</td>
+      <td>United Arab Emirates Dirham</td>
+      <td>4</td>
+      <td>AE</td>
+      <td>Act/365</td>
+      <td>Act/365</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\00a4</td>
+      <td></td>
+      <td>a4</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>QAR</td>
+      <td>634</td>
+      <td>QA</td>
+      <td>410</td>
+      <td>Qatari Riyal</td>
+      <td>4</td>
+      <td>QA</td>
+      <td>Act/365</td>
+      <td>Act/365</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\ufdfc</td>
+      <td>&amp;#xfdfc;</td>
+      <td>﷼</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>SAR</td>
+      <td>682</td>
+      <td>SR</td>
+      <td>410</td>
+      <td>Saudi Riyal</td>
+      <td>4</td>
+      <td>SA</td>
+      <td>Act/365</td>
+      <td>Act/365</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\ufdfc</td>
+      <td>&amp;#xfdfc;</td>
+      <td>﷼</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>EGP</td>
+      <td>818</td>
+      <td>EP</td>
+      <td>550</td>
+      <td>Egyptian Pound</td>
+      <td>4</td>
+      <td>EG</td>
+      <td>Act/365</td>
+      <td>Act/365</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\u00a3</td>
+      <td>&amp;#xa3;</td>
+      <td>£</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>NGN</td>
+      <td>566</td>
+      <td>NG</td>
+      <td>650</td>
+      <td>Nigerian Naira</td>
+      <td>4</td>
+      <td>NG</td>
+      <td>Act/365</td>
+      <td>Act/365</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\u20a6</td>
+      <td>&amp;#x20A6;</td>
+      <td>₦</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>CNY</td>
+      <td>156</td>
+      <td>CY</td>
+      <td>680</td>
+      <td>Chinese Renminbi</td>
+      <td>4</td>
+      <td>CN</td>
+      <td>ACT/365</td>
+      <td>ACT/365</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\u00a5</td>
+      <td>&amp;#xa5;</td>
+      <td>¥</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>ZAR</td>
+      <td>710</td>
+      <td>SA</td>
+      <td>750</td>
+      <td>South African Rand</td>
+      <td>4</td>
+      <td>ZA</td>
+      <td>ACT/365</td>
+      <td>ACT/365</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>R</td>
+      <td>R</td>
+      <td>R</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>MXN</td>
+      <td>484</td>
+      <td>MP</td>
+      <td>1330</td>
+      <td>Mexican Peso</td>
+      <td>4</td>
+      <td>MX</td>
+      <td>ACT/360</td>
+      <td>ACT/360</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\u0024</td>
+      <td>&amp;#x24;</td>
+      <td>$</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>THB</td>
+      <td>764</td>
+      <td>TB</td>
+      <td>3300</td>
+      <td>Thai Baht</td>
+      <td>2</td>
+      <td>TH</td>
+      <td>ACT/365</td>
+      <td>ACT/365</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\u0e3f</td>
+      <td>&amp;#xe3f;</td>
+      <td>฿</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>INR</td>
+      <td>356</td>
+      <td>IR</td>
+      <td>4500</td>
+      <td>Indian Rupee</td>
+      <td>4</td>
+      <td>IN</td>
+      <td>ACT/365</td>
+      <td>ACT/365</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\u20a8</td>
+      <td>&amp;#x20a8;</td>
+      <td>₨</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>PHP</td>
+      <td>608</td>
+      <td>PP</td>
+      <td>4770</td>
+      <td>Philippines Peso</td>
+      <td>4</td>
+      <td>PH</td>
+      <td>ACT/360</td>
+      <td>ACT/360</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\u20b1</td>
+      <td>&amp;#x20b1;</td>
+      <td>₱</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>JPY</td>
+      <td>392</td>
+      <td>JY</td>
+      <td>10000</td>
+      <td>Japanese Yen</td>
+      <td>2</td>
+      <td>JP</td>
+      <td>ACT/365</td>
+      <td>ACT/360</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\u00a5</td>
+      <td>&amp;#xa5;</td>
+      <td>¥</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>CLP</td>
+      <td>152</td>
+      <td>CH</td>
+      <td>54500</td>
+      <td>Chilean Peso</td>
+      <td>2</td>
+      <td>CL</td>
+      <td>ACT/360</td>
+      <td>ACT/360</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\u0024</td>
+      <td>&amp;#x24;</td>
+      <td>$</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>KRW</td>
+      <td>410</td>
+      <td>KW</td>
+      <td>110000</td>
+      <td>South Korean won</td>
+      <td>2</td>
+      <td>KR</td>
+      <td>ACT/365</td>
+      <td>ACT/365</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\u20a9</td>
+      <td>&amp;#x20a9;</td>
+      <td>₩</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>COP</td>
+      <td>170</td>
+      <td>CL</td>
+      <td>190000</td>
+      <td>Colombian Peso</td>
+      <td>2</td>
+      <td>CO</td>
+      <td>ACT/360</td>
+      <td>ACT/360</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\u0024</td>
+      <td>&amp;#x24;</td>
+      <td>$</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>IDR</td>
+      <td>360</td>
+      <td>IH</td>
+      <td>970000</td>
+      <td>Indonesian Rupiah</td>
+      <td>0</td>
+      <td>ID</td>
+      <td>ACT/360</td>
+      <td>ACT/360</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Rp</td>
+      <td>Rp</td>
+      <td>Rp</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>VND</td>
+      <td>704</td>
+      <td>VD</td>
+      <td>1700000</td>
+      <td>Vietnamese Dong</td>
+      <td>0</td>
+      <td>VN</td>
+      <td>ACT/365</td>
+      <td>ACT/365</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>\u20ab</td>
+      <td>&amp;#x20ab;</td>
+      <td>₫</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="main-usage">
+<h2>Main Usage<a class="headerlink" href="#main-usage" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ccy</span>
+<span class="n">eur</span> <span class="o">=</span> <span class="n">ccy</span><span class="o">.</span><span class="n">currency</span><span class="p">(</span><span class="s2">&quot;aud&quot;</span><span class="p">)</span>
+<span class="n">eur</span><span class="o">.</span><span class="n">printinfo</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>code: AUD
+isonumber: 036
+twoletterscode: AD
+order: 3
+name: Australian Dollar
+rounding: 4
+default_country: AU
+fixeddc: ACT/365
+floatdc: ACT/365
+fixedfreq: 
+floatfreq: 
+future: 
+symbol_raw: \u0024
+html: &amp;#x24;
+symbol: $
+</pre></div>
+</div>
+</div>
+</div>
+<p>a currency object has the following properties:</p>
+<ul class="simple">
+<li><p><em>code</em>: the <a class="reference external" href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a> three letters codee.</p></li>
+<li><p><em>twoletterscode</em>: two letter crg.</p></li>
+<li><p><em>default_country</em>: the default <a class="reference external" href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO 3166-1 alpha_2</a> country code for the currency.</p></li>
+<li><p><em>isonumber</em>: the ISO 4217 number.</p></li>
+<li><p><em>name</em>: the name of the currency.</p></li>
+<li><p><em>order</em>: default ordering in currency pairs (more of this below).</p></li>
+<li><p><em>rounding</em>: number of decimal places</p></li>
+</ul>
+</section>
+<section id="currency-crosses">
+<h2>Currency Crosses<a class="headerlink" href="#currency-crosses" title="Link to this heading">#</a></h2>
+<p>You can create currency pairs by using the <code class="docutils literal notranslate"><span class="pre">currency_pair</span></code> functn::</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">ccy</span><span class="o">.</span><span class="n">currency_pair</span><span class="p">(</span><span class="s2">&quot;eurusd&quot;</span><span class="p">)</span>
+<span class="n">c</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ccy_pair: EURUSD
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">mkt</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ccy_pair: EURUSD
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">ccy</span><span class="o">.</span><span class="n">currency_pair</span><span class="p">(</span><span class="s2">&quot;chfusd&quot;</span><span class="p">)</span>
+<span class="n">c</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ccy_pair: CHFUSD
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">mkt</span><span class="p">()</span>  <span class="c1"># market convention pair</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ccy_pair: USDCHF
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cross-crossover">
+<h2>cross &amp; crossover<a class="headerlink" href="#cross-crossover" title="Link to this heading">#</a></h2>
+<p>Some shortcuts:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ccy</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="s2">&quot;aud&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;AUDUSD&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ccy</span><span class="o">.</span><span class="n">crossover</span><span class="p">(</span><span class="s1">&#39;eur&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;EUR/USD&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ccy</span><span class="o">.</span><span class="n">crossover</span><span class="p">(</span><span class="s1">&#39;chf&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;USD/CHF&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ccy</span><span class="o">.</span><span class="n">crossover</span><span class="p">(</span><span class="s1">&#39;aud&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;AUD/USD&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note, the Swiss franc cross is represented as ‘USD/CHF’, while the Aussie Dollar and Euro crosses are represented with the USD as denominator. This is the market convention which is handled by the order property of a currency object.</p>
+</section>
+<section id="eurozone">
+<h2>Eurozone<a class="headerlink" href="#eurozone" title="Link to this heading">#</a></h2>
+<p>The euro area, commonly called the eurozone (EZ), is a currency union of 20 member states of the European Union (EU) that have adopted the euro (€) as their primary currency and sole legal tender, and have thus fully implemented EMU policies.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ccy</span><span class="o">.</span><span class="n">eurozone</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;AT&#39;,
+ &#39;BE&#39;,
+ &#39;CY&#39;,
+ &#39;DE&#39;,
+ &#39;EE&#39;,
+ &#39;ES&#39;,
+ &#39;FI&#39;,
+ &#39;FR&#39;,
+ &#39;GR&#39;,
+ &#39;HR&#39;,
+ &#39;IE&#39;,
+ &#39;IT&#39;,
+ &#39;LU&#39;,
+ &#39;LV&#39;,
+ &#39;LT&#39;,
+ &#39;MT&#39;,
+ &#39;NL&#39;,
+ &#39;PT&#39;,
+ &#39;SI&#39;,
+ &#39;SK&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ccy</span><span class="o">.</span><span class="n">print_eurozone</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Austria
+Belgium
+Croatia
+Cyprus
+Estonia
+Finland
+France
+Germany
+Greece
+Ireland
+Italy
+Latvia
+Lithuania
+Luxembourg
+Malta
+Netherlands
+Portugal
+Slovakia
+Slovenia
+Spain
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="right-next"
+       href="dates.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Dates &amp; Periods</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting Started</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-usage">Main Usage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#currency-crosses">Currency Crosses</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-crossover">cross &amp; crossover</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eurozone">Eurozone</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Quantmind team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
