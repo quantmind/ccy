@@ -14,3 +14,7 @@ join and add more.
 * Documentation is available as [ccy jupyter book](https://quantmind.github.io/ccy/).
 * Install the command line tool with `pip install ccy[cli]`.
 * Show all currencies in the command line via `ccys show`
+* Trading centres are available when installing the `holidays` extra via
+  ```
+  pip install ccy[holidays]
+  ```

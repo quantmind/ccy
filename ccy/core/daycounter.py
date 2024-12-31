@@ -25,16 +25,6 @@ def alldc() -> dict[str, DayCounterMeta]:
     return copy(_day_counters)
 
 
-def act_act_years(dt: date) -> float:
-    y = dt.year
-    r = y % 4
-    a = 0.0
-    if r > 0:
-        a = 1.0
-    dd = (dt - date(y, 1, 1)).total_seconds() / 86400
-    return y + dd / (365.0 + a)
-
-
 class DayCounterMeta(type):
     def __new__(cls, name: str, bases: Any, attrs: Any) -> DayCounterMeta:
         new_class = super(DayCounterMeta, cls).__new__(cls, name, bases, attrs)
@@ -81,4 +71,10 @@ class ActAct(DayCounter):
     name = "ACT/ACT"
 
     def dcf(self, start: date, end: date) -> float:
-        return act_act_years(end) - act_act_years(start)
+        return self.act_act_years(end) - self.act_act_years(start)
+
+    def act_act_years(self, dt: date) -> float:
+        y = dt.year
+        days_in_year = 365 if y % 4 else 366
+        dd = (dt - date(y, 1, 1)).total_seconds() / 86400
+        return y + dd / days_in_year

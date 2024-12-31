@@ -9,7 +9,7 @@ import holidays.financial
 isoweekend = frozenset((6, 7))
 oneday = timedelta(days=1)
 
-_tcs: dict[str, TradingCentre] = {}
+trading_centres: dict[str, TradingCentre] = {}
 
 
 def prevbizday(dte: date, nd: int = 1, tcs: str | None = None) -> date:
@@ -25,7 +25,7 @@ def centres(codes: str | None = None) -> TradingCentres:
     if codes:
         lcs = codes.upper().replace(" ", "").split(",")
         for code in lcs:
-            tc = _tcs.get(code)
+            tc = trading_centres.get(code)
             if tc:
                 tcs.centres[tc.code] = tc
     return tcs
@@ -37,12 +37,16 @@ class TradingCentre:
     calendar: holidays.HolidayBase
 
     def isholiday(self, dte: date) -> bool:
-        return dte not in self.calendar
+        return dte in self.calendar
 
 
 @dataclass
 class TradingCentres:
     centres: dict[str, TradingCentre] = field(default_factory=dict)
+
+    @property
+    def code(self) -> str:
+        return ",".join(sorted(self.centres))
 
     def isbizday(self, dte: date) -> bool:
         if dte.isoweekday() in isoweekend:
@@ -77,7 +81,7 @@ class TradingCentres:
         return dte
 
 
-_tcs.update(
+trading_centres.update(
     (tc.code, tc)
     for tc in (
         TradingCentre(
