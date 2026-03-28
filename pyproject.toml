@@ -1,53 +1,48 @@
-[tool.poetry]
+[project]
 name = "ccy"
-version = "1.7.2"
+version = "1.8.0"
 description = "Python currencies"
-authors = ["Luca Sbardella <luca@quantmind.com>"]
-license = "BSD"
+authors = [ { name = "Luca Sbardella", email = "luca@quantmind.com" } ]
+license = { text = "BSD" }
 readme = "readme.md"
-packages = [
-    { include = "ccy" }
+requires-python = ">=3.11"
+dependencies = [
+    "python-dateutil>=2.9.0",
+    "pycountry>=24.6.1",
 ]
 
-[tool.poetry.dependencies]
-python = ">=3.10"
-python-dateutil = "^2.9.0"
-pycountry = "^24.6.1"
-rich = {version = "^13.7.1", optional = true}
-click = {version = "^8.1.7", optional = true}
-pandas = {version = "^2.0.3", optional = true}
-holidays = {version = "^0.63", optional = true}
+[project.optional-dependencies]
+cli = [
+    "click>=8.1.7",
+    "pandas>=3.0.1",
+    "rich>=13.7.1",
+]
+holidays = [
+    "holidays>=0.93",
+]
 
-
-[tool.poetry.group.dev.dependencies]
-black = "^25.12.0"
-isort = "^7.0.0"
-pytest-cov = "^7.0.0"
-mypy = "^1.14.1"
-ruff = "^0.14.10"
-types-python-dateutil = "^2.9.0.20241003"
-
-[tool.poetry.extras]
-cli = ["rich", "click", "pandas"]
-holidays = ["holidays"]
-
-[tool.poetry.group.book]
-optional = true
-
-[tool.poetry.group.book.dependencies]
-jupyter-book = "^1.0.3"
-jupyterlab = "^4.3.4"
-jupytext = "^1.16.6"
-ghp-import = "^2.1.0"
-
-
-[tool.poetry.scripts]
+[project.scripts]
 ccys = "ccy.cli:ccys"
 
+[dependency-groups]
+dev = [
+    "black>=25.12.0",
+    "isort>=7.0.0",
+    "pytest-cov>=7.0.0",
+    "mypy>=1.14.1",
+    "ruff>=0.14.10",
+    "types-python-dateutil>=2.9.0.20241003",
+]
+book = [
+    "jupyter-book>=1.0.3",
+    "jupyterlab>=4.3.4",
+    "jupytext>=1.16.6",
+    "ghp-import>=2.1.0",
+]
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = [ "hatchling" ]
+build-backend = "hatchling.build"
 
 [tool.jupytext]
 formats = "ipynb,myst"
@@ -56,7 +51,7 @@ formats = "ipynb,myst"
 profile = "black"
 
 [tool.ruff]
-lint.select = ["E", "F"]
+lint.select = [ "E", "F" ]
 line-length = 88
 
 [tool.mypy]

@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-pip install -U pip poetry
-poetry install --all-extras --with book
+pip install -U uv
+uv sync --all-extras --group book
