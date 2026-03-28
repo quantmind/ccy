@@ -29,6 +29,9 @@ theme:
 
 plugins:
   - search
+  - gen-files:
+      scripts:
+        - docs/gen_currencies.py
   - mkdocstrings:
       handlers:
         python:
@@ -60,6 +63,7 @@ markdown_extensions:
 
 nav:
   - Home: index.md
+  - Currencies: currencies.md
   - Day Counters: daycounters.md
   - Trading Centres: trading-centres.md
   - Dates & Periods: dates.md

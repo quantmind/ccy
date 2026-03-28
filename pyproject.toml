@@ -39,6 +39,7 @@ book = [
     "griffe-pydantic>=1.0",
     "griffe-typingdoc>=0.2",
     "mkdocs>=1.6",
+    "mkdocs-gen-files>=0.5",
     "mkdocs-material>=9.0",
     "mkdocstrings[python]>=0.25",
 ]

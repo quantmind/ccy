@@ -9,8 +9,9 @@ The `DayCounter` enum provides standard day count conventions used in financial 
 | `ACT/360` | Actual days over 360 |
 | `ACT/365` | Actual days over 365 |
 | `30/360` | 30-day months over 360 (US/NASD convention) |
-| `30E/360` | 30-day months over 360 (European convention — end date always capped at 30) |
+| `30E/360` | 30-day months over 360 (European convention: end date always capped at 30) |
 | `ACT/ACT` | Actual days over actual days in the year |
+| `BUS/252` | Business days over 252 (Brazilian convention) |
 
 ## Usage
 
@@ -39,6 +40,10 @@ Iterate over all conventions:
 for dc in DayCounter:
     print(dc.value, dc.dcf(start, end))
 ```
+
+## Class reference
+
+::: ccy.core.daycounter.DayCounter
 
 ## Methods
 

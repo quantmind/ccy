@@ -16,6 +16,7 @@ class DayCounter(StrEnum):
     THIRTY360 = "30/360"
     THIRTYE360 = "30E/360"
     ACTACT = "ACT/ACT"
+    BUS252 = "BUS/252"
 
     def dcf(self, start: date, end: date) -> float:
         """Day count fraction between 2 dates"""
@@ -30,6 +31,8 @@ class DayCounter(StrEnum):
                 return _thirty_e360(start, end)
             case DayCounter.ACTACT:
                 return _act_act_years(end) - _act_act_years(start)
+            case DayCounter.BUS252:
+                return count_days(start, end) / 252.0
             case _:
                 raise ValueError(f"Unknown day counter: {self}")
 

@@ -4,6 +4,7 @@ import sys
 from typing import Any, Callable, NamedTuple
 
 from .data import make_ccys
+from .daycounter import DayCounter
 
 usd_order = 5
 
@@ -31,8 +32,8 @@ class ccy(NamedTuple):
     name: str
     rounding: int
     default_country: str
-    fixeddc: str = "Act/365"
-    floatdc: str = "Act/365"
+    fixeddc: DayCounter = DayCounter.ACT365
+    floatdc: DayCounter = DayCounter.ACT365
     fixedfreq: str = ""
     floatfreq: str = ""
     future: str = ""

@@ -7,7 +7,7 @@ from ccy import DayCounter
 
 
 def test_alldc():
-    assert len(DayCounter) == 5
+    assert len(DayCounter) == 6
 
 
 def test_dcf():

@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+from .daycounter import DayCounter
+
 if TYPE_CHECKING:
     from .currency import ccydb
 
@@ -25,8 +27,8 @@ def make_ccys(db: ccydb) -> None:
         "Euro",
         dfr,
         "EU",
-        "30/360",
-        "ACT/360",
+        DayCounter.THIRTY360,
+        DayCounter.ACT360,
         future="FE",
         symbol_raw=r"\u20ac",
         html="&#x20ac;",
@@ -39,8 +41,8 @@ def make_ccys(db: ccydb) -> None:
         "British Pound",
         dfr,
         "GB",
-        "ACT/365",
-        "ACT/365",
+        DayCounter.ACT365,
+        DayCounter.ACT365,
         symbol_raw=r"\u00a3",
         html="&#xa3;",
     )
@@ -52,8 +54,8 @@ def make_ccys(db: ccydb) -> None:
         "Australian Dollar",
         dfr,
         "AU",
-        "ACT/365",
-        "ACT/365",
+        DayCounter.ACT365,
+        DayCounter.ACT365,
         symbol_raw=dollar,
         html="&#x24;",
     )
@@ -65,8 +67,8 @@ def make_ccys(db: ccydb) -> None:
         "New-Zealand Dollar",
         dfr,
         "NZ",
-        "ACT/365",
-        "ACT/365",
+        DayCounter.ACT365,
+        DayCounter.ACT365,
         symbol_raw=dollar,
         html="&#x24;",
     )
@@ -78,8 +80,8 @@ def make_ccys(db: ccydb) -> None:
         "US Dollar",
         0,
         "US",
-        "30/360",
-        "ACT/360",
+        DayCounter.THIRTY360,
+        DayCounter.ACT360,
         future="ED",
         symbol_raw=dollar,
         html="&#x24;",
@@ -92,8 +94,8 @@ def make_ccys(db: ccydb) -> None:
         "Canadian Dollar",
         dfr,
         "CA",
-        "ACT/365",
-        "ACT/365",
+        DayCounter.ACT365,
+        DayCounter.ACT365,
         symbol_raw=dollar,
         html="&#x24;",
     )
@@ -105,8 +107,8 @@ def make_ccys(db: ccydb) -> None:
         "Swiss Franc",
         dfr,
         "CH",
-        "30/360",
-        "ACT/360",
+        DayCounter.THIRTY360,
+        DayCounter.ACT360,
         symbol_raw=r"Fr",
         html="&#x20a3;",
     )
@@ -118,8 +120,8 @@ def make_ccys(db: ccydb) -> None:
         "Norwegian Krona",
         dfr,
         "NO",
-        "30/360",
-        "ACT/360",
+        DayCounter.THIRTY360,
+        DayCounter.ACT360,
         symbol_raw=kr,
         html=kr,
     )
@@ -131,8 +133,8 @@ def make_ccys(db: ccydb) -> None:
         "Swedish Krona",
         dfr,
         "SE",
-        "30/360",
-        "ACT/360",
+        DayCounter.THIRTY360,
+        DayCounter.ACT360,
         symbol_raw=kr,
         html=kr,
     )
@@ -144,8 +146,21 @@ def make_ccys(db: ccydb) -> None:
         "Danish Krona",
         dfr,
         "DK",
-        "30/360",
-        "ACT/360",
+        DayCounter.THIRTY360,
+        DayCounter.ACT360,
+        symbol_raw=kr,
+        html=kr,
+    )
+    insert(
+        "ISK",
+        "352",
+        "IK",
+        11,
+        "Icelandic Krona",
+        0,
+        "IS",
+        DayCounter.ACT365,
+        DayCounter.ACT365,
         symbol_raw=kr,
         html=kr,
     )
@@ -157,8 +172,8 @@ def make_ccys(db: ccydb) -> None:
         "Japanese Yen",
         2,
         "JP",
-        "ACT/365",
-        "ACT/360",
+        DayCounter.ACT365,
+        DayCounter.ACT360,
         symbol_raw=r"\u00a5",
         html="&#xa5;",
     )
@@ -172,8 +187,8 @@ def make_ccys(db: ccydb) -> None:
         "Chinese Renminbi",
         dfr,
         "CN",
-        "ACT/365",
-        "ACT/365",
+        DayCounter.ACT365,
+        DayCounter.ACT365,
         symbol_raw=r"\u00a5",
         html="&#xa5;",
     )
@@ -185,8 +200,8 @@ def make_ccys(db: ccydb) -> None:
         "South Korean won",
         2,
         "KR",
-        "ACT/365",
-        "ACT/365",
+        DayCounter.ACT365,
+        DayCounter.ACT365,
         symbol_raw=r"\u20a9",
         html="&#x20a9;",
     )
@@ -198,8 +213,8 @@ def make_ccys(db: ccydb) -> None:
         "Singapore Dollar",
         dfr,
         "SG",
-        "ACT/365",
-        "ACT/365",
+        DayCounter.ACT365,
+        DayCounter.ACT365,
         symbol_raw=dollar,
         html="&#x24;",
     )
@@ -211,8 +226,8 @@ def make_ccys(db: ccydb) -> None:
         "Indonesian Rupiah",
         0,
         "ID",
-        "ACT/360",
-        "ACT/360",
+        DayCounter.ACT360,
+        DayCounter.ACT360,
         symbol_raw=r"Rp",
         html="Rp",
     )
@@ -224,8 +239,8 @@ def make_ccys(db: ccydb) -> None:
         "Thai Baht",
         2,
         "TH",
-        "ACT/365",
-        "ACT/365",
+        DayCounter.ACT365,
+        DayCounter.ACT365,
         symbol_raw=r"\u0e3f",
         html="&#xe3f;",
     )
@@ -237,8 +252,8 @@ def make_ccys(db: ccydb) -> None:
         "Taiwan Dollar",
         dfr,
         "TW",
-        "ACT/365",
-        "ACT/365",
+        DayCounter.ACT365,
+        DayCounter.ACT365,
         symbol_raw=dollar,
         html="&#x24;",
     )
@@ -250,8 +265,8 @@ def make_ccys(db: ccydb) -> None:
         "Hong Kong Dollar",
         dfr,
         "HK",
-        "ACT/365",
-        "ACT/365",
+        DayCounter.ACT365,
+        DayCounter.ACT365,
         symbol_raw=r"\u5713",
         html="HK&#x24;",
     )
@@ -263,8 +278,8 @@ def make_ccys(db: ccydb) -> None:
         "Philippines Peso",
         dfr,
         "PH",
-        "ACT/360",
-        "ACT/360",
+        DayCounter.ACT360,
+        DayCounter.ACT360,
         symbol_raw=peso,
         html="&#x20b1;",
     )
@@ -276,13 +291,21 @@ def make_ccys(db: ccydb) -> None:
         "Indian Rupee",
         dfr,
         "IN",
-        "ACT/365",
-        "ACT/365",
+        DayCounter.ACT365,
+        DayCounter.ACT365,
         symbol_raw=r"\u20a8",
         html="&#x20a8;",
     )
     insert(
-        "MYR", "458", "MR", 345, "Malaysian Ringgit", dfr, "MY", "ACT/365", "ACT/365"
+        "MYR",
+        "458",
+        "MR",
+        345,
+        "Malaysian Ringgit",
+        dfr,
+        "MY",
+        DayCounter.ACT365,
+        DayCounter.ACT365,
     )
     insert(
         "VND",
@@ -292,10 +315,49 @@ def make_ccys(db: ccydb) -> None:
         "Vietnamese Dong",
         0,
         "VN",
-        "ACT/365",
-        "ACT/365",
+        DayCounter.ACT365,
+        DayCounter.ACT365,
         symbol_raw=r"\u20ab",
         html="&#x20ab;",
+    )
+    insert(
+        "PKR",
+        "586",
+        "PR",
+        500,
+        "Pakistani Rupee",
+        2,
+        "PK",
+        DayCounter.ACT365,
+        DayCounter.ACT365,
+        symbol_raw=r"\u20a8",
+        html="&#x20a8;",
+    )
+    insert(
+        "BDT",
+        "050",
+        "DT",
+        510,
+        "Bangladeshi Taka",
+        2,
+        "BD",
+        DayCounter.ACT365,
+        DayCounter.ACT365,
+        symbol_raw=r"\u09f3",
+        html="&#x09f3;",
+    )
+    insert(
+        "LKR",
+        "144",
+        "LK",
+        520,
+        "Sri Lankan Rupee",
+        2,
+        "LK",
+        DayCounter.ACT365,
+        DayCounter.ACT365,
+        symbol_raw=r"\u20a8",
+        html="&#x20a8;",
     )
 
     # LATIN AMERICA
@@ -307,8 +369,8 @@ def make_ccys(db: ccydb) -> None:
         "Brazilian Real",
         dfr,
         "BR",
-        "BUS/252",
-        "BUS/252",
+        DayCounter.BUS252,
+        DayCounter.BUS252,
         symbol_raw=r"R$",
     )
     insert(
@@ -319,8 +381,8 @@ def make_ccys(db: ccydb) -> None:
         "Peruvian New Sol",
         dfr,
         "PE",
-        "ACT/360",
-        "ACT/360",
+        DayCounter.ACT360,
+        DayCounter.ACT360,
         symbol_raw=r"S/.",
     )
     insert(
@@ -331,8 +393,8 @@ def make_ccys(db: ccydb) -> None:
         "Argentine Peso",
         dfr,
         "AR",
-        "30/360",
-        "ACT/360",
+        DayCounter.THIRTY360,
+        DayCounter.ACT360,
         symbol_raw=dollar,
         html="&#x24;",
     )
@@ -344,8 +406,8 @@ def make_ccys(db: ccydb) -> None:
         "Mexican Peso",
         dfr,
         "MX",
-        "ACT/360",
-        "ACT/360",
+        DayCounter.ACT360,
+        DayCounter.ACT360,
         symbol_raw=dollar,
         html="&#x24;",
     )
@@ -357,8 +419,8 @@ def make_ccys(db: ccydb) -> None:
         "Chilean Peso",
         2,
         "CL",
-        "ACT/360",
-        "ACT/360",
+        DayCounter.ACT360,
+        DayCounter.ACT360,
         symbol_raw=dollar,
         html="&#x24;",
     )
@@ -370,10 +432,122 @@ def make_ccys(db: ccydb) -> None:
         "Colombian Peso",
         2,
         "CO",
-        "ACT/360",
-        "ACT/360",
+        DayCounter.ACT360,
+        DayCounter.ACT360,
         symbol_raw=dollar,
         html="&#x24;",
+    )
+    insert(
+        "UYU",
+        "858",
+        "UY",
+        310,
+        "Uruguayan Peso",
+        2,
+        "UY",
+        DayCounter.ACT360,
+        DayCounter.ACT360,
+        symbol_raw=dollar,
+        html="&#x24;",
+    )
+    insert(
+        "PYG",
+        "600",
+        "PG",
+        315,
+        "Paraguayan Guarani",
+        0,
+        "PY",
+        DayCounter.ACT360,
+        DayCounter.ACT360,
+        symbol_raw=r"\u20b2",
+        html="&#x20b2;",
+    )
+    insert(
+        "BOB",
+        "068",
+        "BO",
+        320,
+        "Bolivian Boliviano",
+        2,
+        "BO",
+        DayCounter.ACT360,
+        DayCounter.ACT360,
+        symbol_raw=r"Bs.",
+    )
+    insert(
+        "DOP",
+        "214",
+        "DO",
+        325,
+        "Dominican Peso",
+        2,
+        "DO",
+        DayCounter.ACT360,
+        DayCounter.ACT360,
+        symbol_raw=dollar,
+        html="&#x24;",
+    )
+    insert(
+        "CRC",
+        "188",
+        "CR",
+        330,
+        "Costa Rican Colon",
+        2,
+        "CR",
+        DayCounter.ACT360,
+        DayCounter.ACT360,
+        symbol_raw=r"\u20a1",
+        html="&#x20a1;",
+    )
+    insert(
+        "GTQ",
+        "320",
+        "GT",
+        335,
+        "Guatemalan Quetzal",
+        2,
+        "GT",
+        DayCounter.ACT360,
+        DayCounter.ACT360,
+        symbol_raw=r"Q",
+    )
+    insert(
+        "HNL",
+        "340",
+        "HN",
+        340,
+        "Honduran Lempira",
+        2,
+        "HN",
+        DayCounter.ACT360,
+        DayCounter.ACT360,
+        symbol_raw=r"L",
+    )
+    insert(
+        "NIO",
+        "558",
+        "NI",
+        345,
+        "Nicaraguan Cordoba",
+        2,
+        "NI",
+        DayCounter.ACT360,
+        DayCounter.ACT360,
+        symbol_raw=r"C$",
+    )
+    insert(
+        "VES",
+        "928",
+        "VE",
+        350,
+        "Venezuelan Bolivar",
+        2,
+        "VE",
+        DayCounter.ACT360,
+        DayCounter.ACT360,
+        symbol_raw=r"Bs.S",
     )
     # TODO: Check towletters code and position
     insert(
@@ -384,8 +558,8 @@ def make_ccys(db: ccydb) -> None:
         "Jamaican Dollar",
         dfr,
         "JM",
-        "ACT/360",
-        "ACT/360",
+        DayCounter.ACT360,
+        DayCounter.ACT360,
         symbol_raw=dollar,
         html="&#x24;",
     )
@@ -398,8 +572,8 @@ def make_ccys(db: ccydb) -> None:
         "Trinidad and Tobago Dollar",
         dfr,
         "TT",
-        "ACT/360",
-        "ACT/360",
+        DayCounter.ACT360,
+        DayCounter.ACT360,
         symbol_raw=dollar,
         html="&#x24;",
     )
@@ -425,8 +599,8 @@ def make_ccys(db: ccydb) -> None:
         "Czech Koruna",
         dfr,
         "CZ",
-        "ACT/360",
-        "ACT/360",
+        DayCounter.ACT360,
+        DayCounter.ACT360,
         symbol_raw=r"\u004b\u010d",
     )
     insert(
@@ -437,8 +611,8 @@ def make_ccys(db: ccydb) -> None:
         "Polish Złoty",
         dfr,
         "PL",
-        "ACT/ACT",
-        "ACT/365",
+        DayCounter.ACTACT,
+        DayCounter.ACT365,
         symbol_raw=r"\u007a\u0142",
     )
     insert(
@@ -449,8 +623,8 @@ def make_ccys(db: ccydb) -> None:
         "Turkish Lira",
         dfr,
         "TR",
-        "ACT/360",
-        "ACT/360",
+        DayCounter.ACT360,
+        DayCounter.ACT360,
         symbol_raw=r"\u0054\u004c",
     )
     insert(
@@ -461,8 +635,8 @@ def make_ccys(db: ccydb) -> None:
         "Hungarian Forint",
         dfr,
         "HU",
-        "ACT/365",
-        "ACT/360",
+        DayCounter.ACT365,
+        DayCounter.ACT360,
         symbol_raw=r"Ft",
         html="Ft",
     )
@@ -474,8 +648,8 @@ def make_ccys(db: ccydb) -> None:
         "Romanian Leu",
         dfr,
         "RO",
-        "ACT/360",
-        "ACT/360",
+        DayCounter.ACT360,
+        DayCounter.ACT360,
     )
     insert(
         "UAH",
@@ -485,8 +659,8 @@ def make_ccys(db: ccydb) -> None:
         "Ukrainian Hryvnia",
         dfr,
         "UA",
-        "ACT/ACT",
-        "ACT/ACT",
+        DayCounter.ACTACT,
+        DayCounter.ACTACT,
         symbol_raw=r"\u20b4",
         html="&#x20b4;",
     )
@@ -498,8 +672,8 @@ def make_ccys(db: ccydb) -> None:
         "Russian Ruble",
         dfr,
         "RU",
-        "ACT/ACT",
-        "ACT/ACT",
+        DayCounter.ACTACT,
+        DayCounter.ACTACT,
         symbol_raw=r"\u0440\u0443\u0431",
     )
     # TODO: Check towletters code and position
@@ -526,6 +700,116 @@ def make_ccys(db: ccydb) -> None:
         symbol_raw=r"\u043b\u0432.",
         html="&#1083;&#1074;",
     )
+    insert(
+        "RSD",
+        "941",
+        "RD",
+        411,
+        "Serbian Dinar",
+        2,
+        "RS",
+        DayCounter.ACT360,
+        DayCounter.ACT360,
+    )
+    insert(
+        "BAM",
+        "977",
+        "BM",
+        412,
+        "Bosnia-Herzegovina Mark",
+        2,
+        "BA",
+        DayCounter.THIRTY360,
+        DayCounter.ACT360,
+        symbol_raw=r"KM",
+    )
+    insert(
+        "ALL",
+        "008",
+        "AL",
+        413,
+        "Albanian Lek",
+        2,
+        "AL",
+        DayCounter.ACT360,
+        DayCounter.ACT360,
+        symbol_raw=r"L",
+    )
+    insert(
+        "MDL",
+        "498",
+        "ML",
+        414,
+        "Moldovan Leu",
+        2,
+        "MD",
+        DayCounter.ACT365,
+        DayCounter.ACT365,
+        symbol_raw=r"L",
+    )
+    insert(
+        "BYN",
+        "933",
+        "BY",
+        415,
+        "Belarusian Ruble",
+        2,
+        "BY",
+        DayCounter.ACTACT,
+        DayCounter.ACTACT,
+        symbol_raw=r"Br",
+    )
+    insert(
+        "MKD",
+        "807",
+        "MK",
+        416,
+        "North Macedonian Denar",
+        2,
+        "MK",
+        DayCounter.ACT360,
+        DayCounter.ACT360,
+        symbol_raw=r"\u0434\u0435\u043d",
+    )
+    insert(
+        "GEL",
+        "981",
+        "GL",
+        420,
+        "Georgian Lari",
+        2,
+        "GE",
+        DayCounter.ACT365,
+        DayCounter.ACT365,
+        symbol_raw=r"\u20be",
+        html="&#x20be;",
+    )
+    insert(
+        "AZN",
+        "944",
+        "AZ",
+        425,
+        "Azerbaijani Manat",
+        2,
+        "AZ",
+        DayCounter.ACT365,
+        DayCounter.ACT365,
+        symbol_raw=r"\u20bc",
+        html="&#x20bc;",
+    )
+    insert(
+        "AMD",
+        "051",
+        "AM",
+        430,
+        "Armenian Dram",
+        2,
+        "AM",
+        DayCounter.ACT365,
+        DayCounter.ACT365,
+        symbol_raw=r"\u058f",
+        html="&#x058f;",
+    )
 
     # MIDDLE EAST & AFRICA
     insert(
@@ -536,8 +820,8 @@ def make_ccys(db: ccydb) -> None:
         "Israeli Shekel",
         dfr,
         "IL",
-        "ACT/365",
-        "ACT/365",
+        DayCounter.ACT365,
+        DayCounter.ACT365,
         symbol_raw=r"\u20aa",
         html="&#x20aa;",
     )
@@ -576,6 +860,68 @@ def make_ccys(db: ccydb) -> None:
         html="&#xfdfc;",
     )
     insert(
+        "KWD",
+        "414",
+        "KD",
+        50,
+        "Kuwaiti Dinar",
+        3,
+        "KW",
+        DayCounter.ACT365,
+        DayCounter.ACT365,
+        symbol_raw=r"KD",
+    )
+    insert(
+        "BHD",
+        "048",
+        "BH",
+        55,
+        "Bahraini Dinar",
+        3,
+        "BH",
+        DayCounter.ACT365,
+        DayCounter.ACT365,
+        symbol_raw=r"BD",
+    )
+    insert(
+        "OMR",
+        "512",
+        "OM",
+        60,
+        "Omani Rial",
+        3,
+        "OM",
+        DayCounter.ACT365,
+        DayCounter.ACT365,
+        symbol_raw=r"\ufdfc",
+        html="&#xfdfc;",
+    )
+    insert(
+        "JOD",
+        "400",
+        "JO",
+        65,
+        "Jordanian Dinar",
+        3,
+        "JO",
+        DayCounter.ACT365,
+        DayCounter.ACT365,
+        symbol_raw=r"JD",
+    )
+    insert(
+        "IQD",
+        "368",
+        "IQ",
+        410,
+        "Iraqi Dinar",
+        3,
+        "IQ",
+        DayCounter.ACT365,
+        DayCounter.ACT365,
+        symbol_raw=r"\ufdfc",
+        html="&#xfdfc;",
+    )
+    insert(
         "EGP",
         "818",
         "EP",
@@ -605,10 +951,42 @@ def make_ccys(db: ccydb) -> None:
         "South African Rand",
         dfr,
         "ZA",
-        "ACT/365",
-        "ACT/365",
+        DayCounter.ACT365,
+        DayCounter.ACT365,
         symbol_raw=r"R",
         html="R",
+    )
+
+    # PRECIOUS METALS & SPECIAL
+    insert(
+        "XAU",
+        "959",
+        "AU",
+        -4,
+        "Gold",
+        2,
+        "XA",
+        symbol_raw=r"Au",
+    )
+    insert(
+        "XAG",
+        "961",
+        "AG",
+        -3,
+        "Silver",
+        2,
+        "XA",
+        symbol_raw=r"Ag",
+    )
+    insert(
+        "XDR",
+        "960",
+        "XD",
+        -2,
+        "Special Drawing Rights",
+        2,
+        "XD",
+        symbol_raw=r"SDR",
     )
 
     # BITCOIN
