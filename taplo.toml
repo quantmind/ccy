@@ -1,0 +1,18 @@
+include = [ "pyproject.toml", "taplo.toml" ]
+
+[formatting]
+allowed_blank_lines = 1
+array_auto_collapse = false
+array_auto_expand = true
+compact_arrays = false
+indent_string = "    "
+trailing_newline = true
+
+[[rule]]
+formatting = { reorder_arrays = true, reorder_keys = true, array_auto_expand = true, column_width = 1 }
+include = [ "pyproject.toml" ]
+keys = [
+    "project.optional-dependencies",
+    "project.optional-dependencies.cli",
+    "project.optional-dependencies.holidays",
+]

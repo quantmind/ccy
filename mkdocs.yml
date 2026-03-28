@@ -1,0 +1,32 @@
+site_name: Python CCY
+site_url: https://ccy.quantmind.com/
+repo_url: https://github.com/quantmind/ccy
+repo_name: quantmind/ccy
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: amber
+      toggle:
+        icon: material/lightbulb
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: amber
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.footer
+    - navigation.indexes
+    - navigation.path
+    - content.code.copy
+
+nav:
+  - Home: index.md
+  - Dates & Periods: dates.md

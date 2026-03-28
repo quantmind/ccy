@@ -3,12 +3,15 @@ set -e
 
 BLACK_ARG="--check"
 RUFF_ARG=""
+TAPLO_ARG="format --check"
 
 if [ "$1" = "fix" ] ; then
     BLACK_ARG=""
     RUFF_ARG="--fix"
+    TAPLO_ARG="format"
 fi
 
+taplo ${TAPLO_ARG}
 echo "run black"
 black ccy tests --exclude "fluid_common/protos/v2|fluid_apps/db/migrations" ${BLACK_ARG}
 echo "run ruff"

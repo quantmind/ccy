@@ -16,6 +16,7 @@ build
 docs/build
 htmlcov
 dist
+site
 venv
 MANIFEST
 .python-version
