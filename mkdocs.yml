@@ -27,6 +27,12 @@ theme:
     - navigation.path
     - content.code.copy
 
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+
 nav:
   - Home: index.md
+  - Day Counters: daycounters.md
   - Dates & Periods: dates.md
