@@ -42,7 +42,7 @@ docs-serve:	## Serve docs locally with live reload
 
 .PHONY: publish-docs
 publish-docs:	## Publish docs to github pages
-	uv run mkdocs gh-deploy
+	uv run mkdocs gh-deploy --force
 
 .PHONY: outdated
 outdated:	## Show outdated packages
