@@ -1,0 +1,2070 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://ccy.quantmind.com/currencies/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../daycounters/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Currencies - Python CCY</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#currencies" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Python CCY" class="md-header__button md-logo" aria-label="Python CCY" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Python CCY
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Currencies
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/quantmind/ccy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    quantmind/ccy
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Python CCY" class="md-nav__button md-logo" aria-label="Python CCY" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Python CCY
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/quantmind/ccy" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    quantmind/ccy
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Currencies
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Currencies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ccy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CCY
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;CCY
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label=" CCY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.isonumber" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;isonumber
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.twoletterscode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;twoletterscode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;order
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;name
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.rounding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;rounding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.default_country" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;default_country
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.fixeddc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;fixeddc
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.floatdc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;floatdc
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.fixedfreq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;fixedfreq
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.floatfreq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;floatfreq
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.future" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;future
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.symbol_raw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;symbol_raw
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.html" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;html
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.symbol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;symbol
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;description
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.info" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;info
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.printinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;printinfo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.swap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;swap
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.overusdfunc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;overusdfunc
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.usdoverfunc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;usdoverfunc
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.as_cross" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;as_cross
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.spot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;spot
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../daycounters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Day Counters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../trading-centres/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Trading Centres
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dates & Periods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ccy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CCY
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;CCY
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label=" CCY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.isonumber" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;isonumber
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.twoletterscode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;twoletterscode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.order" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;order
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;name
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.rounding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;rounding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.default_country" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;default_country
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.fixeddc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;fixeddc
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.floatdc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;floatdc
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.fixedfreq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;fixedfreq
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.floatfreq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;floatfreq
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.future" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;future
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.symbol_raw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;symbol_raw
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.html" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;html
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.symbol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;symbol
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;description
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.info" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;info
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.printinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;printinfo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.swap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;swap
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.overusdfunc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;overusdfunc
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.usdoverfunc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;usdoverfunc
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.as_cross" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;as_cross
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ccy.core.currency.CCY.spot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;spot
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="currencies">Currencies</h1>
+<p>This is a list of all currencies currently supported by ccy. You can add more by contributing to the <a href="https://github.com/quantmind/ccy">currency database</a>.</p>
+<p><input id='ccy-search' type='text' placeholder='Search by name...' style='margin-bottom:1em;padding:0.4em 0.6em;width:100%;max-width:400px;border:1px solid #ccc;border-radius:4px;font-size:0.95em;' /></p>
+<table id='ccy-table'>
+<thead><tr><th>Code</th><th>Name</th><th>ISO</th><th>Country</th><th>Order</th><th>Rounding</th><th>Fixed DC</th><th>Float DC</th></tr></thead>
+<tbody>
+<tr><td><code>AED</code></td><td>United Arab Emirates Dirham</td><td>784</td><td>AE</td><td>410</td><td>4</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>ALL</code></td><td>Albanian Lek</td><td>008</td><td>AL</td><td>413</td><td>2</td><td><code>ACT/360</code></td><td><code>ACT/360</code></td></tr>
+<tr><td><code>AMD</code></td><td>Armenian Dram</td><td>051</td><td>AM</td><td>430</td><td>2</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>ARS</code></td><td>Argentine Peso</td><td>032</td><td>AR</td><td>301</td><td>4</td><td><code>30/360</code></td><td><code>ACT/360</code></td></tr>
+<tr><td><code>AUD</code></td><td>Australian Dollar</td><td>036</td><td>AU</td><td>3</td><td>4</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>AZN</code></td><td>Azerbaijani Manat</td><td>944</td><td>AZ</td><td>425</td><td>2</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>BAM</code></td><td>Bosnia-Herzegovina Mark</td><td>977</td><td>BA</td><td>412</td><td>2</td><td><code>30/360</code></td><td><code>ACT/360</code></td></tr>
+<tr><td><code>BDT</code></td><td>Bangladeshi Taka</td><td>050</td><td>BD</td><td>510</td><td>2</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>BGN</code></td><td>Bulgarian Lev</td><td>975</td><td>BG</td><td>410</td><td>4</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>BHD</code></td><td>Bahraini Dinar</td><td>048</td><td>BH</td><td>55</td><td>3</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>BMD</code></td><td>Bermudian Dollar</td><td>060</td><td>BM</td><td>410</td><td>4</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>BOB</code></td><td>Bolivian Boliviano</td><td>068</td><td>BO</td><td>320</td><td>2</td><td><code>ACT/360</code></td><td><code>ACT/360</code></td></tr>
+<tr><td><code>BRL</code></td><td>Brazilian Real</td><td>986</td><td>BR</td><td>200</td><td>4</td><td><code>BUS/252</code></td><td><code>BUS/252</code></td></tr>
+<tr><td><code>BYN</code></td><td>Belarusian Ruble</td><td>933</td><td>BY</td><td>415</td><td>2</td><td><code>ACT/ACT</code></td><td><code>ACT/ACT</code></td></tr>
+<tr><td><code>CAD</code></td><td>Canadian Dollar</td><td>124</td><td>CA</td><td>6</td><td>4</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>CHF</code></td><td>Swiss Franc</td><td>756</td><td>CH</td><td>7</td><td>4</td><td><code>30/360</code></td><td><code>ACT/360</code></td></tr>
+<tr><td><code>CLP</code></td><td>Chilean Peso</td><td>152</td><td>CL</td><td>54500</td><td>2</td><td><code>ACT/360</code></td><td><code>ACT/360</code></td></tr>
+<tr><td><code>CNY</code></td><td>Chinese Renminbi</td><td>156</td><td>CN</td><td>680</td><td>4</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>COP</code></td><td>Colombian Peso</td><td>170</td><td>CO</td><td>190000</td><td>2</td><td><code>ACT/360</code></td><td><code>ACT/360</code></td></tr>
+<tr><td><code>CRC</code></td><td>Costa Rican Colon</td><td>188</td><td>CR</td><td>330</td><td>2</td><td><code>ACT/360</code></td><td><code>ACT/360</code></td></tr>
+<tr><td><code>CZK</code></td><td>Czech Koruna</td><td>203</td><td>CZ</td><td>28</td><td>4</td><td><code>ACT/360</code></td><td><code>ACT/360</code></td></tr>
+<tr><td><code>DKK</code></td><td>Danish Krona</td><td>208</td><td>DK</td><td>10</td><td>4</td><td><code>30/360</code></td><td><code>ACT/360</code></td></tr>
+<tr><td><code>DOP</code></td><td>Dominican Peso</td><td>214</td><td>DO</td><td>325</td><td>2</td><td><code>ACT/360</code></td><td><code>ACT/360</code></td></tr>
+<tr><td><code>EGP</code></td><td>Egyptian Pound</td><td>818</td><td>EG</td><td>550</td><td>4</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>EUR</code></td><td>Euro</td><td>978</td><td>EU</td><td>1</td><td>4</td><td><code>30/360</code></td><td><code>ACT/360</code></td></tr>
+<tr><td><code>GBP</code></td><td>British Pound</td><td>826</td><td>GB</td><td>2</td><td>4</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>GEL</code></td><td>Georgian Lari</td><td>981</td><td>GE</td><td>420</td><td>2</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>GTQ</code></td><td>Guatemalan Quetzal</td><td>320</td><td>GT</td><td>335</td><td>2</td><td><code>ACT/360</code></td><td><code>ACT/360</code></td></tr>
+<tr><td><code>HKD</code></td><td>Hong Kong Dollar</td><td>344</td><td>HK</td><td>19</td><td>4</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>HNL</code></td><td>Honduran Lempira</td><td>340</td><td>HN</td><td>340</td><td>2</td><td><code>ACT/360</code></td><td><code>ACT/360</code></td></tr>
+<tr><td><code>HUF</code></td><td>Hungarian Forint</td><td>348</td><td>HU</td><td>32</td><td>4</td><td><code>ACT/365</code></td><td><code>ACT/360</code></td></tr>
+<tr><td><code>IDR</code></td><td>Indonesian Rupiah</td><td>360</td><td>ID</td><td>970000</td><td>0</td><td><code>ACT/360</code></td><td><code>ACT/360</code></td></tr>
+<tr><td><code>ILS</code></td><td>Israeli Shekel</td><td>376</td><td>IL</td><td>410</td><td>4</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>INR</code></td><td>Indian Rupee</td><td>356</td><td>IN</td><td>4500</td><td>4</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>IQD</code></td><td>Iraqi Dinar</td><td>368</td><td>IQ</td><td>410</td><td>3</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>ISK</code></td><td>Icelandic Krona</td><td>352</td><td>IS</td><td>11</td><td>0</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>JMD</code></td><td>Jamaican Dollar</td><td>388</td><td>JM</td><td>410</td><td>4</td><td><code>ACT/360</code></td><td><code>ACT/360</code></td></tr>
+<tr><td><code>JOD</code></td><td>Jordanian Dinar</td><td>400</td><td>JO</td><td>65</td><td>3</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>JPY</code></td><td>Japanese Yen</td><td>392</td><td>JP</td><td>10000</td><td>2</td><td><code>ACT/365</code></td><td><code>ACT/360</code></td></tr>
+<tr><td><code>KRW</code></td><td>South Korean won</td><td>410</td><td>KR</td><td>110000</td><td>2</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>KWD</code></td><td>Kuwaiti Dinar</td><td>414</td><td>KW</td><td>50</td><td>3</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>KZT</code></td><td>Tenge</td><td>398</td><td>KZ</td><td>410</td><td>4</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>LKR</code></td><td>Sri Lankan Rupee</td><td>144</td><td>LK</td><td>520</td><td>2</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>MDL</code></td><td>Moldovan Leu</td><td>498</td><td>MD</td><td>414</td><td>2</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>MKD</code></td><td>North Macedonian Denar</td><td>807</td><td>MK</td><td>416</td><td>2</td><td><code>ACT/360</code></td><td><code>ACT/360</code></td></tr>
+<tr><td><code>MXN</code></td><td>Mexican Peso</td><td>484</td><td>MX</td><td>1330</td><td>4</td><td><code>ACT/360</code></td><td><code>ACT/360</code></td></tr>
+<tr><td><code>MYR</code></td><td>Malaysian Ringgit</td><td>458</td><td>MY</td><td>345</td><td>4</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>NGN</code></td><td>Nigerian Naira</td><td>566</td><td>NG</td><td>650</td><td>4</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>NIO</code></td><td>Nicaraguan Cordoba</td><td>558</td><td>NI</td><td>345</td><td>2</td><td><code>ACT/360</code></td><td><code>ACT/360</code></td></tr>
+<tr><td><code>NOK</code></td><td>Norwegian Krona</td><td>578</td><td>NO</td><td>8</td><td>4</td><td><code>30/360</code></td><td><code>ACT/360</code></td></tr>
+<tr><td><code>NZD</code></td><td>New-Zealand Dollar</td><td>554</td><td>NZ</td><td>4</td><td>4</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>OMR</code></td><td>Omani Rial</td><td>512</td><td>OM</td><td>60</td><td>3</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>PEN</code></td><td>Peruvian New Sol</td><td>604</td><td>PE</td><td>220</td><td>4</td><td><code>ACT/360</code></td><td><code>ACT/360</code></td></tr>
+<tr><td><code>PHP</code></td><td>Philippines Peso</td><td>608</td><td>PH</td><td>4770</td><td>4</td><td><code>ACT/360</code></td><td><code>ACT/360</code></td></tr>
+<tr><td><code>PKR</code></td><td>Pakistani Rupee</td><td>586</td><td>PK</td><td>500</td><td>2</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>PLN</code></td><td>Polish Złoty</td><td>985</td><td>PL</td><td>29</td><td>4</td><td><code>ACT/ACT</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>PYG</code></td><td>Paraguayan Guarani</td><td>600</td><td>PY</td><td>315</td><td>0</td><td><code>ACT/360</code></td><td><code>ACT/360</code></td></tr>
+<tr><td><code>QAR</code></td><td>Qatari Riyal</td><td>634</td><td>QA</td><td>410</td><td>4</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>RON</code></td><td>Romanian Leu</td><td>946</td><td>RO</td><td>34</td><td>4</td><td><code>ACT/360</code></td><td><code>ACT/360</code></td></tr>
+<tr><td><code>RSD</code></td><td>Serbian Dinar</td><td>941</td><td>RS</td><td>411</td><td>2</td><td><code>ACT/360</code></td><td><code>ACT/360</code></td></tr>
+<tr><td><code>RUB</code></td><td>Russian Ruble</td><td>643</td><td>RU</td><td>36</td><td>4</td><td><code>ACT/ACT</code></td><td><code>ACT/ACT</code></td></tr>
+<tr><td><code>SAR</code></td><td>Saudi Riyal</td><td>682</td><td>SA</td><td>410</td><td>4</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>SEK</code></td><td>Swedish Krona</td><td>752</td><td>SE</td><td>9</td><td>4</td><td><code>30/360</code></td><td><code>ACT/360</code></td></tr>
+<tr><td><code>SGD</code></td><td>Singapore Dollar</td><td>702</td><td>SG</td><td>15</td><td>4</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>THB</code></td><td>Thai Baht</td><td>764</td><td>TH</td><td>3300</td><td>2</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>TRY</code></td><td>Turkish Lira</td><td>949</td><td>TR</td><td>30</td><td>4</td><td><code>ACT/360</code></td><td><code>ACT/360</code></td></tr>
+<tr><td><code>TTD</code></td><td>Trinidad and Tobago Dollar</td><td>780</td><td>TT</td><td>410</td><td>4</td><td><code>ACT/360</code></td><td><code>ACT/360</code></td></tr>
+<tr><td><code>TWD</code></td><td>Taiwan Dollar</td><td>901</td><td>TW</td><td>18</td><td>4</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>UAH</code></td><td>Ukrainian Hryvnia</td><td>980</td><td>UA</td><td>35</td><td>4</td><td><code>ACT/ACT</code></td><td><code>ACT/ACT</code></td></tr>
+<tr><td><code>USD</code></td><td>US Dollar</td><td>840</td><td>US</td><td>5</td><td>0</td><td><code>30/360</code></td><td><code>ACT/360</code></td></tr>
+<tr><td><code>UYU</code></td><td>Uruguayan Peso</td><td>858</td><td>UY</td><td>310</td><td>2</td><td><code>ACT/360</code></td><td><code>ACT/360</code></td></tr>
+<tr><td><code>VES</code></td><td>Venezuelan Bolivar</td><td>928</td><td>VE</td><td>350</td><td>2</td><td><code>ACT/360</code></td><td><code>ACT/360</code></td></tr>
+<tr><td><code>VND</code></td><td>Vietnamese Dong</td><td>704</td><td>VN</td><td>1700000</td><td>0</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>XAG</code></td><td>Silver</td><td>961</td><td>XA</td><td>-3</td><td>2</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>XAU</code></td><td>Gold</td><td>959</td><td>XA</td><td>-4</td><td>2</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>XBT</code></td><td>Bitcoin</td><td>000</td><td>WW</td><td>-1</td><td>8</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>XDR</code></td><td>Special Drawing Rights</td><td>960</td><td>XD</td><td>-2</td><td>2</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+<tr><td><code>ZAR</code></td><td>South African Rand</td><td>710</td><td>ZA</td><td>750</td><td>4</td><td><code>ACT/365</code></td><td><code>ACT/365</code></td></tr>
+</tbody>
+</table>
+
+<h2 id="ccy">CCY</h2>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="ccy.core.currency.CCY" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code>            <span class="doc doc-object-name doc-class-name">ccy.core.currency.CCY</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-pydantic-model"><code>pydantic-model</code></small>
+  </span>
+
+</h2>
+
+
+    <div class="doc doc-contents first">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="pydantic.BaseModel">BaseModel</span></code></p>
+
+    
+
+        <p>Fields:</p>
+        <ul>
+            <li>
+              <code><a class="autorefs autorefs-internal" title="            code
+
+
+  
+      pydantic-field
+   (ccy.core.currency.CCY.code)" href="#ccy.core.currency.CCY.code">code</a></code>
+                (<code><span title="str">str</span></code>)
+            </li>
+            <li>
+              <code><a class="autorefs autorefs-internal" title="            isonumber
+
+
+  
+      pydantic-field
+   (ccy.core.currency.CCY.isonumber)" href="#ccy.core.currency.CCY.isonumber">isonumber</a></code>
+                (<code><span title="str">str</span></code>)
+            </li>
+            <li>
+              <code><a class="autorefs autorefs-internal" title="            twoletterscode
+
+
+  
+      pydantic-field
+   (ccy.core.currency.CCY.twoletterscode)" href="#ccy.core.currency.CCY.twoletterscode">twoletterscode</a></code>
+                (<code><span title="str">str</span></code>)
+            </li>
+            <li>
+              <code><a class="autorefs autorefs-internal" title="            order
+
+
+  
+      pydantic-field
+   (ccy.core.currency.CCY.order)" href="#ccy.core.currency.CCY.order">order</a></code>
+                (<code><span title="int">int</span></code>)
+            </li>
+            <li>
+              <code><a class="autorefs autorefs-internal" title="            name
+
+
+  
+      pydantic-field
+   (ccy.core.currency.CCY.name)" href="#ccy.core.currency.CCY.name">name</a></code>
+                (<code><span title="str">str</span></code>)
+            </li>
+            <li>
+              <code><a class="autorefs autorefs-internal" title="            rounding
+
+
+  
+      pydantic-field
+   (ccy.core.currency.CCY.rounding)" href="#ccy.core.currency.CCY.rounding">rounding</a></code>
+                (<code><span title="int">int</span></code>)
+            </li>
+            <li>
+              <code><a class="autorefs autorefs-internal" title="            default_country
+
+
+  
+      pydantic-field
+   (ccy.core.currency.CCY.default_country)" href="#ccy.core.currency.CCY.default_country">default_country</a></code>
+                (<code><span title="str">str</span></code>)
+            </li>
+            <li>
+              <code><a class="autorefs autorefs-internal" title="            fixeddc
+
+
+  
+      pydantic-field
+   (ccy.core.currency.CCY.fixeddc)" href="#ccy.core.currency.CCY.fixeddc">fixeddc</a></code>
+                (<code><a class="autorefs autorefs-internal" title="            ccy.core.daycounter.DayCounter" href="../daycounters/#ccy.core.daycounter.DayCounter">DayCounter</a></code>)
+            </li>
+            <li>
+              <code><a class="autorefs autorefs-internal" title="            floatdc
+
+
+  
+      pydantic-field
+   (ccy.core.currency.CCY.floatdc)" href="#ccy.core.currency.CCY.floatdc">floatdc</a></code>
+                (<code><a class="autorefs autorefs-internal" title="            ccy.core.daycounter.DayCounter" href="../daycounters/#ccy.core.daycounter.DayCounter">DayCounter</a></code>)
+            </li>
+            <li>
+              <code><a class="autorefs autorefs-internal" title="            fixedfreq
+
+
+  
+      pydantic-field
+   (ccy.core.currency.CCY.fixedfreq)" href="#ccy.core.currency.CCY.fixedfreq">fixedfreq</a></code>
+                (<code><span title="str">str</span></code>)
+            </li>
+            <li>
+              <code><a class="autorefs autorefs-internal" title="            floatfreq
+
+
+  
+      pydantic-field
+   (ccy.core.currency.CCY.floatfreq)" href="#ccy.core.currency.CCY.floatfreq">floatfreq</a></code>
+                (<code><span title="str">str</span></code>)
+            </li>
+            <li>
+              <code><a class="autorefs autorefs-internal" title="            future
+
+
+  
+      pydantic-field
+   (ccy.core.currency.CCY.future)" href="#ccy.core.currency.CCY.future">future</a></code>
+                (<code><span title="str">str</span></code>)
+            </li>
+            <li>
+              <code><a class="autorefs autorefs-internal" title="            symbol_raw
+
+
+  
+      pydantic-field
+   (ccy.core.currency.CCY.symbol_raw)" href="#ccy.core.currency.CCY.symbol_raw">symbol_raw</a></code>
+                (<code><span title="str">str</span></code>)
+            </li>
+            <li>
+              <code><a class="autorefs autorefs-internal" title="            html
+
+
+  
+      pydantic-field
+   (ccy.core.currency.CCY.html)" href="#ccy.core.currency.CCY.html">html</a></code>
+                (<code><span title="str">str</span></code>)
+            </li>
+        </ul>
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="ccy.core.currency.CCY.code" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">code</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-pydantic-field"><code>pydantic-field</code></small>
+  </span>
+
+</h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">code</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>ISO 4217 three-letter currency code</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="ccy.core.currency.CCY.isonumber" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">isonumber</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-pydantic-field"><code>pydantic-field</code></small>
+  </span>
+
+</h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">isonumber</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>ISO 4217 numeric code</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="ccy.core.currency.CCY.twoletterscode" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">twoletterscode</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-pydantic-field"><code>pydantic-field</code></small>
+  </span>
+
+</h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">twoletterscode</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Internal two-letter code</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="ccy.core.currency.CCY.order" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">order</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-pydantic-field"><code>pydantic-field</code></small>
+  </span>
+
+</h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">order</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Default ordering in currency pairs</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="ccy.core.currency.CCY.name" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">name</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-pydantic-field"><code>pydantic-field</code></small>
+  </span>
+
+</h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">name</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Currency name</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="ccy.core.currency.CCY.rounding" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">rounding</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-pydantic-field"><code>pydantic-field</code></small>
+  </span>
+
+</h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">rounding</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Number of decimal places</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="ccy.core.currency.CCY.default_country" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">default_country</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-pydantic-field"><code>pydantic-field</code></small>
+  </span>
+
+</h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">default_country</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Default ISO 3166-1 alpha-2 country code</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="ccy.core.currency.CCY.fixeddc" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">fixeddc</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-pydantic-field"><code>pydantic-field</code></small>
+  </span>
+
+</h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">fixeddc</span> <span class="o">=</span> <span class="n"><a class="autorefs autorefs-internal" title="            ACT365
+
+
+  
+      class-attribute
+      instance-attribute
+   (ccy.core.daycounter.DayCounter.ACT365)" href="../daycounters/#ccy.core.daycounter.DayCounter.ACT365">ACT365</a></span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Fixed leg day count convention</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="ccy.core.currency.CCY.floatdc" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">floatdc</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-pydantic-field"><code>pydantic-field</code></small>
+  </span>
+
+</h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">floatdc</span> <span class="o">=</span> <span class="n"><a class="autorefs autorefs-internal" title="            ACT365
+
+
+  
+      class-attribute
+      instance-attribute
+   (ccy.core.daycounter.DayCounter.ACT365)" href="../daycounters/#ccy.core.daycounter.DayCounter.ACT365">ACT365</a></span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Float leg day count convention</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="ccy.core.currency.CCY.fixedfreq" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">fixedfreq</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-pydantic-field"><code>pydantic-field</code></small>
+  </span>
+
+</h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">fixedfreq</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Fixed leg payment frequency</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="ccy.core.currency.CCY.floatfreq" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">floatfreq</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-pydantic-field"><code>pydantic-field</code></small>
+  </span>
+
+</h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">floatfreq</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Float leg payment frequency</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="ccy.core.currency.CCY.future" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">future</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-pydantic-field"><code>pydantic-field</code></small>
+  </span>
+
+</h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">future</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Futures contract ticker</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="ccy.core.currency.CCY.symbol_raw" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">symbol_raw</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-pydantic-field"><code>pydantic-field</code></small>
+  </span>
+
+</h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">symbol_raw</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">u00a4&#39;</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Raw unicode escape string for the currency symbol</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="ccy.core.currency.CCY.html" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">html</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-pydantic-field"><code>pydantic-field</code></small>
+  </span>
+
+</h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">html</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>HTML entity for the currency symbol</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="ccy.core.currency.CCY.symbol" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">symbol</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+</h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">symbol</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Currency symbol decoded from the unicode escape string</p>
+
+    </div>
+
+</div>
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="ccy.core.currency.CCY.description" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">description</span>
+
+
+</h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">description</span><span class="p">()</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>ccy/core/currency.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-83">83</a></span>
+<span class="normal"><a href="#__codelineno-0-84">84</a></span>
+<span class="normal"><a href="#__codelineno-0-85">85</a></span>
+<span class="normal"><a href="#__codelineno-0-86">86</a></span>
+<span class="normal"><a href="#__codelineno-0-87">87</a></span>
+<span class="normal"><a href="#__codelineno-0-88">88</a></span>
+<span class="normal"><a href="#__codelineno-0-89">89</a></span>
+<span class="normal"><a href="#__codelineno-0-90">90</a></span>
+<span class="normal"><a href="#__codelineno-0-91">91</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-83" name="__codelineno-0-83"></a><span class="k">def</span><span class="w"> </span><span class="nf">description</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-0-84" name="__codelineno-0-84"></a>    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">&gt;</span> <span class="n">usd_order</span><span class="p">:</span>
+<a id="__codelineno-0-85" name="__codelineno-0-85"></a>        <span class="n">v</span> <span class="o">=</span> <span class="s2">&quot;USD / </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">code</span>
+<a id="__codelineno-0-86" name="__codelineno-0-86"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-0-87" name="__codelineno-0-87"></a>        <span class="n">v</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> / USD&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">code</span>
+<a id="__codelineno-0-88" name="__codelineno-0-88"></a>    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">!=</span> <span class="n">usd_order</span><span class="p">:</span>
+<a id="__codelineno-0-89" name="__codelineno-0-89"></a>        <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> Spot Exchange Rate&quot;</span> <span class="o">%</span> <span class="n">v</span>
+<a id="__codelineno-0-90" name="__codelineno-0-90"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-0-91" name="__codelineno-0-91"></a>        <span class="k">return</span> <span class="s2">&quot;Dollar&quot;</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="ccy.core.currency.CCY.info" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">info</span>
+
+
+</h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">info</span><span class="p">()</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>ccy/core/currency.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-93">93</a></span>
+<span class="normal"><a href="#__codelineno-0-94">94</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-93" name="__codelineno-0-93"></a><span class="k">def</span><span class="w"> </span><span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<a id="__codelineno-0-94" name="__codelineno-0-94"></a>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_dump</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="ccy.core.currency.CCY.printinfo" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">printinfo</span>
+
+
+</h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">printinfo</span><span class="p">(</span><span class="n">stream</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>ccy/core/currency.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-96"> 96</a></span>
+<span class="normal"><a href="#__codelineno-0-97"> 97</a></span>
+<span class="normal"><a href="#__codelineno-0-98"> 98</a></span>
+<span class="normal"><a href="#__codelineno-0-99"> 99</a></span>
+<span class="normal"><a href="#__codelineno-0-100">100</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-96" name="__codelineno-0-96"></a><span class="k">def</span><span class="w"> </span><span class="nf">printinfo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stream</span><span class="p">:</span> <span class="n">Any</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-97" name="__codelineno-0-97"></a>    <span class="n">info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<a id="__codelineno-0-98" name="__codelineno-0-98"></a>    <span class="n">stream</span> <span class="o">=</span> <span class="n">stream</span> <span class="ow">or</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span>
+<a id="__codelineno-0-99" name="__codelineno-0-99"></a>    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">info</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<a id="__codelineno-0-100" name="__codelineno-0-100"></a>        <span class="n">stream</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">to_string</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)))</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="ccy.core.currency.CCY.swap" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">swap</span>
+
+
+</h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">swap</span><span class="p">(</span><span class="n">c2</span><span class="p">)</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>put the order of currencies as market standard</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>ccy/core/currency.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-105">105</a></span>
+<span class="normal"><a href="#__codelineno-0-106">106</a></span>
+<span class="normal"><a href="#__codelineno-0-107">107</a></span>
+<span class="normal"><a href="#__codelineno-0-108">108</a></span>
+<span class="normal"><a href="#__codelineno-0-109">109</a></span>
+<span class="normal"><a href="#__codelineno-0-110">110</a></span>
+<span class="normal"><a href="#__codelineno-0-111">111</a></span>
+<span class="normal"><a href="#__codelineno-0-112">112</a></span>
+<span class="normal"><a href="#__codelineno-0-113">113</a></span>
+<span class="normal"><a href="#__codelineno-0-114">114</a></span>
+<span class="normal"><a href="#__codelineno-0-115">115</a></span>
+<span class="normal"><a href="#__codelineno-0-116">116</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-105" name="__codelineno-0-105"></a><span class="k">def</span><span class="w"> </span><span class="nf">swap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">c2</span><span class="p">:</span> <span class="n">Self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="n">Self</span><span class="p">,</span> <span class="n">Self</span><span class="p">]:</span>
+<a id="__codelineno-0-106" name="__codelineno-0-106"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-0-107" name="__codelineno-0-107"></a><span class="sd">    put the order of currencies as market standard</span>
+<a id="__codelineno-0-108" name="__codelineno-0-108"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-109" name="__codelineno-0-109"></a>    <span class="n">inv</span> <span class="o">=</span> <span class="kc">False</span>
+<a id="__codelineno-0-110" name="__codelineno-0-110"></a>    <span class="n">c1</span> <span class="o">=</span> <span class="bp">self</span>
+<a id="__codelineno-0-111" name="__codelineno-0-111"></a>    <span class="k">if</span> <span class="n">c1</span><span class="o">.</span><span class="n">order</span> <span class="o">&gt;</span> <span class="n">c2</span><span class="o">.</span><span class="n">order</span><span class="p">:</span>
+<a id="__codelineno-0-112" name="__codelineno-0-112"></a>        <span class="n">ct</span> <span class="o">=</span> <span class="n">c1</span>
+<a id="__codelineno-0-113" name="__codelineno-0-113"></a>        <span class="n">c1</span> <span class="o">=</span> <span class="n">c2</span>
+<a id="__codelineno-0-114" name="__codelineno-0-114"></a>        <span class="n">c2</span> <span class="o">=</span> <span class="n">ct</span>
+<a id="__codelineno-0-115" name="__codelineno-0-115"></a>        <span class="n">inv</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-0-116" name="__codelineno-0-116"></a>    <span class="k">return</span> <span class="n">inv</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="ccy.core.currency.CCY.overusdfunc" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">overusdfunc</span>
+
+
+</h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">overusdfunc</span><span class="p">()</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>ccy/core/currency.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-118">118</a></span>
+<span class="normal"><a href="#__codelineno-0-119">119</a></span>
+<span class="normal"><a href="#__codelineno-0-120">120</a></span>
+<span class="normal"><a href="#__codelineno-0-121">121</a></span>
+<span class="normal"><a href="#__codelineno-0-122">122</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-118" name="__codelineno-0-118"></a><span class="k">def</span><span class="w"> </span><span class="nf">overusdfunc</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">]:</span>
+<a id="__codelineno-0-119" name="__codelineno-0-119"></a>    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">&gt;</span> <span class="n">usd_order</span><span class="p">:</span>
+<a id="__codelineno-0-120" name="__codelineno-0-120"></a>        <span class="k">return</span> <span class="n">overusdfuni</span>
+<a id="__codelineno-0-121" name="__codelineno-0-121"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-0-122" name="__codelineno-0-122"></a>        <span class="k">return</span> <span class="n">overusdfun</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="ccy.core.currency.CCY.usdoverfunc" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">usdoverfunc</span>
+
+
+</h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">usdoverfunc</span><span class="p">()</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>ccy/core/currency.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-124">124</a></span>
+<span class="normal"><a href="#__codelineno-0-125">125</a></span>
+<span class="normal"><a href="#__codelineno-0-126">126</a></span>
+<span class="normal"><a href="#__codelineno-0-127">127</a></span>
+<span class="normal"><a href="#__codelineno-0-128">128</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-124" name="__codelineno-0-124"></a><span class="k">def</span><span class="w"> </span><span class="nf">usdoverfunc</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">]:</span>
+<a id="__codelineno-0-125" name="__codelineno-0-125"></a>    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">&gt;</span> <span class="n">usd_order</span><span class="p">:</span>
+<a id="__codelineno-0-126" name="__codelineno-0-126"></a>        <span class="k">return</span> <span class="n">overusdfun</span>
+<a id="__codelineno-0-127" name="__codelineno-0-127"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-0-128" name="__codelineno-0-128"></a>        <span class="k">return</span> <span class="n">overusdfuni</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="ccy.core.currency.CCY.as_cross" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">as_cross</span>
+
+
+</h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">as_cross</span><span class="p">(</span><span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Return a cross rate representation with respect USD.
+@param delimiter: could be '' or '/' normally</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>ccy/core/currency.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-130">130</a></span>
+<span class="normal"><a href="#__codelineno-0-131">131</a></span>
+<span class="normal"><a href="#__codelineno-0-132">132</a></span>
+<span class="normal"><a href="#__codelineno-0-133">133</a></span>
+<span class="normal"><a href="#__codelineno-0-134">134</a></span>
+<span class="normal"><a href="#__codelineno-0-135">135</a></span>
+<span class="normal"><a href="#__codelineno-0-136">136</a></span>
+<span class="normal"><a href="#__codelineno-0-137">137</a></span>
+<span class="normal"><a href="#__codelineno-0-138">138</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-130" name="__codelineno-0-130"></a><span class="k">def</span><span class="w"> </span><span class="nf">as_cross</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delimiter</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-0-131" name="__codelineno-0-131"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-0-132" name="__codelineno-0-132"></a><span class="sd">    Return a cross rate representation with respect USD.</span>
+<a id="__codelineno-0-133" name="__codelineno-0-133"></a><span class="sd">    @param delimiter: could be &#39;&#39; or &#39;/&#39; normally</span>
+<a id="__codelineno-0-134" name="__codelineno-0-134"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-135" name="__codelineno-0-135"></a>    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">&gt;</span> <span class="n">usd_order</span><span class="p">:</span>
+<a id="__codelineno-0-136" name="__codelineno-0-136"></a>        <span class="k">return</span> <span class="s2">&quot;USD</span><span class="si">%s%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">delimiter</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">)</span>
+<a id="__codelineno-0-137" name="__codelineno-0-137"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-0-138" name="__codelineno-0-138"></a>        <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%s%s</span><span class="s2">USD&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">,</span> <span class="n">delimiter</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="ccy.core.currency.CCY.spot" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">spot</span>
+
+
+</h3>
+<div class="doc-signature highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">spot</span><span class="p">(</span><span class="n">c2</span><span class="p">,</span> <span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">)</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>ccy/core/currency.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-140">140</a></span>
+<span class="normal"><a href="#__codelineno-0-141">141</a></span>
+<span class="normal"><a href="#__codelineno-0-142">142</a></span>
+<span class="normal"><a href="#__codelineno-0-143">143</a></span>
+<span class="normal"><a href="#__codelineno-0-144">144</a></span>
+<span class="normal"><a href="#__codelineno-0-145">145</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-140" name="__codelineno-0-140"></a><span class="k">def</span><span class="w"> </span><span class="nf">spot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">c2</span><span class="p">:</span> <span class="n">Self</span><span class="p">,</span> <span class="n">v1</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">v2</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<a id="__codelineno-0-141" name="__codelineno-0-141"></a>    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">&gt;</span> <span class="n">c2</span><span class="o">.</span><span class="n">order</span><span class="p">:</span>
+<a id="__codelineno-0-142" name="__codelineno-0-142"></a>        <span class="n">vt</span> <span class="o">=</span> <span class="n">v1</span>
+<a id="__codelineno-0-143" name="__codelineno-0-143"></a>        <span class="n">v1</span> <span class="o">=</span> <span class="n">v2</span>
+<a id="__codelineno-0-144" name="__codelineno-0-144"></a>        <span class="n">v2</span> <span class="o">=</span> <span class="n">vt</span>
+<a id="__codelineno-0-145" name="__codelineno-0-145"></a>    <span class="k">return</span> <span class="n">v1</span> <span class="o">/</span> <span class="n">v2</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><script>
+document.getElementById('ccy-search').addEventListener('input', function() {
+  var term = this.value.toLowerCase();
+  document.querySelectorAll('#ccy-table tbody tr').forEach(function(row) {
+    var code = row.cells[0].textContent.toLowerCase();
+    var name = row.cells[1].textContent.toLowerCase();
+    var country = row.cells[3].textContent.toLowerCase();
+    row.style.display = (code.includes(term) || name.includes(term) || country.includes(term)) ? '' : 'none';
+  });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Home
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../daycounters/" class="md-footer__link md-footer__link--next" aria-label="Next: Day Counters">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Day Counters
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.footer", "navigation.indexes", "navigation.path", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
