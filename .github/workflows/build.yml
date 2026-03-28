@@ -29,6 +29,8 @@ jobs:
       uses: astral-sh/setup-uv@v5
     - name: Install dependencies
       run: uv sync --all-extras
+    - name: Install taplo
+      uses: uncenter/setup-taplo@v1
     - name: run lint
       run: make lint
     - name: run tests
