@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any
+from typing import Any, Self
 
 
 def period(pstr: str = "") -> Period:
@@ -31,7 +31,7 @@ class Period:
         self._days = days
 
     @classmethod
-    def make(cls, data: Any) -> Period:
+    def make(cls, data: Any) -> Self:
         if isinstance(data, cls):
             return data
         elif isinstance(data, str):
@@ -110,7 +110,7 @@ class Period:
         else:
             return ""
 
-    def add_tenure(self, pstr: str) -> Period:
+    def add_tenure(self, pstr: str) -> Self:
         if isinstance(pstr, self.__class__):
             self._months += pstr._months
             self._days += pstr._days
@@ -141,18 +141,18 @@ class Period:
                 st = st[ip:]
         return self
 
-    def __add__(self, other: Any) -> Period:
+    def __add__(self, other: Any) -> Self:
         p = self.make(other)
         return self.__class__(self._months + p._months, self._days + p._days)
 
-    def __radd__(self, other: Any) -> Period:
+    def __radd__(self, other: Any) -> Self:
         return self + other
 
-    def __sub__(self, other: Any) -> Period:
+    def __sub__(self, other: Any) -> Self:
         p = self.make(other)
         return self.__class__(self._months - p._months, self._days - p._days)
 
-    def __rsub__(self, other: Any) -> Period:
+    def __rsub__(self, other: Any) -> Self:
         return self.make(other) - self
 
     def __gt__(self, other: Any) -> bool:
