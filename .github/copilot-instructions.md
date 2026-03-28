@@ -21,3 +21,4 @@ applyTo: '/**'
 * The documentation for ccy is available at `https://ccy.quantmid.com`
 * Documentation is built using [mkdocs](https://www.mkdocs.org/) and stored in the `docs/` directory. The documentation source files are written in markdown format.
 * Do not use em dashes (—) in documentation files or docstrings. Use colons, parentheses, or restructure the sentence instead.
+* To link to a class or function in documentation, use the mkdocstrings cross-reference notation: `[ClassName][module.path.ClassName]` (e.g. `[TradingCentre][ccy.tradingcentres.TradingCentre]`)

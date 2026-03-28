@@ -17,17 +17,13 @@ class DayCounter(StrEnum):
     THIRTYE360 = "30E/360"
     ACTACT = "ACT/ACT"
 
-    def count(self, start: date, end: date) -> float:
-        """Count the number of days between 2 dates"""
-        return date_diff(end, start).total_seconds() / 86400
-
     def dcf(self, start: date, end: date) -> float:
         """Day count fraction between 2 dates"""
         match self:
             case DayCounter.ACT360:
-                return self.count(start, end) / 360.0
+                return count_days(start, end) / 360.0
             case DayCounter.ACT365:
-                return self.count(start, end) / 365.0
+                return count_days(start, end) / 365.0
             case DayCounter.THIRTY360:
                 return _thirty_360(start, end)
             case DayCounter.THIRTYE360:
@@ -36,6 +32,11 @@ class DayCounter(StrEnum):
                 return _act_act_years(end) - _act_act_years(start)
             case _:
                 raise ValueError(f"Unknown day counter: {self}")
+
+
+def count_days(start: date, end: date) -> float:
+    """Count the number of days between 2 dates"""
+    return date_diff(end, start).total_seconds() / 86400
 
 
 def _thirty_e360(start: date, end: date) -> float:

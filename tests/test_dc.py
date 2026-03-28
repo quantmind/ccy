@@ -10,13 +10,14 @@ def test_alldc():
     assert len(DayCounter) == 5
 
 
-def test_getdb():
+def test_dcf():
     for dc in DayCounter:
         assert dc.value == str(dc)
         start = date.today()
-        assert dc.count(start, start + timedelta(days=1)) == 1
         assert dc.dcf(start, start + timedelta(days=1)) > 0
 
+
+def test_invalid_dc():
     with pytest.raises(ValueError):
         DayCounter("kaputt")
 

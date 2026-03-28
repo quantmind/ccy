@@ -27,7 +27,33 @@ theme:
     - navigation.path
     - content.code.copy
 
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            show_root_heading: true
+            show_if_no_docstring: true
+            inherited_members: true
+            members_order: source
+            separate_signature: true
+            unwrap_annotated: true
+            filters:
+              - "!^_[a-zA-Z0-9_]*"
+              - "!^model_post_init$"
+            merge_init_into_class: true
+            docstring_section_style: spacy
+            signature_crossrefs: true
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
+            extensions:
+              - griffe_typingdoc
+              - griffe_pydantic:
+                  schema: false
+
 markdown_extensions:
+  - admonition
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.superfences
@@ -35,4 +61,5 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Day Counters: daycounters.md
+  - Trading Centres: trading-centres.md
   - Dates & Periods: dates.md
