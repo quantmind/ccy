@@ -1,7 +1,8 @@
 """Python currencies"""
 
-__version__ = "1.7.2"
+from importlib.metadata import version
 
+__version__ = version("ccy")
 
 from .core.country import (
     CountryError,

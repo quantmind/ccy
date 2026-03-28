@@ -23,15 +23,8 @@ eur = ccy.currency("aud")
 eur.printinfo()
 ```
 
-A currency object has the following properties:
-
-* *code*: the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) three letters code.
-* *twoletterscode*: two letter code.
-* *default_country*: the default [ISO 3166-1 alpha_2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code for the currency.
-* *isonumber*: the ISO 4217 number.
-* *name*: the name of the currency.
-* *order*: default ordering in currency pairs (more of this below).
-* *rounding*: number of decimal places
+A currency is represented by the [CCY][ccy.core.currency.CCY] class.
+See the [Currencies](currencies.md#ccy) page for the full field reference.
 
 ## Currency Crosses
 

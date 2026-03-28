@@ -1,6 +1,6 @@
 [project]
 name = "ccy"
-version = "1.8.0"
+version = "2.0.0"
 description = "Python currencies"
 authors = [ { name = "Luca Sbardella", email = "luca@quantmind.com" } ]
 license = { text = "BSD" }

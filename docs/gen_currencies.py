@@ -37,6 +37,8 @@ with mkdocs_gen_files.open("currencies.md", "w") as f:
             f"</tr>\n"
         )
     f.write("</tbody>\n</table>\n\n")
+    f.write("## CCY\n\n")
+    f.write("::: ccy.core.currency.CCY\n")
 
     f.write(
         "<script>\n"
