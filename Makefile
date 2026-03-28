@@ -38,7 +38,7 @@ docs:		## Build mkdocs site
 
 .PHONY: docs-serve
 docs-serve:	## Serve docs locally with live reload
-	uv run mkdocs serve
+	uv run mkdocs serve --livereload --watch ccy --watch docs
 
 .PHONY: publish-docs
 publish-docs:	## Publish docs to github pages

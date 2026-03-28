@@ -20,7 +20,7 @@ from .core.currency import (
     currencydb,
     dump_currency_table,
 )
-from .core.daycounter import alldc, getdc
+from .core.daycounter import DayCounter
 from .dates.converters import (
     date2juldate,
     date2timestamp,
@@ -42,8 +42,7 @@ __all__ = [
     "currency_pair",
     "dump_currency_table",
     #
-    "getdc",
-    "alldc",
+    "DayCounter",
     #
     "country",
     "countryccy",

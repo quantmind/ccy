@@ -1,10 +1,12 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, field
 from datetime import date, timedelta
+from typing_extensions import Annotated, Doc
+
 import holidays
 import holidays.countries
 import holidays.financial
+from pydantic import BaseModel, Field
 
 isoweekend = frozenset((6, 7))
 oneday = timedelta(days=1)
@@ -12,15 +14,34 @@ oneday = timedelta(days=1)
 trading_centres: dict[str, TradingCentre] = {}
 
 
-def prevbizday(dte: date, nd: int = 1, tcs: str | None = None) -> date:
+def prevbizday(
+    dte: Annotated[date, Doc("The reference date")],
+    nd: Annotated[int, Doc("Number of business days to move back")] = 1,
+    tcs: Annotated[str | None, Doc("Comma-separated trading centre codes")] = None,
+) -> date:
+    """Return the date nd business days before dte."""
     return centres(tcs).prevbizday(dte, nd)
 
 
-def nextbizday(dte: date, nd: int = 1, tcs: str | None = None) -> date:
+def nextbizday(
+    dte: Annotated[date, Doc("The reference date")],
+    nd: Annotated[
+        int,
+        Doc("Number of business days to move forward; 0 adjusts to next biz day"),
+    ] = 1,
+    tcs: Annotated[str | None, Doc("Comma-separated trading centre codes")] = None,
+) -> date:
+    """Return the date nd business days after dte."""
     return centres(tcs).nextbizday(dte, nd)
 
 
-def centres(codes: str | None = None) -> TradingCentres:
+def centres(
+    codes: Annotated[
+        str | None, Doc("Comma-separated trading centre codes, e.g. 'LON,NY'")
+    ] = None,
+) -> TradingCentres:
+    """Return a [TradingCentres][ccy.tradingcentres.TradingCentres] instance
+    for the given centre codes."""
     tcs = TradingCentres()
     if codes:
         lcs = codes.upper().replace(" ", "").split(",")
@@ -31,24 +52,28 @@ def centres(codes: str | None = None) -> TradingCentres:
     return tcs
 
 
-@dataclass
-class TradingCentre:
-    code: str
-    calendar: holidays.HolidayBase
+class TradingCentre(BaseModel, arbitrary_types_allowed=True):
+    code: str = Field(description="The code of the trading centre")
+    calendar: holidays.HolidayBase = Field(
+        exclude=True,
+        description="The holiday calendar of the trading centre",
+    )
 
-    def isholiday(self, dte: date) -> bool:
+    def isholiday(self, dte: Annotated[date, Doc("The date to check")]) -> bool:
+        """Return True if the date is a holiday."""
         return dte in self.calendar
 
 
-@dataclass
-class TradingCentres:
-    centres: dict[str, TradingCentre] = field(default_factory=dict)
+class TradingCentres(BaseModel):
+    centres: dict[str, TradingCentre] = Field(default_factory=dict)
 
     @property
     def code(self) -> str:
+        """Comma-separated sorted codes of the trading centres."""
         return ",".join(sorted(self.centres))
 
-    def isbizday(self, dte: date) -> bool:
+    def isbizday(self, dte: Annotated[date, Doc("The date to check")]) -> bool:
+        """Return True if the date is a business day across all centres."""
         if dte.isoweekday() in isoweekend:
             return False
         for c in self.centres.values():
@@ -56,7 +81,15 @@ class TradingCentres:
                 return False
         return True
 
-    def nextbizday(self, dte: date, nd: int = 1) -> date:
+    def nextbizday(
+        self,
+        dte: Annotated[date, Doc("The reference date")],
+        nd: Annotated[
+            int,
+            Doc("Number of business days to move forward; 0 adjusts to next biz day"),
+        ] = 1,
+    ) -> date:
+        """Return the date nd business days after dte."""
         n = 0
         while not self.isbizday(dte):
             dte += oneday
@@ -66,7 +99,12 @@ class TradingCentres:
                 n += 1
         return dte
 
-    def prevbizday(self, dte: date, nd: int = 1) -> date:
+    def prevbizday(
+        self,
+        dte: Annotated[date, Doc("The reference date")],
+        nd: Annotated[int, Doc("Number of business days to move back")] = 1,
+    ) -> date:
+        """Return the date nd business days before dte."""
         n = 0
         if nd < 0:
             return self.nextbizday(dte, -nd)
