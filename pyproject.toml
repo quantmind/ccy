@@ -9,6 +9,7 @@ requires-python = ">=3.11"
 dependencies = [
     "python-dateutil>=2.9.0",
     "pycountry>=24.6.1",
+    "typing-extensions>=4.12",
 ]
 
 [project.optional-dependencies]

@@ -80,6 +80,7 @@ source = { editable = "." }
 dependencies = [
     { name = "pycountry" },
     { name = "python-dateutil" },
+    { name = "typing-extensions" },
 ]
 
 [package.optional-dependencies]
@@ -114,6 +115,7 @@ requires-dist = [
     { name = "pycountry", specifier = ">=24.6.1" },
     { name = "python-dateutil", specifier = ">=2.9.0" },
     { name = "rich", marker = "extra == 'cli'", specifier = ">=13.7.1" },
+    { name = "typing-extensions", specifier = ">=4.12" },
 ]
 provides-extras = ["cli", "holidays"]
 

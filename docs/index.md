@@ -23,7 +23,8 @@ eur = ccy.currency("aud")
 eur.printinfo()
 ```
 
-a currency object has the following properties:
+A currency object has the following properties:
+
 * *code*: the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) three letters code.
 * *twoletterscode*: two letter code.
 * *default_country*: the default [ISO 3166-1 alpha_2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code for the currency.
