@@ -12,10 +12,6 @@ clean:		## Remove python cache files
 	rm -rf .pytest_cache
 	rm -rf .coverage
 
-.PHONY: docs
-docs:		## Build docs
-	cd docs && make docs
-
 .PHONY: install-dev
 install-dev:	## Install packages for development
 	@./dev/install
@@ -36,17 +32,17 @@ test:		## Test with python 3.8 with coverage
 publish:	## Release to pypi
 	@uv build && uv publish --token $(PYPI_TOKEN)
 
-.PHONY: notebook
-notebook:	## Run Jupyter notebook server
-	@uv run ./dev/start-jupyter 9095
+.PHONY: docs
+docs:		## Build mkdocs site
+	uv run mkdocs build
 
-.PHONY: book
-book:		## Build static jupyter {book}
-	uv run jupyter-book build docs --all
+.PHONY: docs-serve
+docs-serve:	## Serve docs locally with live reload
+	uv run mkdocs serve
 
-.PHONY: publish-book
-publish-book:	## Publish the book to github pages
-	uv run ghp-import -n -p -f docs/_build/html
+.PHONY: publish-docs
+publish-docs:	## Publish docs to github pages
+	uv run mkdocs gh-deploy
 
 .PHONY: outdated
 outdated:	## Show outdated packages

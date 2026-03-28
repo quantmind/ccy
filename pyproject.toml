@@ -34,18 +34,13 @@ dev = [
     "types-python-dateutil>=2.9.0.20241003",
 ]
 book = [
-    "jupyter-book>=1.0.3",
-    "jupyterlab>=4.3.4",
-    "jupytext>=1.16.6",
-    "ghp-import>=2.1.0",
+    "mkdocs>=1.6",
+    "mkdocs-material>=9.0",
 ]
 
 [build-system]
 requires = [ "hatchling" ]
 build-backend = "hatchling.build"
-
-[tool.jupytext]
-formats = "ipynb,myst"
 
 [tool.isort]
 profile = "black"
