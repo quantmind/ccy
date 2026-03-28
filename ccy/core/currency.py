@@ -1,12 +1,31 @@
 from __future__ import annotations
 
 import sys
-from typing import Any, Callable, NamedTuple
+from typing import Any, Callable, NamedTuple, Self
+
+from pydantic import BaseModel, Field, computed_field
 
 from .data import make_ccys
 from .daycounter import DayCounter
 
 usd_order = 5
+
+_CCY_FIELDS = (
+    "code",
+    "isonumber",
+    "twoletterscode",
+    "order",
+    "name",
+    "rounding",
+    "default_country",
+    "fixeddc",
+    "floatdc",
+    "fixedfreq",
+    "floatfreq",
+    "future",
+    "symbol_raw",
+    "html",
+)
 
 
 def to_string(v: Any) -> str:
@@ -24,30 +43,42 @@ def overusdfuni(v1: float) -> float:
     return 1.0 / v1
 
 
-class ccy(NamedTuple):
-    code: str
-    isonumber: str
-    twoletterscode: str
-    order: int
-    name: str
-    rounding: int
-    default_country: str
-    fixeddc: DayCounter = DayCounter.ACT365
-    floatdc: DayCounter = DayCounter.ACT365
-    fixedfreq: str = ""
-    floatfreq: str = ""
-    future: str = ""
-    symbol_raw: str = r"\00a4"
-    html: str = ""
+class CCY(BaseModel, frozen=True):
+    code: str = Field(description="ISO 4217 three-letter currency code")
+    isonumber: str = Field(description="ISO 4217 numeric code")
+    twoletterscode: str = Field(description="Internal two-letter code")
+    order: int = Field(description="Default ordering in currency pairs")
+    name: str = Field(description="Currency name")
+    rounding: int = Field(description="Number of decimal places")
+    default_country: str = Field(description="Default ISO 3166-1 alpha-2 country code")
+    fixeddc: DayCounter = Field(
+        default=DayCounter.ACT365, description="Fixed leg day count convention"
+    )
+    floatdc: DayCounter = Field(
+        default=DayCounter.ACT365, description="Float leg day count convention"
+    )
+    fixedfreq: str = Field(default="", description="Fixed leg payment frequency")
+    floatfreq: str = Field(default="", description="Float leg payment frequency")
+    future: str = Field(default="", description="Futures contract ticker")
+    symbol_raw: str = Field(
+        default=r"\u00a4",
+        description="Raw unicode escape string for the currency symbol",
+    )
+    html: str = Field(default="", description="HTML entity for the currency symbol")
 
+    @computed_field  # type: ignore[prop-decorator]
     @property
     def symbol(self) -> str:
+        """Currency symbol decoded from the unicode escape string"""
         return self.symbol_raw.encode("utf-8").decode("unicode_escape")
 
     def __eq__(self, other: Any) -> bool:
-        if isinstance(other, ccy):
+        if isinstance(other, CCY):
             return other.code == self.code
         return False
+
+    def __hash__(self) -> int:
+        return hash(self.code)
 
     def description(self) -> str:
         if self.order > usd_order:
@@ -60,9 +91,7 @@ class ccy(NamedTuple):
             return "Dollar"
 
     def info(self) -> dict[str, Any]:
-        data = self._asdict()
-        data["symbol"] = self.symbol
-        return data
+        return self.model_dump()
 
     def printinfo(self, stream: Any | None = None) -> None:
         info = self.info()
@@ -73,7 +102,7 @@ class ccy(NamedTuple):
     def __str__(self) -> str:
         return self.code
 
-    def swap(self, c2: ccy) -> tuple[bool, ccy, ccy]:
+    def swap(self, c2: Self) -> tuple[bool, Self, Self]:
         """
         put the order of currencies as market standard
         """
@@ -108,7 +137,7 @@ class ccy(NamedTuple):
         else:
             return "%s%sUSD" % (self.code, delimiter)
 
-    def spot(self, c2: ccy, v1: float, v2: float) -> float:
+    def spot(self, c2: Self, v1: float, v2: float) -> float:
         if self.order > c2.order:
             vt = v1
             v1 = v2
@@ -125,8 +154,8 @@ class ccy_pair(NamedTuple):
     XXXYYY means 1 unit of of XXX cost XXXYYY units of YYY
     """
 
-    ccy1: ccy
-    ccy2: ccy
+    ccy1: CCY
+    ccy2: CCY
 
     @property
     def code(self) -> str:
@@ -154,9 +183,11 @@ class ccy_pair(NamedTuple):
             return self
 
 
-class ccydb(dict[str, ccy]):
+class ccydb(dict[str, CCY]):
     def insert(self, *args: Any, **kwargs: Any) -> None:
-        c = ccy(*args, **kwargs)
+        kw = dict(zip(_CCY_FIELDS, args))
+        kw.update(kwargs)
+        c = CCY(**kw)
         self[c.code] = c
 
 
@@ -175,7 +206,7 @@ def ccypairsdb() -> dict[str, ccy_pair]:
     return _ccypairs
 
 
-def currency(code: str | ccy) -> ccy:
+def currency(code: str | CCY) -> CCY:
     c = currencydb()
     return c[str(code).upper()]
 

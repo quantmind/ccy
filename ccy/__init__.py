@@ -14,6 +14,7 @@ from .core.country import (
     set_new_country,
 )
 from .core.currency import (
+    CCY,
     ccypair,
     currency,
     currency_pair,
@@ -36,6 +37,7 @@ from .dates.futures import future_date_to_code, future_month_dict
 from .dates.period import Period, period
 
 __all__ = [
+    "CCY",
     "currency",
     "currencydb",
     "ccypair",
