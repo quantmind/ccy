@@ -57,6 +57,7 @@ jobs:
     - name: build docs
       run: make docs
     - name: publish docs
+      if: github.ref == 'refs/heads/main'
       run: make publish-docs
     - name: publish
       if: ${{ github.ref == 'refs/heads/main' && github.event.head_commit.message == 'release' }}
