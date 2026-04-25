@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+pytest -x -vv \
+    --log-cli-level error \
+    --cov --cov-report xml --cov-report html "$@"

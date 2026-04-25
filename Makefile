@@ -26,7 +26,7 @@ lint-check:	## Run linters in check mode
 
 .PHONY: test
 test:		## Test with python 3.8 with coverage
-	@uv run pytest -x -v --cov --cov-report xml
+	@uv run ./dev/test
 
 .PHONY: publish
 publish:	## Release to pypi
@@ -43,6 +43,10 @@ docs-serve:	## Serve docs locally with live reload
 .PHONY: publish-docs
 publish-docs:	## Publish docs to github pages
 	uv run mkdocs gh-deploy --force
+
+.PHONY: update
+update:		## Update packages
+	uv lock --upgrade
 
 .PHONY: outdated
 outdated:	## Show outdated packages

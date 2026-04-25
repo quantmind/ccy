@@ -2,12 +2,7 @@ import time
 from datetime import date, datetime
 from typing import Any
 
-try:
-    from dateutil.parser import parse as date_from_string
-except ImportError:  # noqa
-
-    def date_from_string(dte):  # type: ignore
-        raise NotImplementedError
+from dateutil.parser import parse as date_from_string
 
 
 def todate(val: Any) -> date:
