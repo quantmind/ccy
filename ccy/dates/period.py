@@ -2,6 +2,9 @@ from __future__ import annotations
 
 from typing import Any, Self
 
+from dateutil.relativedelta import relativedelta
+from pydantic import BaseModel, Field
+
 
 def period(pstr: str = "") -> Period:
     """Create a period object from a period string"""
@@ -17,155 +20,149 @@ def find_first_of(st: str, possible: str) -> int:
     return lowi
 
 
-def safediv(x: int, d: int) -> int:
-    return x // d if x >= 0 else -(-x // d)
-
-
-def safemod(x: int, d: int) -> int:
-    return x % d if x >= 0 else -(-x % d)
-
-
-class Period:
-    def __init__(self, months: int = 0, days: int = 0) -> None:
-        self._months = months
-        self._days = days
+class Period(BaseModel):
+    months: int = Field(default=0, ge=0, description="Number of months in the period")
+    days: int = Field(default=0, ge=0, description="Number of days in the period")
+    hours: int = Field(default=0, ge=0, description="Number of hours in the period")
 
     @classmethod
     def make(cls, data: Any) -> Self:
         if isinstance(data, cls):
             return data
         elif isinstance(data, str):
-            return cls().add_tenure(data)
+            return cls().add_period(data)
+        elif isinstance(data, relativedelta):
+            return cls(
+                months=data.years * 12 + data.months,
+                days=data.days,
+                hours=data.hours,
+            )
         else:
             raise TypeError("Cannot convert %s to Period" % data)
 
     def isempty(self) -> bool:
-        return self._months == 0 and self._days == 0
+        return self.months == 0 and self.days == 0 and self.hours == 0
 
     def add_days(self, days: int) -> None:
-        self._days += days
+        if days < 0:
+            raise ValueError("Negative days are not supported")
+        self.days += days
 
     def add_weeks(self, weeks: int) -> None:
-        self._days += int(7 * weeks)
+        if weeks < 0:
+            raise ValueError("Negative weeks are not supported")
+        self.days += int(7 * weeks)
 
     def add_months(self, months: int) -> None:
-        self._months += months
+        if months < 0:
+            raise ValueError("Negative months are not supported")
+        self.months += months
 
     def add_years(self, years: int) -> None:
-        self._months += int(12 * years)
+        if years < 0:
+            raise ValueError("Negative years are not supported")
+        self.months += int(12 * years)
+
+    def add_hours(self, hours: int) -> None:
+        if hours < 0:
+            raise ValueError("Negative hours are not supported")
+        self.hours += hours
+        if self.hours >= 24:
+            self.days += self.hours // 24
+            self.hours = self.hours % 24
 
     @property
     def years(self) -> int:
-        return safediv(self._months, 12)
+        return self.months // 12
 
     @property
-    def months(self) -> int:
-        return safemod(self._months, 12)
+    def months_remaining(self) -> int:
+        """Months remaining after extracting years from the period"""
+        return self.months % 12
 
     @property
     def weeks(self) -> int:
-        return safediv(self._days, 7)
+        """Weeks in the period after extracting months and years from the period"""
+        return self.days // 7
 
     @property
-    def days(self) -> int:
-        return safemod(self._days, 7)
+    def days_remaining(self) -> int:
+        """Days remaining after extracting weeks from the period"""
+        return self.days % 7
 
-    @property
-    def totaldays(self) -> int:
-        return 30 * self._months + self._days
-
-    def __repr__(self) -> str:
-        """The period string"""
-        return self.components()
-
-    def __str__(self) -> str:
-        return self.__repr__()
-
-    def components(self) -> str:
+    def to_str(self) -> str:
         """The period string"""
         p = ""
-        neg = self.totaldays < 0
         y = self.years
         m = self.months
         w = self.weeks
         d = self.days
-        if y:
-            p = "%sY" % abs(y)
-        if m:
-            p = "%s%sM" % (p, abs(m))
-        if w:
-            p = "%s%sW" % (p, abs(w))
-        if d:
-            p = "%s%sD" % (p, abs(d))
-        return "-" + p if neg else p
+        if y := self.years:
+            p = "%sY" % y
+        if m := self.months_remaining:
+            p = "%s%sM" % (p, m)
+        if w := self.weeks:
+            p = "%s%sW" % (p, w)
+        if d := self.days_remaining:
+            p = "%s%sD" % (p, d)
+        if h := self.hours:
+            p = "%s%sH" % (p, h)
+        return p
 
-    def simple(self) -> str:
-        """A string representation with only one period delimiter."""
-        if self._days:
-            return "%sD" % self.totaldays
-        elif self.months:
-            return "%sM" % self._months
-        elif self.years:
-            return "%sY" % self.years
-        else:
-            return ""
+    def to_relativedelta(self) -> relativedelta:
+        """Convert the period to a dateutil.relativedelta object"""
+        return relativedelta(
+            years=self.years,
+            months=self.months_remaining,
+            weeks=self.weeks,
+            days=self.days_remaining,
+            hours=self.hours,
+        )
 
-    def add_tenure(self, pstr: str) -> Self:
-        if isinstance(pstr, self.__class__):
-            self._months += pstr._months
-            self._days += pstr._days
+    def add_period(self, pstr: str | Self) -> Self:
+        if isinstance(pstr, Period):
+            self.add_days(pstr.days)
+            self.add_months(pstr.months)
+            self.add_hours(pstr.hours)
             return self
         st = str(pstr).upper()
-        done = False
-        sign = 1
-        while not done:
-            if not st:
-                done = True
-            else:
-                ip = find_first_of(st, "DWMY")
-                if ip == -1:
-                    raise ValueError("Unknown period %s" % pstr)
-                p = st[ip]
-                v = int(st[:ip])
-                sign = sign if v > 0 else -sign
-                v = sign * abs(v)
-                if p == "D":
-                    self.add_days(v)
-                elif p == "W":
-                    self.add_weeks(v)
-                elif p == "M":
-                    self.add_months(v)
-                elif p == "Y":
-                    self.add_years(v)
-                ip += 1
-                st = st[ip:]
+        while st:
+            ip = find_first_of(st, "HDWMY")
+            if ip == -1:
+                raise ValueError("Unknown period %s" % pstr)
+            p = st[ip]
+            v = int(st[:ip])
+            if v < 0:
+                raise ValueError("Negative values are not supported")
+            if p == "D":
+                self.add_days(v)
+            elif p == "W":
+                self.add_weeks(v)
+            elif p == "M":
+                self.add_months(v)
+            elif p == "H":
+                self.add_hours(v)
+            elif p == "Y":
+                self.add_years(v)
+            ip += 1
+            st = st[ip:]
         return self
 
     def __add__(self, other: Any) -> Self:
         p = self.make(other)
-        return self.__class__(self._months + p._months, self._days + p._days)
+        period = self.model_copy()
+        period.add_days(p.days)
+        period.add_months(p.months)
+        period.add_hours(p.hours)
+        return period
 
     def __radd__(self, other: Any) -> Self:
         return self + other
 
-    def __sub__(self, other: Any) -> Self:
-        p = self.make(other)
-        return self.__class__(self._months - p._months, self._days - p._days)
-
-    def __rsub__(self, other: Any) -> Self:
-        return self.make(other) - self
-
-    def __gt__(self, other: Any) -> bool:
-        return self.totaldays > self.make(other).totaldays
-
-    def __lt__(self, other: Any) -> bool:
-        return self.totaldays < self.make(other).totaldays
-
-    def __ge__(self, other: Any) -> bool:
-        return self.totaldays >= self.make(other).totaldays
-
-    def __le__(self, other: Any) -> bool:
-        return self.totaldays <= self.make(other).totaldays
-
     def __eq__(self, other: Any) -> bool:
-        return self.totaldays == self.make(other).totaldays
+        period = self.make(other)
+        return (
+            self.months == period.months
+            and self.days == period.days
+            and self.hours == period.hours
+        )
